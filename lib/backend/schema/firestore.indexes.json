@@ -5,11 +5,11 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "userId",
+          "fieldPath": "used",
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "used",
+          "fieldPath": "userId",
           "order": "ASCENDING"
         },
         {
