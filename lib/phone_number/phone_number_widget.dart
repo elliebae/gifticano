@@ -118,7 +118,7 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                                     controller: textController,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: '전화번호 (예시: +82 10 1234 5678)',
+                                      hintText: '전화번호 (예시: 01012345678)',
                                       hintStyle:
                                           FlutterFlowTheme.subtitle2.override(
                                         fontFamily: 'Roboto',
@@ -182,16 +182,17 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                         if (!formKey.currentState.validate()) {
                           return;
                         }
-                        if (textController.text.isEmpty ||
-                            !textController.text.startsWith('+')) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                  '+로 시작하는 형태로 입력해주세요. (예시: +82 10 1234 5678)'),
-                            ),
-                          );
-                          return;
-                        }
+                        // if (textController.text.isEmpty ||
+                        //     !textController.text.startsWith('+')) {
+                        //   ScaffoldMessenger.of(context).showSnackBar(
+                        //     SnackBar(
+                        //       content: Text(
+                        //           '+로 시작하는 형태로 입력해주세요. (예시: +82 10 1234 5678)'),
+                        //     ),
+                        //   );
+                        //   return;
+                        // }
+                        var newPhoneNumber = '+82' + textController.text.substring(1);
                         await beginPhoneAuth(
                           context: context,
                           phoneNumber: textController.text,
