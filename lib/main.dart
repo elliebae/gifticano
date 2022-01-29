@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null || displaySplashImage
           ? Container(
-              color: Colors.transparent,
+              color: Colors.white,
               child: Builder(
                 builder: (context) => Image.asset(
                   'assets/images/Untitled_-SplashScreen_(3)_(1).gif',
