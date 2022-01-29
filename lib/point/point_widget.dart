@@ -341,11 +341,26 @@ class _PointWidgetState extends State<PointWidget> {
                                           title: Text('포인트를 아메리카노로 바꿀까요?'),
                                           content:
                                               Text('한 잔에 4,500  포인트가 차감됩니다.'),
+                                          //예쁘게
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(Radius.circular(20))
+                                          ),
+                                          //
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: Text('아니오'),
+                                              child: Text('아니요'),
+                                              //예쁘게
+                                              style: TextButton.styleFrom(
+                                                primary: Color(0xFF666666), //글자
+                                                backgroundColor: Color(0xFFF2F3F2),
+                                                padding: EdgeInsets.all(16.0),
+                                                minimumSize: Size(135, 55), //최소 사이즈
+                                                shape:
+                                                StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                              ),
+                                              //
                                             ),
                                             TextButton(
                                               onPressed: () async {
@@ -363,6 +378,16 @@ class _PointWidgetState extends State<PointWidget> {
                                                 ;
                                               },
                                               child: Text('바꿀게요'),
+                                              //예쁘게
+                                              style: TextButton.styleFrom(
+                                                primary: Color(0xFFFFFFFF), //글자
+                                                backgroundColor: Color(0xFF3D8566),
+                                                padding: EdgeInsets.all(16.0),
+                                                minimumSize: Size(135, 55), //최소 사이즈
+                                                shape:
+                                                StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                              ),
+                                              //
                                             ),
                                           ],
                                         );

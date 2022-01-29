@@ -173,7 +173,7 @@ class _PhoneNumberVerifyLoginWidgetState
                                       keyboardType: TextInputType.phone,
                                       validator: (val) {
                                         if (val.isEmpty) {
-                                          return 'Field is required';
+                                          return '필수 입력란입니다.';
                                         }
 
                                         return null;

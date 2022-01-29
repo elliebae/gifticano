@@ -182,7 +182,7 @@ class _AgreementWidgetState extends State<AgreementWidget> {
                         agreePersonal: true,
                       );
                       await currentUserReference.update(usersUpdateData);
-                      if (currentUserDocument?.agreeUse) {
+                      if (currentUserDocument?.agreeUse & currentUserDocument?.agreePersonal) {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(

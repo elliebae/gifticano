@@ -174,7 +174,7 @@ class _PhoneNumberVerifyWidgetState extends State<PhoneNumberVerifyWidget> {
                                     keyboardType: TextInputType.phone,
                                     validator: (val) {
                                       if (val.isEmpty) {
-                                        return 'Field is required';
+                                        return '필수 입력란입니다';
                                       }
 
                                       return null;

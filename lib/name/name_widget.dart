@@ -163,10 +163,10 @@ class _NameWidgetState extends State<NameWidget> {
                                       fontFamily: 'Roboto',
                                       color: Color(0xFF999999),
                                     ),
-                                    keyboardType: TextInputType.phone,
+                                    keyboardType: TextInputType.text,
                                     validator: (val) {
                                       if (val.isEmpty) {
-                                        return 'Field is required';
+                                        return '필수 입력란입니다';
                                       }
 
                                       return null;

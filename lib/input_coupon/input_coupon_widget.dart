@@ -44,11 +44,27 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                         return AlertDialog(
                           title: Text('등록을 취소할까요?'),
                           content: Text('언제든 다시 등록할 수 있어요.'),
+                          //예쁘게
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(20))
+                          ),
+                          //
                           actions: [
                             TextButton(
                               onPressed: () =>
                                   Navigator.pop(alertDialogContext),
                               child: Text('등록할래요'),
+                              //예쁘게
+                              style: TextButton.styleFrom(
+                                primary: Color(0xFF666666), //글자
+                                backgroundColor: Color(0xFFF2F3F2),
+                                padding: EdgeInsets.all(10.0),
+                                minimumSize: Size(135, 55), //최소 사이즈
+                                shape:
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                              ),
+                              //
                             ),
                             TextButton(
                               onPressed: () async {
@@ -62,6 +78,15 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                 ;
                               },
                               child: Text('취소할게요'),
+                              //예쁘게
+                              style: TextButton.styleFrom(
+                                primary: Colors.white, //글자
+                                backgroundColor: Color(0xFFE15241),
+                                padding: EdgeInsets.all(10.0),
+                                minimumSize: Size(135, 55), //최소 사이즈
+                                shape:
+                                StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                              ),
                             ),
                           ],
                         );
@@ -125,7 +150,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                               if (selectedMedia != null &&
                                   validateFileFormat(
                                       selectedMedia.storagePath, context)) {
-                                showUploadMessage(context, 'Uploading file...',
+                                showUploadMessage(context, '사진 업로드 하는 중...',
                                     showLoading: true);
                                 final downloadUrl = await uploadData(
                                     selectedMedia.storagePath,
@@ -134,10 +159,10 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                     .hideCurrentSnackBar();
                                 if (downloadUrl != null) {
                                   setState(() => uploadedFileUrl = downloadUrl);
-                                  showUploadMessage(context, 'Success!');
+                                  showUploadMessage(context, '성공적으로 업로드 되었습니다!');
                                 } else {
                                   showUploadMessage(
-                                      context, 'Failed to upload media');
+                                      context, '업로드에 실패했습니다');
                                   return;
                                 }
                               }
@@ -196,11 +221,26 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                     return AlertDialog(
                                       title: Text('기프티콘을 아메리카노로 바꿀까요?'),
                                       content: Text('언제든 다시 등록할 수 있어요.'),
+                                      //예쁘게
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(20))
+                                      ),
+                                      //
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
                                           child: Text('아니요'),
+                                          //예쁘게
+                                          style: TextButton.styleFrom(
+                                            primary: Color(0xFF666666), //글자
+                                            backgroundColor: Color(0xFFF2F3F2),
+                                            padding: EdgeInsets.all(10.0),
+                                            minimumSize: Size(135, 55), //최소 사이즈
+                                            shape:
+                                            StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                          ),
+                                          //
                                         ),
                                         TextButton(
                                           onPressed: () async {
@@ -218,43 +258,68 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                             await GifticonsRecord.collection
                                                 .doc()
                                                 .set(gifticonsCreateData);
-                                            ;
+
+                                            final usersUpdateData = {
+                                              'checkingGifticonNum':
+                                              FieldValue.increment(1),
+                                            };
+                                            await currentUserReference
+                                                .update(usersUpdateData);
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('기프티콘이 등록되었습니다.'),
+                                                  content: Text(
+                                                      '검수를 마친 후 문자를 보내드릴게요. 검수에 통과하면 자동으로 등록하신 기프티콘을 아메리카노로 바꿔드려요.'),
+                                                  //예쁘게
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.all(Radius.circular(20))
+                                                  ),
+                                                  //
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(alertDialogContext),
+                                                      child: Text('메인 화면으로 갈래요'),
+                                                      //예쁘게
+                                                      style: TextButton.styleFrom(
+                                                        primary: Color(0xFFFFFFFF), //글자
+                                                        backgroundColor: Color(0xFF3D8566),
+                                                        padding: EdgeInsets.all(10.0),
+                                                        minimumSize: Size(135, 55), //최소 사이즈
+                                                        shape:
+                                                        StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                                      ),
+                                                      //
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                            await Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => MainWidget(),
+                                              ),
+                                                  (r) => false,
+                                            );
                                           },
                                           child: Text('등록할게요'),
+                                          //예쁘게
+                                          style: TextButton.styleFrom(
+                                            primary: Color(0xFFFFFFFF), //글자
+                                            backgroundColor: Color(0xFF3D8566),
+                                            padding: EdgeInsets.all(10.0),
+                                            minimumSize: Size(135, 55), //최소 사이즈
+                                            shape:
+                                            StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                          ),
+                                          //
                                         ),
                                       ],
                                     );
                                   },
-                                );
-                                final usersUpdateData = {
-                                  'checkingGifticonNum':
-                                      FieldValue.increment(1),
-                                };
-                                await currentUserReference
-                                    .update(usersUpdateData);
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('기프티콘이 등록되었습니다.'),
-                                      content: Text(
-                                          '검수를 마친 후 문자를 보내드릴게요. 검수에 통과하면 자동으로 등록하신 기프티콘을 아메리카노로 바꿔드려요.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('메인 화면으로 갈래요'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => MainWidget(),
-                                  ),
-                                  (r) => false,
                                 );
                               },
                               text: '기프티콘 등록하기',

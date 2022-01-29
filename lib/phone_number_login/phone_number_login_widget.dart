@@ -120,7 +120,7 @@ class _PhoneNumberLoginWidgetState extends State<PhoneNumberLoginWidget> {
                                       controller: textController,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        hintText: '전화번호',
+                                        hintText: '전화번호 (예시: +82 10 1234 5678)',
                                         hintStyle:
                                             FlutterFlowTheme.subtitle2.override(
                                           fontFamily: 'Roboto',
@@ -168,7 +168,7 @@ class _PhoneNumberLoginWidgetState extends State<PhoneNumberLoginWidget> {
                                       keyboardType: TextInputType.phone,
                                       validator: (val) {
                                         if (val.isEmpty) {
-                                          return 'Field is required';
+                                          return '필수 입력란입니다';
                                         }
 
                                         return null;
@@ -191,7 +191,7 @@ class _PhoneNumberLoginWidgetState extends State<PhoneNumberLoginWidget> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                    'Phone Number is required and has to start with +.'),
+                                    '+로 시작하는 형태로 입력해주세요. (예시: +82 10 1234 5678)'),
                               ),
                             );
                             return;
