@@ -194,7 +194,7 @@ class _PhoneNumberVerifyLoginWidgetState
                           if (textController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('Enter SMS verification code.'),
+                                content: Text('SMS 인증번호를 입력해주세요.'),
                               ),
                             );
                             return;
