@@ -30,7 +30,7 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 120,
+              height: MediaQuery.of(context).size.height * 0.15,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.customColor3,
               ),
@@ -99,117 +99,122 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                       (columnIndex) {
                     final columnGifticanosRecord =
                         columnGifticanosRecordList[columnIndex];
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.45,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 5,
-                            color: Color(0xFFDCDCDC),
-                            offset: Offset(0, 5),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(35, 0, 35, 0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.network(
-                              columnGifticanosRecord.barcodeImageUrl,
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height * 0.2,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '유효 기간',
-                                    style: FlutterFlowTheme.subtitle2,
-                                  ),
-                                  Text(
-                                    columnGifticanosRecord.validDate,
-                                    style: FlutterFlowTheme.subtitle2,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('진짜 쓴거?'),
-                                      content: Text('레알?'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('노노'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () async {
-                                            Navigator.pop(alertDialogContext);
-
-                                            final gifticanosUpdateData =
-                                                createGifticanosRecordData(
-                                              used: true,
-                                              usedAt: getCurrentTimestamp,
-                                            );
-                                            await columnGifticanosRecord
-                                                .reference
-                                                .update(gifticanosUpdateData);
-                                            ;
-                                          },
-                                          child: Text('진짜 썼다!'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                                final usersUpdateData = {
-                                  'availableGifticanoNum':
-                                      FieldValue.increment(-1),
-                                };
-                                await currentUserReference
-                                    .update(usersUpdateData);
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => MainWidget(),
-                                  ),
-                                  (r) => false,
-                                );
-                              },
-                              text: '사용 완료',
-                              options: FFButtonOptions(
-                                width: double.infinity,
-                                height: 55,
-                                color: FlutterFlowTheme.primaryColor,
-                                textStyle: FlutterFlowTheme.subtitle2.override(
-                                  fontFamily: 'Roboto',
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1,
-                                ),
-                                borderRadius: 15,
-                              ),
-                            ),
+                    return Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.45,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 5,
+                              color: Color(0xFFDCDCDC),
+                              offset: Offset(0, 5),
+                            )
                           ],
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(35, 0, 35, 0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.network(
+                                columnGifticanosRecord.barcodeImageUrl,
+                                width: MediaQuery.of(context).size.width,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.2,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0, 20, 0, 20),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      '유효 기간',
+                                      style: FlutterFlowTheme.subtitle2,
+                                    ),
+                                    Text(
+                                      columnGifticanosRecord.validDate,
+                                      style: FlutterFlowTheme.subtitle2,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('진짜 쓴거?'),
+                                        content: Text('레알?'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('노노'),
+                                          ),
+                                          TextButton(
+                                            onPressed: () async {
+                                              Navigator.pop(alertDialogContext);
+
+                                              final gifticanosUpdateData =
+                                                  createGifticanosRecordData(
+                                                used: true,
+                                                usedAt: getCurrentTimestamp,
+                                              );
+                                              await columnGifticanosRecord
+                                                  .reference
+                                                  .update(gifticanosUpdateData);
+                                              ;
+                                            },
+                                            child: Text('진짜 썼다!'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                  final usersUpdateData = {
+                                    'availableGifticanoNum':
+                                        FieldValue.increment(-1),
+                                  };
+                                  await currentUserReference
+                                      .update(usersUpdateData);
+                                  await Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MainWidget(),
+                                    ),
+                                    (r) => false,
+                                  );
+                                },
+                                text: '사용 완료',
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 55,
+                                  color: FlutterFlowTheme.primaryColor,
+                                  textStyle:
+                                      FlutterFlowTheme.subtitle2.override(
+                                    fontFamily: 'Roboto',
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1,
+                                  ),
+                                  borderRadius: 15,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );

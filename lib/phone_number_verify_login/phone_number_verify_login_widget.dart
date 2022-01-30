@@ -68,7 +68,7 @@ class _PhoneNumberVerifyLoginWidgetState
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 120,
+                      height: MediaQuery.of(context).size.height * 0.15,
                       decoration: BoxDecoration(
                         color: Color(0x00EEEEEE),
                       ),
