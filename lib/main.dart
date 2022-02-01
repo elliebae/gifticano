@@ -10,6 +10,9 @@ import 'package:gifticano/landing/landing_widget.dart';
 import 'package:gifticano/main/main_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -56,19 +59,29 @@ class _MyAppState extends State<MyApp> {
       ],
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: initialUser == null || displaySplashImage
-          ? Container(
-              color: Colors.white,
-              child: Builder(
-                builder: (context) => Image.asset(
-                  'assets/images/Untitled_-SplashScreen_(3)_(1).gif',
-                  fit: BoxFit.scaleDown,
-                ),
-              ),
-            )
-          : currentUser.loggedIn
-              ? MainWidget()
-              : LandingWidget(),
+      home: AnimatedSplashScreen(
+        splash: Image.asset(
+            'assets/images/SplashScreen.png',
+        ),
+        splashIconSize: double.maxFinite,
+        backgroundColor: Colors.white,
+        nextScreen: currentUser.loggedIn
+                ? MainWidget()
+                : LandingWidget(),
+      )
+      // : initialUser == null || displaySplashImage
+      //     ? Container(
+      //         color: Colors.white,
+      //         child: Builder(
+      //           builder: (context) => Image.asset(
+      //             'assets/images/Untitled_-SplashScreen_(3)_(1).gif',
+      //             fit: BoxFit.scaleDown,
+      //           ),
+      //         ),
+      //       )
+      //     : currentUser.loggedIn
+      //         ? MainWidget()
+      //         : LandingWidget(),
     );
   }
 }
