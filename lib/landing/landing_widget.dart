@@ -32,7 +32,7 @@ class _LandingWidgetState extends State<LandingWidget> {
               children: [
                 Container(
                   width: 100,
-                  height: 113,
+                  height: MediaQuery.of(context).size.height * 0.15,
                   decoration: BoxDecoration(
                     color: Color(0x00EEEEEE),
                   ),

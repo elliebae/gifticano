@@ -30,7 +30,7 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 120,
+              height: MediaQuery.of(context).size.height * 0.15,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.customColor3,
               ),
@@ -71,35 +71,39 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                 ],
               ),
             ),
-            StreamBuilder<List<GifticanosRecord>>(
-              stream: queryGifticanosRecord(
-                queryBuilder: (gifticanosRecord) => gifticanosRecord
-                    .where('used', isEqualTo: false)
-                    .where('userId', isEqualTo: currentUserUid)
-                    .orderBy('validDate'),
-              ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: CircularProgressIndicator(
-                        color: FlutterFlowTheme.primaryColor,
+            Expanded(
+              child: StreamBuilder<List<GifticanosRecord>>(
+                stream: queryGifticanosRecord(
+                  queryBuilder: (gifticanosRecord) => gifticanosRecord
+                      .where('userId', isEqualTo: currentUserUid)
+                      .where('used', isEqualTo: false)
+                      .orderBy('validDate'),
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: CircularProgressIndicator(
+                          color: FlutterFlowTheme.primaryColor,
+                        ),
                       ),
-                    ),
-                  );
-                }
-                List<GifticanosRecord> columnGifticanosRecordList =
-                    snapshot.data;
-                return Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: List.generate(columnGifticanosRecordList.length,
-                          (columnIndex) {
-                        final columnGifticanosRecord =
-                        columnGifticanosRecordList[columnIndex];
-                        return Container(
+                    );
+                  }
+                  List<GifticanosRecord> listViewGifticanosRecordList =
+                      snapshot.data;
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    scrollDirection: Axis.vertical,
+                    itemCount: listViewGifticanosRecordList.length,
+                    itemBuilder: (context, listViewIndex) {
+                      final listViewGifticanosRecord =
+                      listViewGifticanosRecordList[listViewIndex];
+                      return Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                        child: Container(
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.45,
                           decoration: BoxDecoration(
@@ -114,20 +118,22 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(35, 0, 35, 0),
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(35, 0, 35, 0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Image.network(
-                                  columnGifticanosRecord.barcodeImageUrl,
+                                  listViewGifticanosRecord.barcodeImageUrl,
                                   width: MediaQuery.of(context).size.width,
-                                  height: MediaQuery.of(context).size.height * 0.2,
+                                  height:
+                                  MediaQuery.of(context).size.height * 0.2,
                                   fit: BoxFit.fitWidth,
                                 ),
                                 Padding(
-                                  padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 20, 0, 20),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment:
@@ -138,7 +144,7 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                                         style: FlutterFlowTheme.subtitle2,
                                       ),
                                       Text(
-                                        columnGifticanosRecord.validDate,
+                                        listViewGifticanosRecord.validDate,
                                         style: FlutterFlowTheme.subtitle2,
                                       ),
                                     ],
@@ -150,73 +156,48 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
-                                          title: Text('기프티콘을 사용하셨나요?'),
-                                          content: Text('사용 완료 버튼을 누르시면 다시 사용하실 수 없어요'),
-//예쁘게
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(Radius.circular(20))
-                                          ),
-//
+                                          title: Text('진짜 쓴거?'),
+                                          content: Text('레알?'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: Text('아직이요'),
-//예쁘게
-                                              style: TextButton.styleFrom(
-                                                primary: Color(0xFF666666), //글자
-                                                backgroundColor: Color(0xFFF2F3F2),
-                                                padding: EdgeInsets.all(16.0),
-                                                minimumSize: Size(135, 55), //최소 사이즈
-                                                shape:
-                                                StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
-                                              ),
+                                              child: Text('노노'),
                                             ),
                                             TextButton(
                                               onPressed: () async {
                                                 Navigator.pop(
                                                     alertDialogContext);
-                                                print("*****");
+
                                                 final gifticanosUpdateData =
                                                 createGifticanosRecordData(
                                                   used: true,
                                                   usedAt: getCurrentTimestamp,
                                                 );
-                                                print("------");
-                                                await columnGifticanosRecord
+                                                await listViewGifticanosRecord
                                                     .reference
                                                     .update(
                                                     gifticanosUpdateData);
-                                                print(">>>>>>");
-                                                final usersUpdateData = {
-                                                  'availableGifticanoNum':
-                                                  FieldValue.increment(-1),
-                                                };
-                                                await currentUserReference
-                                                    .update(usersUpdateData);
-                                                await Navigator.pushAndRemoveUntil(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) => MainWidget(),
-                                                  ),
-                                                      (r) => false,
-                                                );
+                                                ;
                                               },
-                                              child: Text('사용했어요'),
-//예쁘게
-                                              style: TextButton.styleFrom(
-                                                primary: Color(0xFFFFFFFF), //글자
-                                                backgroundColor: Color(0xFF3D8566),
-                                                padding: EdgeInsets.all(16.0),
-                                                minimumSize: Size(135, 55), //최소 사이즈
-                                                shape:
-                                                StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
-                                              ),
-//
+                                              child: Text('진짜 썼다!'),
                                             ),
                                           ],
                                         );
                                       },
+                                    );
+                                    final usersUpdateData = {
+                                      'availableGifticanoNum':
+                                      FieldValue.increment(-1),
+                                    };
+                                    await currentUserReference
+                                        .update(usersUpdateData);
+                                    await Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => MainWidget(),
+                                      ),
+                                          (r) => false,
                                     );
                                   },
                                   text: '사용 완료',
@@ -224,7 +205,8 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                                     width: double.infinity,
                                     height: 55,
                                     color: FlutterFlowTheme.primaryColor,
-                                    textStyle: FlutterFlowTheme.subtitle2.override(
+                                    textStyle:
+                                    FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Roboto',
                                       color: Colors.white,
                                       fontWeight: FontWeight.w600,
@@ -239,10 +221,12 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                               ],
                             ),
                           ),
-                        );
-                      }),
-                );
-              },
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
             ),
           ],
         ),
@@ -250,5 +234,3 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
     );
   }
 }
-
-

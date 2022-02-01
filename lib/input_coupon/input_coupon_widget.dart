@@ -110,7 +110,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                 ),
                 Container(
                   width: 30,
-                  height: 120,
+                  height: MediaQuery.of(context).size.height * 0.15,
                   decoration: BoxDecoration(
                     color: Color(0x00EEEEEE),
                   ),
@@ -137,7 +137,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(32, 26, 32, 26),
+                      padding: EdgeInsetsDirectional.fromSTEB(32, 20, 32, 20),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,

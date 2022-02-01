@@ -64,7 +64,7 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width * 0.1,
-                    height: 120,
+                    height: MediaQuery.of(context).size.height * 0.15,
                     decoration: BoxDecoration(
                       color: Color(0x00EEEEEE),
                     ),
@@ -195,7 +195,7 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                         var newPhoneNumber = '+82' + textController.text.substring(1);
                         await beginPhoneAuth(
                           context: context,
-                          phoneNumber: textController.text,
+                          phoneNumber: newPhoneNumber,
                           onCodeSent: () async {
                             await Navigator.pushAndRemoveUntil(
                               context,

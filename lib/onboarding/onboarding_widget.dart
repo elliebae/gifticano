@@ -26,11 +26,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
         padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 120,
+              height: MediaQuery.of(context).size.height * 0.13,
               decoration: BoxDecoration(
                 color: Color(0x00EEEEEE),
               ),
@@ -64,10 +65,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 47),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 35),
                     child: Container(
                       width: double.infinity,
-                      height: 453,
+                      height: 477,
                       child: Stack(
                         children: [
                           Padding(
@@ -207,7 +208,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                     return Padding(
                       padding: MediaQuery.of(context).viewInsets,
                       child: Container(
-                        height: 576,
+                        height: 455,
                         child: ExchangeAgreementWidget(),
                       ),
                     );
@@ -229,6 +230,13 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   width: 1,
                 ),
                 borderRadius: 15,
+              ),
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                color: Color(0x00EEEEEE),
               ),
             ),
           ],

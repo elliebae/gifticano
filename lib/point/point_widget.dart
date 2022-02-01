@@ -32,7 +32,7 @@ class _PointWidgetState extends State<PointWidget> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 120,
+              height: MediaQuery.of(context).size.height * 0.15,
               decoration: BoxDecoration(
                 color: Colors.white,
               ),

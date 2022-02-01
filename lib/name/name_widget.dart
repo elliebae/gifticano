@@ -66,9 +66,8 @@ class _NameWidgetState extends State<NameWidget> {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      color: Color(0x00EEEEEE),
+                    height: MediaQuery.of(context).size.height * 0.15,                    decoration: BoxDecoration(
+                    color: Color(0x00EEEEEE),
                     ),
                   ),
                 ],
