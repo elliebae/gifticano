@@ -32,6 +32,7 @@ class _ExchangeAgreementWidgetState extends State<ExchangeAgreementWidget> {
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
+        shape: BoxShape.rectangle,
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
@@ -55,11 +56,28 @@ class _ExchangeAgreementWidgetState extends State<ExchangeAgreementWidget> {
                   ),
                 ),
                 Text(
-                  '1. 등록한 기프티콘이 **재판매가 불가능한 기프티콘일 경우** 법적 제재 등 불이익을 받으실 수 있습니다. (이미 사용된 기프티콘, 이중 판매한 기프티콘, 취소된 기프티콘, 조작된 기프티콘 등)\n2. 등록한 기프티콘이 검수를 통과하면 모바일상품권의 소유권은 기프티카노에 귀속됩니다. 이후 쿠폰 재판매 또는 사용할 경우 처벌의 대상이 될 수 있습니다.\n3. 등록 후 위와 같은 문제로 기프티카노에서 **협조 요청이 있을 시** 신속히 응해주셔야 합니다.\n4. 다음과 같은 **기프티콘은 반려될 수 있음**을 미리 알려드립니다. (유효기간이 짧거나 누락된 기프티콘, 이미지 해상도가 낮은 기프티콘)\n5. 사용조건이 있는 기프티콘은 반려될 수 있습니다. (사용 가능한 매장이 정해진 경우, 사용 시 본인 인증이 필요한 기프티콘, 사용기간이 정해져 있는 기프티콘)\n6. 기프티콘은 정가 기준으로 환산되며 등록한 기프티콘의 정가에서 바꾼 아메리카노 기프티콘의 정가를 차감하고 **남은 금액은 포인트로 적립**됩니다.',
+                  '1. 등록한 기프티콘이 재판매가 불가능한 기프티콘일 경우 법적 제재 등 불이익을 받을 수 있습니다.\n\n2. 다음과 같은 기프티콘은 반려될 수 있습니다.\n- 유효기간이 짧거나 누락된 기프티콘\n- 이미지 해상도가 낮은 기프티콘\n- 사용 가능한 매장이 정해진 경우\n- 사용 시 본인 인증이 필요한 기프티콘\n\n3. 거스름돈은 포인트로 적립됩니다.',
                   textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.bodyText2.override(
+                  style: FlutterFlowTheme.bodyText1.override(
                     fontFamily: 'Roboto',
                     lineHeight: 1.5,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: InkWell(
+                    onTap: () async {
+                      await launchURL(
+                          'https://sites.google.com/view/gifticano-agreement-exchange');
+                    },
+                    child: Text(
+                      '자세히 보기',
+                      style: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Roboto',
+                        color: FlutterFlowTheme.customColor2,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
                   ),
                 ),
               ],
