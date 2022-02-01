@@ -42,35 +42,7 @@ class _PointWidgetState extends State<PointWidget> {
                 children: [
                   InkWell(
                     onTap: () async {
-                      await showDialog(
-                        context: context,
-                        builder: (alertDialogContext) {
-                          return AlertDialog(
-                            title: Text('등록을 취소할까요?'),
-                            content: Text('언제든 다시 등록할 수 있어요.'),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(alertDialogContext),
-                                child: Text('등록할래요'),
-                              ),
-                              TextButton(
-                                onPressed: () async {
-                                  Navigator.pop(alertDialogContext);
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MainWidget(),
-                                    ),
-                                  );
-                                  ;
-                                },
-                                child: Text('취소할게요'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
+                      Navigator.pop(context);
                     },
                     child: Image.asset(
                       'assets/images/cancel-icon.png',
