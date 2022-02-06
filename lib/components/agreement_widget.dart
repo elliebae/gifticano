@@ -182,13 +182,49 @@ class _AgreementWidgetState extends State<AgreementWidget> {
                         agreePersonal: true,
                       );
                       await currentUserReference.update(usersUpdateData);
-                      if (currentUserDocument?.agreeUse & currentUserDocument?.agreePersonal) {
+                      // currentUserDocument?.agreePersonal
+                      if (FFAppState().agreePersonal & FFAppState().agreeUse) {
+                        print("pass");
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => OnboardingWidget(),
                           ),
                         );
+                      } else {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('약관에 모두 동의해주세요.'),
+                              content: Text(
+                                  '회원가입을 위해서 필수 약관에 모두 동의해주셔야 합니다.'),
+                              //예쁘게
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(20))
+                              ),
+                              //
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('닫기'),
+                                  //예쁘게
+                                  style: TextButton.styleFrom(
+                                    primary: Color(0xFF666666), //글자
+                                    backgroundColor: Color(0xFFF2F3F2),
+                                    padding: EdgeInsets.all(10.0),
+                                    minimumSize: Size(135, 55), //최소 사이즈
+                                    shape:
+                                    StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                  ),
+                                  //
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                        return;
                       }
                     },
                     text: '동의하고 시작하기',

@@ -65,10 +65,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                     child: Container(
                       width: double.infinity,
-                      height: 477,
+                      height: 380,
                       child: Stack(
                         children: [
                           Padding(
@@ -86,8 +86,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     Image.asset(
                                       'assets/images/present.png',
                                       width: 172,
-                                      height: 202,
-                                      fit: BoxFit.cover,
+                                      height: 200,
+                                      fit: BoxFit.fitHeight,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -112,12 +112,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     Image.asset(
                                       'assets/images/coffee.png',
                                       width: 147,
-                                      height: 220,
-                                      fit: BoxFit.cover,
+                                      height: 200,
+                                      fit: BoxFit.fitHeight,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 47, 0, 0),
+                                          0, 30, 0, 0),
                                       child: Text(
                                         '바꾼 아메리카노 기프티콘은\n원할때마다 꺼내 쓸 수 있어요!',
                                         textAlign: TextAlign.center,
@@ -208,7 +208,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                     return Padding(
                       padding: MediaQuery.of(context).viewInsets,
                       child: Container(
-                        height: 455,
+                        height: 477,
                         child: ExchangeAgreementWidget(),
                       ),
                     );
