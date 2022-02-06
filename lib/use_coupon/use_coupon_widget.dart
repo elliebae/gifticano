@@ -156,13 +156,28 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
-                                          title: Text('진짜 쓴거?'),
-                                          content: Text('레알?'),
+                                          title: Text('기프티콘을 사용하셨나요?'),
+                                          content: Text('사용완료를 누르시면 다시 사용하실 수 없습니다.'),
+                                          //예쁘게
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(Radius.circular(20))
+                                          ),
+                                          //
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: Text('노노'),
+                                              child: Text('아직이요'),
+                                              //예쁘게
+                                              style: TextButton.styleFrom(
+                                                primary: Color(0xFF666666), //글자
+                                                backgroundColor: Color(0xFFF2F3F2),
+                                                padding: EdgeInsets.all(10.0),
+                                                minimumSize: Size(135, 55), //최소 사이즈
+                                                shape:
+                                                StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                              ),
+                                              //
                                             ),
                                             TextButton(
                                               onPressed: () async {
@@ -179,26 +194,37 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                                                     .update(
                                                     gifticanosUpdateData);
                                                 ;
+                                                final usersUpdateData = {
+                                                  'availableGifticanoNum':
+                                                  FieldValue.increment(-1),
+                                                };
+                                                await currentUserReference
+                                                    .update(usersUpdateData);
+                                                await Navigator.pushAndRemoveUntil(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) => MainWidget(),
+                                                  ),
+                                                      (r) => false,
+                                                );
                                               },
-                                              child: Text('진짜 썼다!'),
+                                              child: Text('사용완료'),
+                                              //예쁘게
+                                              style: TextButton.styleFrom(
+                                                primary: Color(0xFFFFFFFF), //글자
+                                                backgroundColor: Color(0xFF3D8566),
+                                                padding: EdgeInsets.all(10.0),
+                                                minimumSize: Size(135, 55), //최소 사이즈
+                                                shape:
+                                                StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                              ),
+                                              //
                                             ),
                                           ],
                                         );
                                       },
                                     );
-                                    final usersUpdateData = {
-                                      'availableGifticanoNum':
-                                      FieldValue.increment(-1),
-                                    };
-                                    await currentUserReference
-                                        .update(usersUpdateData);
-                                    await Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => MainWidget(),
-                                      ),
-                                          (r) => false,
-                                    );
+
                                   },
                                   text: '사용 완료',
                                   options: FFButtonOptions(

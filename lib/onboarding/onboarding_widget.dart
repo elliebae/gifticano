@@ -65,7 +65,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 35),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                     child: Container(
                       width: double.infinity,
                       height: 477,
@@ -85,13 +85,13 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                   children: [
                                     Image.asset(
                                       'assets/images/present.png',
-                                      width: 170,
+                                      width: 172,
                                       height: 202,
                                       fit: BoxFit.cover,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 65, 0, 0),
+                                          0, 30, 0, 0),
                                       child: Text(
                                         '가지고 있는 기프티콘을\n아메리카노로 바꿔보세요!',
                                         textAlign: TextAlign.center,
@@ -146,7 +146,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 65, 0, 0),
+                                          0, 30, 0, 0),
                                       child: Text(
                                         '거스름돈은 포인트로\n적립해드릴게요!',
                                         textAlign: TextAlign.center,

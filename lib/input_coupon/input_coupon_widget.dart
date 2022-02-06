@@ -215,6 +215,39 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                             ),
                             child: FFButtonWidget(
                               onPressed: () async {
+                                if (uploadedFileUrl.isEmpty) {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('이미지가 업로드 되지 않았습니다.'),
+                                        content: Text('기프티콘 이미지를 등록해주세요.'),
+                                        //예쁘게
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(20))
+                                        ),
+                                        //
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(alertDialogContext),
+                                            child: Text('닫기'),
+                                            //예쁘게
+                                            style: TextButton.styleFrom(
+                                              primary: Color(0xFF666666), //글자
+                                              backgroundColor: Color(0xFFF2F3F2),
+                                              padding: EdgeInsets.all(10.0),
+                                              minimumSize: Size(135, 55), //최소 사이즈
+                                              shape:
+                                              StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                            ),
+                                            //
+                                          )
+                                        ]
+                                      );
+                                    }
+                                  );
+                                  return;
+                                }
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {
