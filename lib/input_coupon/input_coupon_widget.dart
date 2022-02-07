@@ -5,7 +5,9 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
+import '../history/history_widget.dart';
 import '../main/main_widget.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -110,7 +112,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                 ),
                 Container(
                   width: 30,
-                  height: MediaQuery.of(context).size.height * 0.15,
+                  height: MediaQuery.of(context).size.height * 0.13,
                   decoration: BoxDecoration(
                     color: Color(0x00EEEEEE),
                   ),
@@ -124,7 +126,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.8,
+                    height: MediaQuery.of(context).size.height * 0.77,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: [
@@ -169,7 +171,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                             },
                             child: Container(
                               width: MediaQuery.of(context).size.width * 0.7,
-                              height: MediaQuery.of(context).size.height * 0.6,
+                              height: MediaQuery.of(context).size.height * 0.54,
                               decoration: BoxDecoration(
                                 color: Color(0x00EEEEEE),
                                 image: DecorationImage(
@@ -287,6 +289,8 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                               failReason: '',
                                               uploadedAt: getCurrentTimestamp,
                                               imageURL: uploadedFileUrl,
+                                              barcodeNumber:
+                                                    functions.returnEmptyString(),
                                             );
                                             await GifticonsRecord.collection
                                                 .doc()
@@ -374,6 +378,23 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HistoryWidget(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        '등록한  기프티콘이  기억이 안난다면? >',
+                        style: FlutterFlowTheme.bodyText1,
                       ),
                     ),
                   ),

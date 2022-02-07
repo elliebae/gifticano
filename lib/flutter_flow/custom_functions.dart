@@ -31,3 +31,15 @@ bool isDisplayNameNull(String displayName) {
   // check if a string is null
   return displayName == null || displayName.isEmpty;
 }
+
+String printStatus(String status) {
+  // return "통" if input is "pass", return " 반" if input is"fail", return "검수 대기 중" if input is "waiting"
+  if (status == "pass") {
+    return "등록 완료";
+  } else if (status == "fail") {
+    return "검수 반려";
+  } else if (status == "waiting") {
+    return "검수 대기 중";
+  }
+  return null;
+}

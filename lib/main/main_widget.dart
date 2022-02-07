@@ -1,6 +1,7 @@
 import '../auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../history/history_widget.dart';
 import '../landing/landing_widget.dart';
 import '../onboarding/onboarding_widget.dart';
 import '../point/point_widget.dart';
@@ -53,30 +54,70 @@ class _MainWidgetState extends State<MainWidget> {
                         ],
                       ),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        AuthUserStreamWidget(
-                          child: InkWell(
-                            onTap: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => PointWidget(),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          AuthUserStreamWidget(
+                            child: InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => PointWidget(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                '${currentUserDocument?.totalPoint.toString()}포인트 >',
+                                style: FlutterFlowTheme.subtitle1.override(
+                                  fontFamily: 'Roboto',
+                                  color: Color(0xFF666666),
+                                  fontWeight: FontWeight.normal,
                                 ),
-                              );
-                            },
-                            child: Text(
-                              '${currentUserDocument?.totalPoint.toString()}포인트 >',
-                              style: FlutterFlowTheme.subtitle1.override(
-                                fontFamily: 'Roboto',
-                                color: Color(0xFF666666),
-                                fontWeight: FontWeight.normal,
                               ),
                             ),
                           ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
+                      child: InkWell(
+                        onTap: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HistoryWidget(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HistoryWidget(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                '기프티콘 등록내역 >',
+                                style: FlutterFlowTheme.subtitle1.override(
+                                  fontFamily: 'Roboto',
+                                  color: FlutterFlowTheme.customColor1,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
@@ -96,7 +137,10 @@ class _MainWidgetState extends State<MainWidget> {
                           },
                           child: Text(
                             '문의하기',
-                            style: FlutterFlowTheme.subtitle1,
+                            style: FlutterFlowTheme.subtitle1.override(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
+                            ),
                           ),
                         ),
                       ],
@@ -114,7 +158,10 @@ class _MainWidgetState extends State<MainWidget> {
                           },
                           child: Text(
                             '개인정보 처리방침',
-                            style: FlutterFlowTheme.subtitle1,
+                            style: FlutterFlowTheme.subtitle1.override(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
+                            ),
                           ),
                         ),
                       ),
@@ -132,7 +179,10 @@ class _MainWidgetState extends State<MainWidget> {
                           },
                           child: Text(
                             '이용약관',
-                            style: FlutterFlowTheme.subtitle1,
+                            style: FlutterFlowTheme.subtitle1.override(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
+                            ),
                           ),
                         ),
                       ],
@@ -146,13 +196,17 @@ class _MainWidgetState extends State<MainWidget> {
                       children: [
                         Text(
                           '버전',
-                          style: FlutterFlowTheme.subtitle1,
+                          style: FlutterFlowTheme.subtitle1.override(
+                            fontFamily: 'Roboto',
+                            fontSize: 22,
+                          ),
                         ),
                         Text(
                           '1.0.0',
                           style: FlutterFlowTheme.subtitle1.override(
                             fontFamily: 'Roboto',
                             color: Color(0xFF666666),
+                            fontSize: 22,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
@@ -172,12 +226,15 @@ class _MainWidgetState extends State<MainWidget> {
                               MaterialPageRoute(
                                 builder: (context) => LandingWidget(),
                               ),
-                              (r) => false,
+                                  (r) => false,
                             );
                           },
                           child: Text(
                             '로그아웃',
-                            style: FlutterFlowTheme.subtitle1,
+                            style: FlutterFlowTheme.subtitle1.override(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
+                            ),
                           ),
                         ),
                       ],
@@ -195,7 +252,10 @@ class _MainWidgetState extends State<MainWidget> {
                           },
                           child: Text(
                             '회원탈퇴',
-                            style: FlutterFlowTheme.subtitle1,
+                            style: FlutterFlowTheme.subtitle1.override(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
+                            ),
                           ),
                         ),
                       ],
@@ -230,6 +290,17 @@ class _MainWidgetState extends State<MainWidget> {
                       'assets/images/menu-icon.png',
                       width: 30,
                       fit: BoxFit.cover,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: Text(
+                      '기프티카노',
+                      style: FlutterFlowTheme.subtitle1.override(
+                        fontFamily: 'gmarket sans',
+                        fontWeight: FontWeight.bold,
+                        useGoogleFonts: false,
+                      ),
                     ),
                   ),
                   InkWell(

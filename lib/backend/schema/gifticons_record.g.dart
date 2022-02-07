@@ -63,6 +63,13 @@ class _$GifticonsRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.barcodeNumber;
+    if (value != null) {
+      result
+        ..add('barcodeNumber')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -112,6 +119,10 @@ class _$GifticonsRecordSerializer
           result.imageURL = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'barcodeNumber':
+          result.barcodeNumber = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -139,6 +150,8 @@ class _$GifticonsRecord extends GifticonsRecord {
   @override
   final String imageURL;
   @override
+  final String barcodeNumber;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$GifticonsRecord([void Function(GifticonsRecordBuilder) updates]) =>
@@ -151,6 +164,7 @@ class _$GifticonsRecord extends GifticonsRecord {
       this.failReason,
       this.uploadedAt,
       this.imageURL,
+      this.barcodeNumber,
       this.reference})
       : super._();
 
@@ -172,6 +186,7 @@ class _$GifticonsRecord extends GifticonsRecord {
         failReason == other.failReason &&
         uploadedAt == other.uploadedAt &&
         imageURL == other.imageURL &&
+        barcodeNumber == other.barcodeNumber &&
         reference == other.reference;
   }
 
@@ -181,11 +196,13 @@ class _$GifticonsRecord extends GifticonsRecord {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, userId.hashCode), status.hashCode),
-                        price.hashCode),
-                    failReason.hashCode),
-                uploadedAt.hashCode),
-            imageURL.hashCode),
+                    $jc(
+                        $jc($jc($jc(0, userId.hashCode), status.hashCode),
+                            price.hashCode),
+                        failReason.hashCode),
+                    uploadedAt.hashCode),
+                imageURL.hashCode),
+            barcodeNumber.hashCode),
         reference.hashCode));
   }
 
@@ -198,6 +215,7 @@ class _$GifticonsRecord extends GifticonsRecord {
           ..add('failReason', failReason)
           ..add('uploadedAt', uploadedAt)
           ..add('imageURL', imageURL)
+          ..add('barcodeNumber', barcodeNumber)
           ..add('reference', reference))
         .toString();
   }
@@ -231,6 +249,11 @@ class GifticonsRecordBuilder
   String get imageURL => _$this._imageURL;
   set imageURL(String imageURL) => _$this._imageURL = imageURL;
 
+  String _barcodeNumber;
+  String get barcodeNumber => _$this._barcodeNumber;
+  set barcodeNumber(String barcodeNumber) =>
+      _$this._barcodeNumber = barcodeNumber;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -249,6 +272,7 @@ class GifticonsRecordBuilder
       _failReason = $v.failReason;
       _uploadedAt = $v.uploadedAt;
       _imageURL = $v.imageURL;
+      _barcodeNumber = $v.barcodeNumber;
       _reference = $v.reference;
       _$v = null;
     }
@@ -276,6 +300,7 @@ class GifticonsRecordBuilder
             failReason: failReason,
             uploadedAt: uploadedAt,
             imageURL: imageURL,
+            barcodeNumber: barcodeNumber,
             reference: reference);
     replace(_$result);
     return _$result;
