@@ -394,7 +394,10 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                       },
                       child: Text(
                         '등록한  기프티콘이  기억이 안난다면? >',
-                        style: FlutterFlowTheme.bodyText1,
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Roboto',
+                          lineHeight: 1.5,
+                        ),
                       ),
                     ),
                   ),

@@ -49,7 +49,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       ),
                     ),
                     Text(
-                      '히스토리',
+                      '기프티콘 등록내역',
                       style: FlutterFlowTheme.bodyText1.override(
                         fontFamily: 'Roboto',
                         color: Color(0xFF666666),
@@ -161,7 +161,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                         if ((listViewGifticonsRecord.status) ==
                                             'fail')
                                           Text(
-                                            '반려 사유:${listViewGifticonsRecord.failReason}',
+                                            '반려 사유: ${listViewGifticonsRecord.failReason}',
                                             style: FlutterFlowTheme.bodyText1
                                                 .override(
                                               fontFamily: 'Roboto',
