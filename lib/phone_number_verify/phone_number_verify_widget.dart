@@ -125,13 +125,6 @@ class _PhoneNumberVerifyWidgetState extends State<PhoneNumberVerifyWidget> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: '6자리',
-                                      hintStyle:
-                                          FlutterFlowTheme.title3.override(
-                                        fontFamily: 'Noto Sans',
-                                        color: Color(0xFF999999),
-                                        fontSize: 36,
-                                        fontWeight: FontWeight.normal,
-                                      ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0xFF999999),

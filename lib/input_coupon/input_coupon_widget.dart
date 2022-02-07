@@ -5,7 +5,9 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
+import '../history/history_widget.dart';
 import '../main/main_widget.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,43 +38,50 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                InkWell(
-                  onTap: () async {
-                    await showDialog(
-                      context: context,
-                      builder: (alertDialogContext) {
-                        return AlertDialog(
-                          title: Text('등록을 취소할까요?'),
-                          content: Text('언제든 다시 등록할 수 있어요.'),
-                          actions: [
-                            TextButton(
-                              onPressed: () =>
-                                  Navigator.pop(alertDialogContext),
-                              child: Text('등록할래요'),
-                            ),
-                            TextButton(
-                              onPressed: () async {
-                                Navigator.pop(alertDialogContext);
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => MainWidget(),
-                                  ),
-                                );
-                                ;
-                              },
-                              child: Text('취소할게요'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                  child: Image.asset(
-                    'assets/images/back-icon.png',
-                    width: 30,
-                    height: 30,
-                    fit: BoxFit.cover,
+                Container(
+                  width: 50,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    color: Color(0x00EEEEEE),
+                  ),
+                  alignment: AlignmentDirectional(-1, 0),
+                  child: InkWell(
+                    onTap: () async {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('등록을 취소할까요?'),
+                            content: Text('언제든 다시 등록할 수 있어요.'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('등록할래요'),
+                              ),
+                              TextButton(
+                                onPressed: () async {
+                                  Navigator.pop(alertDialogContext);
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MainWidget(),
+                                    ),
+                                  );
+                                  ;
+                                },
+                                child: Text('취소할게요'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: Image.asset(
+                      'assets/images/back-icon.png',
+                      height: 30,
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
                 ),
                 Text(
@@ -84,11 +93,12 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                   ),
                 ),
                 Container(
-                  width: 30,
-                  height: MediaQuery.of(context).size.height * 0.15,
+                  width: 50,
+                  height: MediaQuery.of(context).size.height * 0.13,
                   decoration: BoxDecoration(
                     color: Color(0x00EEEEEE),
                   ),
+                  alignment: AlignmentDirectional(1, 0),
                 ),
               ],
             ),
@@ -99,7 +109,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.8,
+                    height: MediaQuery.of(context).size.height * 0.77,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: [
@@ -125,8 +135,11 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                               if (selectedMedia != null &&
                                   validateFileFormat(
                                       selectedMedia.storagePath, context)) {
-                                showUploadMessage(context, 'Uploading file...',
-                                    showLoading: true);
+                                showUploadMessage(
+                                  context,
+                                  'Uploading file...',
+                                  showLoading: true,
+                                );
                                 final downloadUrl = await uploadData(
                                     selectedMedia.storagePath,
                                     selectedMedia.bytes);
@@ -134,17 +147,22 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                     .hideCurrentSnackBar();
                                 if (downloadUrl != null) {
                                   setState(() => uploadedFileUrl = downloadUrl);
-                                  showUploadMessage(context, 'Success!');
+                                  showUploadMessage(
+                                    context,
+                                    'Success!',
+                                  );
                                 } else {
                                   showUploadMessage(
-                                      context, 'Failed to upload media');
+                                    context,
+                                    'Failed to upload media',
+                                  );
                                   return;
                                 }
                               }
                             },
                             child: Container(
                               width: MediaQuery.of(context).size.width * 0.7,
-                              height: MediaQuery.of(context).size.height * 0.6,
+                              height: MediaQuery.of(context).size.height * 0.54,
                               decoration: BoxDecoration(
                                 color: Color(0x00EEEEEE),
                                 image: DecorationImage(
@@ -214,6 +232,8 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                               failReason: '',
                                               uploadedAt: getCurrentTimestamp,
                                               imageURL: uploadedFileUrl,
+                                              barcodeNumber:
+                                                  functions.returnEmptyString(),
                                             );
                                             await GifticonsRecord.collection
                                                 .doc()
@@ -276,6 +296,23 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HistoryWidget(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        '등록한  기프티콘이  기억이 안난다면? >',
+                        style: FlutterFlowTheme.bodyText1,
                       ),
                     ),
                   ),

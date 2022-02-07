@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
-
-import '../flutter_flow/flutter_flow_theme.dart';
+import 'backend/push_notifications/push_notifications_util.dart';
+import 'flutter_flow/flutter_flow_theme.dart';
+import 'flutter_flow/internationalization.dart';
 import 'package:gifticano/landing/landing_widget.dart';
 import 'package:gifticano/main/main_widget.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
@@ -21,13 +22,20 @@ class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
   _MyAppState createState() => _MyAppState();
+
+  static _MyAppState of(BuildContext context) =>
+      context.findAncestorStateOfType<_MyAppState>();
 }
 
 class _MyAppState extends State<MyApp> {
+  Locale _locale;
   Stream<GifticanoFirebaseUser> userStream;
   GifticanoFirebaseUser initialUser;
   bool displaySplashImage = true;
   final authUserSub = authenticatedUserStream.listen((_) {});
+  final fcmTokenSub = fcmTokenUserStream.listen((_) {});
+
+  void setLocale(Locale value) => setState(() => _locale = value);
 
   @override
   void initState() {
@@ -41,7 +49,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     authUserSub.cancel();
-
+    fcmTokenSub.cancel();
     super.dispose();
   }
 
@@ -50,10 +58,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Gifticano',
       localizationsDelegates: [
+        FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      locale: _locale,
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(primarySwatch: Colors.blue),
       home: initialUser == null || displaySplashImage
@@ -67,7 +77,7 @@ class _MyAppState extends State<MyApp> {
               ),
             )
           : currentUser.loggedIn
-              ? MainWidget()
+              ? PushNotificationsHandler(child: MainWidget())
               : LandingWidget(),
     );
   }

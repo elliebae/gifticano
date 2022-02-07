@@ -30,6 +30,9 @@ abstract class GifticonsRecord
   String get imageURL;
 
   @nullable
+  String get barcodeNumber;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -37,7 +40,8 @@ abstract class GifticonsRecord
     ..status = ''
     ..price = 0
     ..failReason = ''
-    ..imageURL = '';
+    ..imageURL = ''
+    ..barcodeNumber = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Gifticons');
@@ -67,6 +71,7 @@ Map<String, dynamic> createGifticonsRecordData({
   String failReason,
   DateTime uploadedAt,
   String imageURL,
+  String barcodeNumber,
 }) =>
     serializers.toFirestore(
         GifticonsRecord.serializer,
@@ -76,4 +81,5 @@ Map<String, dynamic> createGifticonsRecordData({
           ..price = price
           ..failReason = failReason
           ..uploadedAt = uploadedAt
-          ..imageURL = imageURL));
+          ..imageURL = imageURL
+          ..barcodeNumber = barcodeNumber));

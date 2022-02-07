@@ -7,7 +7,7 @@
 	<key>REVERSED_CLIENT_ID</key>
 	<string>com.googleusercontent.apps.808490654730-0cah8u7dv2sc6ok9m9604gskpsa0mco5</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>808490654730-tv0bjeldv7p0dq6b639sgmob2cojhfkv.apps.googleusercontent.com</string>
+	<string>808490654730-96dtoh116658l1kupntb8aldt3q9g2pa.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCf4FeoqxQJDfi8yqFByle8hgYz9bnpxEY</string>
 	<key>GCM_SENDER_ID</key>
@@ -32,5 +32,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:808490654730:ios:7732d18c3e38b9ad5393f3</string>
+	<key>DATABASE_URL</key>
+	<string>https://gifticano-74f3e-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

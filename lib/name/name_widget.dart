@@ -121,11 +121,6 @@ class _NameWidgetState extends State<NameWidget> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: '이름',
-                                      hintStyle:
-                                          FlutterFlowTheme.subtitle2.override(
-                                        fontFamily: 'Roboto',
-                                        color: Color(0xFF999999),
-                                      ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0xFF999999),

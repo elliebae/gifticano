@@ -121,11 +121,6 @@ class _PhoneNumberLoginWidgetState extends State<PhoneNumberLoginWidget> {
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         hintText: '전화번호',
-                                        hintStyle:
-                                            FlutterFlowTheme.subtitle2.override(
-                                          fontFamily: 'Roboto',
-                                          color: Color(0xFF999999),
-                                        ),
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0xFF999999),
