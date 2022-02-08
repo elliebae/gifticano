@@ -33,6 +33,14 @@ abstract class GifticonsRecord
   String get barcodeNumber;
 
   @nullable
+  @BuiltValueField(wireName: 'selling_status')
+  String get sellingStatus;
+
+  @nullable
+  @BuiltValueField(wireName: 'resell_price')
+  int get resellPrice;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -41,7 +49,9 @@ abstract class GifticonsRecord
     ..price = 0
     ..failReason = ''
     ..imageURL = ''
-    ..barcodeNumber = '';
+    ..barcodeNumber = ''
+    ..sellingStatus = ''
+    ..resellPrice = 0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Gifticons');
@@ -72,6 +82,8 @@ Map<String, dynamic> createGifticonsRecordData({
   DateTime uploadedAt,
   String imageURL,
   String barcodeNumber,
+  String sellingStatus,
+  int resellPrice,
 }) =>
     serializers.toFirestore(
         GifticonsRecord.serializer,
@@ -82,4 +94,6 @@ Map<String, dynamic> createGifticonsRecordData({
           ..failReason = failReason
           ..uploadedAt = uploadedAt
           ..imageURL = imageURL
-          ..barcodeNumber = barcodeNumber));
+          ..barcodeNumber = barcodeNumber
+          ..sellingStatus = sellingStatus
+          ..resellPrice = resellPrice));

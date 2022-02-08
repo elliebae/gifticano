@@ -234,6 +234,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                               imageURL: uploadedFileUrl,
                                               barcodeNumber:
                                                   functions.returnEmptyString(),
+                                              sellingStatus: 'stock',
                                             );
                                             await GifticonsRecord.collection
                                                 .doc()
@@ -299,20 +300,27 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HistoryWidget(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        '등록한  기프티콘이  기억이 안난다면? >',
-                        style: FlutterFlowTheme.bodyText1,
+                  InkWell(
+                    onTap: () async {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HistoryWidget(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Color(0x00EEEEEE),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                        child: Text(
+                          '등록한  기프티콘이  기억이 안난다면? >',
+                          textAlign: TextAlign.center,
+                          style: FlutterFlowTheme.bodyText1,
+                        ),
                       ),
                     ),
                   ),

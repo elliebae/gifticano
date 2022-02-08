@@ -98,8 +98,12 @@ class _MainWidgetState extends State<MainWidget> {
                           children: [
                             InkWell(
                               onTap: () async {
-                                await launchURL(
-                                    'https://a3889xroicn.typeform.com/to/TmH5SxId');
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HistoryWidget(),
+                                  ),
+                                );
                               },
                               child: Text(
                                 '기프티콘 등록내역 >',
