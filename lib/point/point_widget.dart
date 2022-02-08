@@ -336,6 +336,7 @@ class _PointWidgetState extends State<PointWidget> {
                                             ),
                                             TextButton(
                                               onPressed: () async {
+                                                print("start");
                                                 Navigator.pop(
                                                     alertDialogContext);
 
@@ -348,6 +349,42 @@ class _PointWidgetState extends State<PointWidget> {
                                                     .update(
                                                         gifticanosUpdateData);
                                                 ;
+                                                print("action1 completed");
+                                                //action2
+                                                if ((currentUserDocument?.totalPoint) >=
+                                                    4500) {
+                                                  final usersUpdateData = {
+                                                    'totalPoint':
+                                                    FieldValue.increment(-4500),
+                                                    'availableGifticanoNum':
+                                                    FieldValue.increment(1),
+                                                  };
+                                                  await currentUserReference
+                                                      .update(usersUpdateData);
+                                                } else {
+                                                  return;
+                                                }
+                                                print("action2 completed");
+                                                //action3
+                                                final pointHistoryCreateData =
+                                                createPointHistoryRecordData(
+                                                  userId: currentUserReference,
+                                                  amount: -4500,
+                                                  memo: '포인트 사용',
+                                                );
+                                                await PointHistoryRecord.collection
+                                                    .doc()
+                                                    .set(pointHistoryCreateData);
+                                                print("action3 completed");
+                                                //action4
+                                                await Navigator.pushAndRemoveUntil(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) => MainWidget(),
+                                                  ),
+                                                      (r) => false,
+                                                );
+                                                print("action 4 completed");
                                               },
                                               child: Text('바꿀게요'),
                                               //예쁘게
@@ -364,35 +401,6 @@ class _PointWidgetState extends State<PointWidget> {
                                           ],
                                         );
                                       },
-                                    );
-                                    if ((currentUserDocument?.totalPoint) >=
-                                        4500) {
-                                      final usersUpdateData = {
-                                        'totalPoint':
-                                            FieldValue.increment(-4500),
-                                        'availableGifticanoNum':
-                                            FieldValue.increment(1),
-                                      };
-                                      await currentUserReference
-                                          .update(usersUpdateData);
-                                    } else {
-                                      return;
-                                    }
-                                    final pointHistoryCreateData =
-                                        createPointHistoryRecordData(
-                                      userId: currentUserReference,
-                                      amount: -4500,
-                                      memo: '포인트 사용',
-                                    );
-                                    await PointHistoryRecord.collection
-                                        .doc()
-                                        .set(pointHistoryCreateData);
-                                    await Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => MainWidget(),
-                                      ),
-                                      (r) => false,
                                     );
                                   },
                                   text: '아메리카노로 바꾸기',

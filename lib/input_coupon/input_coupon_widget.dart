@@ -173,9 +173,11 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                               width: MediaQuery.of(context).size.width * 0.7,
                               height: MediaQuery.of(context).size.height * 0.54,
                               decoration: BoxDecoration(
+                                border: Border.all(width: 5, color: Color(0xFFC4C4C4)),
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
                                 color: Color(0x00EEEEEE),
                                 image: DecorationImage(
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.fitWidth,
                                   image: Image.asset(
                                     'assets/images/add-photo.png',
                                   ).image,
@@ -188,7 +190,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                   width: MediaQuery.of(context).size.width,
                                   height:
                                       MediaQuery.of(context).size.height * 1,
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.scaleDown,
                                 ),
                               ),
                             ),
@@ -381,28 +383,52 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                    child: InkWell(
-                      onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HistoryWidget(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        '등록한  기프티콘이  기억이 안난다면? >',
-                        style: FlutterFlowTheme.bodyText1.override(
-                          fontFamily: 'Roboto',
-                          lineHeight: 1.5,
-                        ),
-                      ),
-                    ),
+                  // Padding(
+                  //   padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  //   child: InkWell(
+                  //     onTap: () async {
+                  //       await Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //           builder: (context) => HistoryWidget(),
+                  //         ),
+                  //       );
+                  //     },
+                  //     child: Text(
+                  //       '등록한 기프티콘이 기억이 안난다면? >',
+                  //       style: FlutterFlowTheme.bodyText1.override(
+                  //         fontFamily: 'Roboto',
+                  //         lineHeight: 1.5,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+        InkWell(
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HistoryWidget(),
                   ),
-                ],
-              ),
+                );
+              },
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: Color(0x00EEEEEE),
+            ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+              child: Text(
+                '등록한 기프티콘이 기억이 안 난다면? >',
+                textAlign: TextAlign.center,
+                style: FlutterFlowTheme.bodyText1,
+              )
+            )
+          )
+        ),
+              ],
+            ),
             ),
           ],
         ),
