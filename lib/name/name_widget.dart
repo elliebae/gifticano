@@ -30,12 +30,13 @@ class _NameWidgetState extends State<NameWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Colors.white,
-        body: Padding(
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Colors.white,
+      body: Form(
+        key: formKey,
+        autovalidateMode: AutovalidateMode.disabled,
+        child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -92,11 +93,13 @@ class _NameWidgetState extends State<NameWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
                                 child: Text(
                                   '기프티카노에 처음 오셨군요!\n이름을 알려주세요.',
-                                  style: FlutterFlowTheme.subtitle1.override(
-                                    fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.bold,
-                                    lineHeight: 1.5,
-                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .subtitle1
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        fontWeight: FontWeight.bold,
+                                        lineHeight: 1.5,
+                                      ),
                                 ),
                               ),
                             ],
@@ -154,10 +157,12 @@ class _NameWidgetState extends State<NameWidget> {
                                             )
                                           : null,
                                     ),
-                                    style: FlutterFlowTheme.subtitle2.override(
-                                      fontFamily: 'Roboto',
-                                      color: Color(0xFF999999),
-                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          color: Color(0xFF999999),
+                                        ),
                                     keyboardType: TextInputType.phone,
                                     validator: (val) {
                                       if (val.isEmpty) {
@@ -176,9 +181,6 @@ class _NameWidgetState extends State<NameWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        if (!formKey.currentState.validate()) {
-                          return;
-                        }
                         final usersUpdateData = createUsersRecordData(
                           displayName: textController.text,
                           totalPoint: 0,
@@ -205,13 +207,14 @@ class _NameWidgetState extends State<NameWidget> {
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 55,
-                        color: FlutterFlowTheme.secondaryColor,
-                        textStyle: FlutterFlowTheme.subtitle2.override(
-                          fontFamily: 'Roboto',
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        color: FlutterFlowTheme.of(context).secondaryColor,
+                        textStyle:
+                            FlutterFlowTheme.of(context).subtitle2.override(
+                                  fontFamily: 'Roboto',
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                ),
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1,

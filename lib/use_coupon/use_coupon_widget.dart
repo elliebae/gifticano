@@ -32,7 +32,7 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.15,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.customColor3,
+                color: FlutterFlowTheme.of(context).customColor3,
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -55,11 +55,11 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                   ),
                   Text(
                     '기프티콘 사용',
-                    style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Roboto',
-                      color: Color(0xFF666666),
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Roboto',
+                          color: Color(0xFF666666),
+                          fontWeight: FontWeight.w600,
+                        ),
                   ),
                   Container(
                     width: 30,
@@ -87,7 +87,7 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                         width: 50,
                         height: 50,
                         child: CircularProgressIndicator(
-                          color: FlutterFlowTheme.primaryColor,
+                          color: FlutterFlowTheme.of(context).primaryColor,
                         ),
                       ),
                     );
@@ -141,11 +141,13 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                                     children: [
                                       Text(
                                         '유효 기간',
-                                        style: FlutterFlowTheme.subtitle2,
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle2,
                                       ),
                                       Text(
                                         listViewGifticanosRecord.validDate,
-                                        style: FlutterFlowTheme.subtitle2,
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle2,
                                       ),
                                     ],
                                   ),
@@ -204,13 +206,15 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 55,
-                                    color: FlutterFlowTheme.primaryColor,
-                                    textStyle:
-                                        FlutterFlowTheme.subtitle2.override(
-                                      fontFamily: 'Roboto',
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1,

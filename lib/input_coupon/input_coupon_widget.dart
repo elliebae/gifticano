@@ -86,11 +86,11 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                 ),
                 Text(
                   '기프티콘 등록',
-                  style: FlutterFlowTheme.bodyText1.override(
-                    fontFamily: 'Roboto',
-                    color: Color(0xFF666666),
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF666666),
+                        fontWeight: FontWeight.w600,
+                      ),
                 ),
                 Container(
                   width: 50,
@@ -195,7 +195,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                 Text(
                                   '변경하려면 사진을 터치해주세요.',
                                   textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.bodyText1,
+                                  style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
                               ],
                             ),
@@ -283,11 +283,13 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                 width: double.infinity,
                                 height: 55,
                                 color: Color(0xFF333333),
-                                textStyle: FlutterFlowTheme.subtitle2.override(
-                                  fontFamily: 'Roboto',
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                 borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1,
@@ -319,7 +321,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                         child: Text(
                           '등록한  기프티콘이  기억이 안난다면? >',
                           textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.bodyText1,
+                          style: FlutterFlowTheme.of(context).bodyText1,
                         ),
                       ),
                     ),

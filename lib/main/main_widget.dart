@@ -44,11 +44,13 @@ class _MainWidgetState extends State<MainWidget> {
                           AuthUserStreamWidget(
                             child: Text(
                               currentUserDisplayName,
-                              style: FlutterFlowTheme.subtitle1.override(
-                                fontFamily: 'Roboto',
-                                fontSize: 36,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .subtitle1
+                                  .override(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 36,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                           ),
                         ],
@@ -71,11 +73,13 @@ class _MainWidgetState extends State<MainWidget> {
                               },
                               child: Text(
                                 '${currentUserDocument?.totalPoint.toString()}포인트 >',
-                                style: FlutterFlowTheme.subtitle1.override(
-                                  fontFamily: 'Roboto',
-                                  color: Color(0xFF666666),
-                                  fontWeight: FontWeight.normal,
-                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .subtitle1
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      color: Color(0xFF666666),
+                                      fontWeight: FontWeight.normal,
+                                    ),
                               ),
                             ),
                           ),
@@ -107,12 +111,15 @@ class _MainWidgetState extends State<MainWidget> {
                               },
                               child: Text(
                                 '기프티콘 등록내역 >',
-                                style: FlutterFlowTheme.subtitle1.override(
-                                  fontFamily: 'Roboto',
-                                  color: FlutterFlowTheme.customColor1,
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .subtitle1
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      color: FlutterFlowTheme.of(context)
+                                          .customColor1,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.normal,
+                                    ),
                               ),
                             ),
                           ],
@@ -137,10 +144,11 @@ class _MainWidgetState extends State<MainWidget> {
                           },
                           child: Text(
                             '문의하기',
-                            style: FlutterFlowTheme.subtitle1.override(
-                              fontFamily: 'Roboto',
-                              fontSize: 22,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).subtitle1.override(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 22,
+                                    ),
                           ),
                         ),
                       ],
@@ -158,10 +166,11 @@ class _MainWidgetState extends State<MainWidget> {
                           },
                           child: Text(
                             '개인정보 처리방침',
-                            style: FlutterFlowTheme.subtitle1.override(
-                              fontFamily: 'Roboto',
-                              fontSize: 22,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).subtitle1.override(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 22,
+                                    ),
                           ),
                         ),
                       ),
@@ -179,10 +188,11 @@ class _MainWidgetState extends State<MainWidget> {
                           },
                           child: Text(
                             '이용약관',
-                            style: FlutterFlowTheme.subtitle1.override(
-                              fontFamily: 'Roboto',
-                              fontSize: 22,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).subtitle1.override(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 22,
+                                    ),
                           ),
                         ),
                       ],
@@ -196,19 +206,21 @@ class _MainWidgetState extends State<MainWidget> {
                       children: [
                         Text(
                           '버전',
-                          style: FlutterFlowTheme.subtitle1.override(
-                            fontFamily: 'Roboto',
-                            fontSize: 22,
-                          ),
+                          style:
+                              FlutterFlowTheme.of(context).subtitle1.override(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 22,
+                                  ),
                         ),
                         Text(
                           '1.0.0',
-                          style: FlutterFlowTheme.subtitle1.override(
-                            fontFamily: 'Roboto',
-                            color: Color(0xFF666666),
-                            fontSize: 22,
-                            fontWeight: FontWeight.normal,
-                          ),
+                          style:
+                              FlutterFlowTheme.of(context).subtitle1.override(
+                                    fontFamily: 'Roboto',
+                                    color: Color(0xFF666666),
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                         ),
                       ],
                     ),
@@ -231,10 +243,11 @@ class _MainWidgetState extends State<MainWidget> {
                           },
                           child: Text(
                             '로그아웃',
-                            style: FlutterFlowTheme.subtitle1.override(
-                              fontFamily: 'Roboto',
-                              fontSize: 22,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).subtitle1.override(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 22,
+                                    ),
                           ),
                         ),
                       ],
@@ -252,10 +265,11 @@ class _MainWidgetState extends State<MainWidget> {
                           },
                           child: Text(
                             '회원탈퇴',
-                            style: FlutterFlowTheme.subtitle1.override(
-                              fontFamily: 'Roboto',
-                              fontSize: 22,
-                            ),
+                            style:
+                                FlutterFlowTheme.of(context).subtitle1.override(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 22,
+                                    ),
                           ),
                         ),
                       ],
@@ -296,11 +310,11 @@ class _MainWidgetState extends State<MainWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                     child: Text(
                       '기프티카노',
-                      style: FlutterFlowTheme.subtitle1.override(
-                        fontFamily: 'gmarket sans',
-                        fontWeight: FontWeight.bold,
-                        useGoogleFonts: false,
-                      ),
+                      style: FlutterFlowTheme.of(context).subtitle1.override(
+                            fontFamily: 'gmarket sans',
+                            fontWeight: FontWeight.bold,
+                            useGoogleFonts: false,
+                          ),
                     ),
                   ),
                   InkWell(
@@ -358,13 +372,15 @@ class _MainWidgetState extends State<MainWidget> {
                               children: [
                                 Text(
                                   '사용할 수 있는 기프티카노',
-                                  style: FlutterFlowTheme.subtitle1.override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFF333333),
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    lineHeight: 1.5,
-                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .subtitle1
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: Color(0xFF333333),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        lineHeight: 1.5,
+                                      ),
                                 ),
                               ],
                             ),
@@ -375,12 +391,14 @@ class _MainWidgetState extends State<MainWidget> {
                                 AuthUserStreamWidget(
                                   child: Text(
                                     '${currentUserDocument?.availableGifticanoNum.toString()}잔',
-                                    style: FlutterFlowTheme.subtitle1.override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold,
-                                      lineHeight: 1.5,
-                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .subtitle1
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 36,
+                                          fontWeight: FontWeight.bold,
+                                          lineHeight: 1.5,
+                                        ),
                                   ),
                                 ),
                               ],
@@ -420,11 +438,14 @@ class _MainWidgetState extends State<MainWidget> {
                               children: [
                                 Text(
                                   '사용하기',
-                                  style: FlutterFlowTheme.subtitle2.override(
-                                    fontFamily: 'Roboto',
-                                    color: FlutterFlowTheme.primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .subtitle2
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
                               ],
                             ),
@@ -472,13 +493,15 @@ class _MainWidgetState extends State<MainWidget> {
                               children: [
                                 Text(
                                   '검수 중인 기프티콘',
-                                  style: FlutterFlowTheme.subtitle1.override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFF333333),
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    lineHeight: 1.5,
-                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .subtitle1
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: Color(0xFF333333),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        lineHeight: 1.5,
+                                      ),
                                 ),
                               ],
                             ),
@@ -489,12 +512,14 @@ class _MainWidgetState extends State<MainWidget> {
                                 AuthUserStreamWidget(
                                   child: Text(
                                     '${currentUserDocument?.checkingGifticonNum.toString()}장',
-                                    style: FlutterFlowTheme.subtitle1.override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold,
-                                      lineHeight: 1.5,
-                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .subtitle1
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 36,
+                                          fontWeight: FontWeight.bold,
+                                          lineHeight: 1.5,
+                                        ),
                                   ),
                                 ),
                               ],
@@ -532,7 +557,8 @@ class _MainWidgetState extends State<MainWidget> {
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.getFont(
                                     'Roboto',
-                                    color: FlutterFlowTheme.secondaryColor,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryColor,
                                     fontWeight: FontWeight.normal,
                                     fontSize: 12,
                                     height: 1.5,

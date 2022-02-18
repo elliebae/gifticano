@@ -52,11 +52,11 @@ class _PointWidgetState extends State<PointWidget> {
                   ),
                   Text(
                     '포인트',
-                    style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Roboto',
-                      color: Color(0xFF666666),
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily: 'Roboto',
+                          color: Color(0xFF666666),
+                          fontWeight: FontWeight.w600,
+                        ),
                   ),
                   Container(
                     width: 30,
@@ -84,11 +84,13 @@ class _PointWidgetState extends State<PointWidget> {
                             AuthUserStreamWidget(
                               child: Text(
                                 '${currentUserDisplayName}님의 포인트',
-                                style: FlutterFlowTheme.subtitle2.override(
-                                  fontFamily: 'Roboto',
-                                  color: Color(0xFF666666),
-                                  lineHeight: 1.5,
-                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      color: Color(0xFF666666),
+                                      lineHeight: 1.5,
+                                    ),
                               ),
                             ),
                           ],
@@ -101,11 +103,13 @@ class _PointWidgetState extends State<PointWidget> {
                               AuthUserStreamWidget(
                                 child: Text(
                                   '${currentUserDocument?.totalPoint.toString()}',
-                                  style: FlutterFlowTheme.title3.override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 36,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .title3
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 36,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
                               ),
                             ],
@@ -140,15 +144,17 @@ class _PointWidgetState extends State<PointWidget> {
                                       children: [
                                         Text(
                                           '${functions.minus4500(currentUserDocument?.totalPoint).toString()} 포인트를 더 모으면',
-                                          style: FlutterFlowTheme.subtitle2
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
                                               .override(
-                                            fontFamily: 'Roboto',
-                                            fontSize: 17,
-                                          ),
+                                                fontFamily: 'Roboto',
+                                                fontSize: 17,
+                                              ),
                                         ),
                                         Text(
                                           '아메리카노 한 잔으로 바꿀 수 있어요',
-                                          style: FlutterFlowTheme.bodyText2,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText2,
                                         ),
                                       ],
                                     ),
@@ -183,11 +189,12 @@ class _PointWidgetState extends State<PointWidget> {
                                       children: [
                                         Text(
                                           '포인트를 아메리카노로 바꿔보세요!',
-                                          style: FlutterFlowTheme.subtitle2
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle2
                                               .override(
-                                            fontFamily: 'Roboto',
-                                            fontSize: 17,
-                                          ),
+                                                fontFamily: 'Roboto',
+                                                fontSize: 17,
+                                              ),
                                         ),
                                       ],
                                     ),
@@ -293,7 +300,8 @@ class _PointWidgetState extends State<PointWidget> {
                                       width: 50,
                                       height: 50,
                                       child: CircularProgressIndicator(
-                                        color: FlutterFlowTheme.primaryColor,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
                                       ),
                                     ),
                                   );
@@ -375,12 +383,13 @@ class _PointWidgetState extends State<PointWidget> {
                                     width: double.infinity,
                                     height: 55,
                                     color: Color(0xFF333333),
-                                    textStyle:
-                                        FlutterFlowTheme.subtitle2.override(
-                                      fontFamily: 'Roboto',
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1,

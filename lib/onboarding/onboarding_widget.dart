@@ -44,10 +44,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   children: [
                     Text(
                       'Welcome!',
-                      style: FlutterFlowTheme.subtitle2.override(
-                        fontFamily: 'Roboto',
-                        color: Color(0xFF666666),
-                      ),
+                      style: FlutterFlowTheme.of(context).subtitle2.override(
+                            fontFamily: 'Roboto',
+                            color: Color(0xFF666666),
+                          ),
                     ),
                   ],
                 ),
@@ -85,12 +85,13 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     child: Text(
                                       '가지고 있는 기프티콘을\n아메리카노로 바꿔보세요!',
                                       textAlign: TextAlign.center,
-                                      style:
-                                          FlutterFlowTheme.subtitle1.override(
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.bold,
-                                        lineHeight: 1.5,
-                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle1
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            fontWeight: FontWeight.bold,
+                                            lineHeight: 1.5,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -111,11 +112,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     child: Text(
                                       '바꾼 아메리카노 기프티콘은\n원할때마다 꺼내 쓸 수 있어요!',
                                       textAlign: TextAlign.center,
-                                      style:
-                                          FlutterFlowTheme.subtitle1.override(
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle1
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -140,11 +142,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     child: Text(
                                       '거스름돈은 포인트로\n적립해드릴게요!',
                                       textAlign: TextAlign.center,
-                                      style:
-                                          FlutterFlowTheme.subtitle1.override(
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle1
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -211,11 +214,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   width: double.infinity,
                   height: 55,
                   color: Color(0xFF333333),
-                  textStyle: FlutterFlowTheme.subtitle2.override(
-                    fontFamily: 'Roboto',
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                        fontFamily: 'Roboto',
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
                   borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1,

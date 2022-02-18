@@ -59,11 +59,13 @@ class _LandingWidgetState extends State<LandingWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 19),
                               child: Text(
                                 '어차피 기프티콘은\n아메리카노니까',
-                                style: FlutterFlowTheme.subtitle1.override(
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.bold,
-                                  lineHeight: 1.5,
-                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .subtitle1
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.bold,
+                                      lineHeight: 1.5,
+                                    ),
                               ),
                             ),
                           ],
@@ -80,12 +82,14 @@ class _LandingWidgetState extends State<LandingWidget> {
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 19),
                               child: Text(
                                 '가지고 있는 기프티콘을\n스타벅스 아메리카노로 바꿔보세요!',
-                                style: FlutterFlowTheme.bodyText1.override(
-                                  fontFamily: 'Roboto',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.normal,
-                                  lineHeight: 1.5,
-                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.normal,
+                                      lineHeight: 1.5,
+                                    ),
                               ),
                             ),
                           ],
@@ -112,11 +116,12 @@ class _LandingWidgetState extends State<LandingWidget> {
                             width: double.infinity,
                             height: 55,
                             color: Color(0xFF333333),
-                            textStyle: FlutterFlowTheme.subtitle2.override(
-                              fontFamily: 'Roboto',
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            textStyle:
+                                FlutterFlowTheme.of(context).subtitle2.override(
+                                      fontFamily: 'Roboto',
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                             borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1,
@@ -139,10 +144,11 @@ class _LandingWidgetState extends State<LandingWidget> {
                           width: double.infinity,
                           height: 55,
                           color: Color(0xFFD8D8D8),
-                          textStyle: FlutterFlowTheme.subtitle2.override(
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w600,
-                          ),
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w600,
+                                  ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,

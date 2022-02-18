@@ -30,13 +30,14 @@ class _PhoneNumberVerifyLoginWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Color(0xFFF5F5F5),
-        body: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: Color(0xFFF5F5F5),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Form(
+          key: formKey,
+          autovalidateMode: AutovalidateMode.disabled,
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
             child: Column(
@@ -94,11 +95,13 @@ class _PhoneNumberVerifyLoginWidgetState
                                       0, 0, 0, 19),
                                   child: Text(
                                     '문자로 전송된\n인증번호를 입력해주세요.',
-                                    style: FlutterFlowTheme.subtitle1.override(
-                                      fontFamily: 'Roboto',
-                                      fontWeight: FontWeight.bold,
-                                      lineHeight: 1.5,
-                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .subtitle1
+                                        .override(
+                                          fontFamily: 'Roboto',
+                                          fontWeight: FontWeight.bold,
+                                          lineHeight: 1.5,
+                                        ),
                                   ),
                                 ),
                               ],
@@ -157,12 +160,14 @@ class _PhoneNumberVerifyLoginWidgetState
                                               )
                                             : null,
                                       ),
-                                      style: FlutterFlowTheme.title3.override(
-                                        fontFamily: 'Noto Sans',
-                                        color: Color(0xFF999999),
-                                        fontSize: 36,
-                                        fontWeight: FontWeight.normal,
-                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .title3
+                                          .override(
+                                            fontFamily: 'Noto Sans',
+                                            color: Color(0xFF999999),
+                                            fontSize: 36,
+                                            fontWeight: FontWeight.normal,
+                                          ),
                                       keyboardType: TextInputType.phone,
                                       validator: (val) {
                                         if (val.isEmpty) {
@@ -181,9 +186,6 @@ class _PhoneNumberVerifyLoginWidgetState
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          if (!formKey.currentState.validate()) {
-                            return;
-                          }
                           if (textController.text.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
@@ -211,13 +213,14 @@ class _PhoneNumberVerifyLoginWidgetState
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 55,
-                          color: FlutterFlowTheme.secondaryColor,
-                          textStyle: FlutterFlowTheme.subtitle2.override(
-                            fontFamily: 'Roboto',
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
+                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Roboto',
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,

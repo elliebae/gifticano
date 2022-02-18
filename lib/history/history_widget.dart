@@ -50,11 +50,11 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                     ),
                     Text(
                       '히스토리',
-                      style: FlutterFlowTheme.bodyText1.override(
-                        fontFamily: 'Roboto',
-                        color: Color(0xFF666666),
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Roboto',
+                            color: Color(0xFF666666),
+                            fontWeight: FontWeight.w600,
+                          ),
                     ),
                     Container(
                       width: 30,
@@ -81,7 +81,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                           width: 50,
                           height: 50,
                           child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.primaryColor,
+                            color: FlutterFlowTheme.of(context).primaryColor,
                           ),
                         ),
                       );
@@ -141,40 +141,44 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                         Text(
                                           functions.printStatus(
                                               listViewGifticonsRecord.status),
-                                          style: FlutterFlowTheme.bodyText1
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
                                               .override(
-                                            fontFamily: 'Roboto',
-                                            fontWeight: FontWeight.bold,
-                                            lineHeight: 1.5,
-                                          ),
+                                                fontFamily: 'Roboto',
+                                                fontWeight: FontWeight.bold,
+                                                lineHeight: 1.5,
+                                              ),
                                         ),
                                         if ((listViewGifticonsRecord.status) ==
                                             'fail')
                                           Text(
                                             '바코드: ${listViewGifticonsRecord.barcodeNumber}',
-                                            style: FlutterFlowTheme.bodyText1
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
                                                 .override(
-                                              fontFamily: 'Roboto',
-                                              lineHeight: 1.5,
-                                            ),
+                                                  fontFamily: 'Roboto',
+                                                  lineHeight: 1.5,
+                                                ),
                                           ),
                                         if ((listViewGifticonsRecord.status) ==
                                             'fail')
                                           Text(
                                             '반려 사유:${listViewGifticonsRecord.failReason}',
-                                            style: FlutterFlowTheme.bodyText1
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
                                                 .override(
-                                              fontFamily: 'Roboto',
-                                              lineHeight: 1.5,
-                                            ),
+                                                  fontFamily: 'Roboto',
+                                                  lineHeight: 1.5,
+                                                ),
                                           ),
                                         Text(
                                           '등록일자: ${dateTimeFormat('M/d H:mm', listViewGifticonsRecord.uploadedAt)}',
-                                          style: FlutterFlowTheme.bodyText1
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
                                               .override(
-                                            fontFamily: 'Roboto',
-                                            lineHeight: 1.5,
-                                          ),
+                                                fontFamily: 'Roboto',
+                                                lineHeight: 1.5,
+                                              ),
                                         ),
                                       ],
                                     ),
