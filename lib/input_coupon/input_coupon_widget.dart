@@ -94,7 +94,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                 ),
                 Container(
                   width: 50,
-                  height: MediaQuery.of(context).size.height * 0.13,
+                  height: MediaQuery.of(context).size.height * 0.15,
                   decoration: BoxDecoration(
                     color: Color(0x00EEEEEE),
                   ),
@@ -235,6 +235,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                               barcodeNumber:
                                                   functions.returnEmptyString(),
                                               sellingStatus: 'stock',
+                                              used: false,
                                             );
                                             await GifticonsRecord.collection
                                                 .doc()

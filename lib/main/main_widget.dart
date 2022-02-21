@@ -7,6 +7,7 @@ import '../onboarding/onboarding_widget.dart';
 import '../point/point_widget.dart';
 import '../use_coupon/use_coupon_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MainWidget extends StatefulWidget {
@@ -57,73 +58,94 @@ class _MainWidgetState extends State<MainWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          AuthUserStreamWidget(
-                            child: InkWell(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PointWidget(),
+                          InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PointWidget(),
+                                ),
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 10),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.coins,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryColor,
+                                    size: 30,
                                   ),
-                                );
-                              },
-                              child: Text(
-                                '${currentUserDocument?.totalPoint.toString()}포인트 >',
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle1
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: Color(0xFF666666),
-                                      fontWeight: FontWeight.normal,
+                                ),
+                                AuthUserStreamWidget(
+                                  child: InkWell(
+                                    onTap: () async {
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => PointWidget(),
+                                        ),
+                                      );
+                                    },
+                                    child: Text(
+                                      '${currentUserDocument?.totalPoint.toString()}포인트',
+                                      style: FlutterFlowTheme.of(context)
+                                          .subtitle2,
                                     ),
-                              ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HistoryWidget(),
+                                ),
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 10),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.history,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryColor,
+                                    size: 30,
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () async {
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => HistoryWidget(),
+                                      ),
+                                    );
+                                  },
+                                  child: Text(
+                                    '등록내역',
+                                    style:
+                                        FlutterFlowTheme.of(context).subtitle2,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
-                      child: InkWell(
-                        onTap: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HistoryWidget(),
-                            ),
-                          );
-                        },
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => HistoryWidget(),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                '기프티콘 등록내역 >',
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle1
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: FlutterFlowTheme.of(context)
-                                          .customColor1,
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ),
                     ),
                   ],
@@ -139,8 +161,7 @@ class _MainWidgetState extends State<MainWidget> {
                       children: [
                         InkWell(
                           onTap: () async {
-                            await launchURL(
-                                'https://a3889xroicn.typeform.com/to/TmH5SxId');
+                            await launchURL('http://pf.kakao.com/_yxaUSb/chat');
                           },
                           child: Text(
                             '문의하기',

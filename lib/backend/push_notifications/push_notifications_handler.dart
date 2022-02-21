@@ -20,6 +20,7 @@ import '../../use_coupon/use_coupon_widget.dart';
 import '../../phone_number_login/phone_number_login_widget.dart';
 import '../../phone_number_verify_login/phone_number_verify_login_widget.dart';
 import '../../history/history_widget.dart';
+import '../../used/used_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -99,6 +100,7 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'PhoneNumber_login': (data) async => PhoneNumberLoginWidget(),
   'PhoneNumberVerify_login': (data) async => PhoneNumberVerifyLoginWidget(),
   'History': (data) async => HistoryWidget(),
+  'Used': (data) async => UsedWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

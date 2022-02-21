@@ -43,3 +43,26 @@ String printStatus(String status) {
   }
   return null;
 }
+
+int pointToRefund(
+  int presentPoint,
+  int gifticonPrice,
+) {
+  if (gifticonPrice - presentPoint > 0) {
+    return gifticonPrice;
+  } else {
+    return presentPoint;
+  }
+}
+
+int moneyToSend(
+  int presentPoint,
+  int gifticonPrice,
+) {
+  // Add your function code here!
+  if (gifticonPrice <= presentPoint) {
+    return 0;
+  } else {
+    return gifticonPrice - presentPoint;
+  }
+}

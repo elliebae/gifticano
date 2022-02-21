@@ -132,7 +132,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         20, 0, 0, 0),
                                     child: Column(
-                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       crossAxisAlignment:
