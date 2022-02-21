@@ -70,6 +70,19 @@ class _$GifticonsRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.sellingStatus;
+    if (value != null) {
+      result
+        ..add('selling_status')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.resellPrice;
+    if (value != null) {
+      result
+        ..add('resell_price')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -123,6 +136,14 @@ class _$GifticonsRecordSerializer
           result.barcodeNumber = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'selling_status':
+          result.sellingStatus = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'resell_price':
+          result.resellPrice = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -152,6 +173,10 @@ class _$GifticonsRecord extends GifticonsRecord {
   @override
   final String barcodeNumber;
   @override
+  final String sellingStatus;
+  @override
+  final int resellPrice;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$GifticonsRecord([void Function(GifticonsRecordBuilder) updates]) =>
@@ -165,6 +190,8 @@ class _$GifticonsRecord extends GifticonsRecord {
       this.uploadedAt,
       this.imageURL,
       this.barcodeNumber,
+      this.sellingStatus,
+      this.resellPrice,
       this.reference})
       : super._();
 
@@ -187,6 +214,8 @@ class _$GifticonsRecord extends GifticonsRecord {
         uploadedAt == other.uploadedAt &&
         imageURL == other.imageURL &&
         barcodeNumber == other.barcodeNumber &&
+        sellingStatus == other.sellingStatus &&
+        resellPrice == other.resellPrice &&
         reference == other.reference;
   }
 
@@ -197,12 +226,18 @@ class _$GifticonsRecord extends GifticonsRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, userId.hashCode), status.hashCode),
-                            price.hashCode),
-                        failReason.hashCode),
-                    uploadedAt.hashCode),
-                imageURL.hashCode),
-            barcodeNumber.hashCode),
+                        $jc(
+                            $jc(
+                                $jc(
+                                    $jc($jc(0, userId.hashCode),
+                                        status.hashCode),
+                                    price.hashCode),
+                                failReason.hashCode),
+                            uploadedAt.hashCode),
+                        imageURL.hashCode),
+                    barcodeNumber.hashCode),
+                sellingStatus.hashCode),
+            resellPrice.hashCode),
         reference.hashCode));
   }
 
@@ -216,6 +251,8 @@ class _$GifticonsRecord extends GifticonsRecord {
           ..add('uploadedAt', uploadedAt)
           ..add('imageURL', imageURL)
           ..add('barcodeNumber', barcodeNumber)
+          ..add('sellingStatus', sellingStatus)
+          ..add('resellPrice', resellPrice)
           ..add('reference', reference))
         .toString();
   }
@@ -254,6 +291,15 @@ class GifticonsRecordBuilder
   set barcodeNumber(String barcodeNumber) =>
       _$this._barcodeNumber = barcodeNumber;
 
+  String _sellingStatus;
+  String get sellingStatus => _$this._sellingStatus;
+  set sellingStatus(String sellingStatus) =>
+      _$this._sellingStatus = sellingStatus;
+
+  int _resellPrice;
+  int get resellPrice => _$this._resellPrice;
+  set resellPrice(int resellPrice) => _$this._resellPrice = resellPrice;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -273,6 +319,8 @@ class GifticonsRecordBuilder
       _uploadedAt = $v.uploadedAt;
       _imageURL = $v.imageURL;
       _barcodeNumber = $v.barcodeNumber;
+      _sellingStatus = $v.sellingStatus;
+      _resellPrice = $v.resellPrice;
       _reference = $v.reference;
       _$v = null;
     }
@@ -301,6 +349,8 @@ class GifticonsRecordBuilder
             uploadedAt: uploadedAt,
             imageURL: imageURL,
             barcodeNumber: barcodeNumber,
+            sellingStatus: sellingStatus,
+            resellPrice: resellPrice,
             reference: reference);
     replace(_$result);
     return _$result;

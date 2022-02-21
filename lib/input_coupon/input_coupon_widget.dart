@@ -293,6 +293,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                               imageURL: uploadedFileUrl,
                                               barcodeNumber:
                                                     functions.returnEmptyString(),
+                                              sellingStatus: 'stock'
                                             );
                                             await GifticonsRecord.collection
                                                 .doc()

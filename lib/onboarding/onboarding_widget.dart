@@ -208,7 +208,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                     return Padding(
                       padding: MediaQuery.of(context).viewInsets,
                       child: Container(
-                        height: 477,
+                        height: 667,
                         child: ExchangeAgreementWidget(),
                       ),
                     );
