@@ -235,7 +235,8 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                               barcodeNumber:
                                                   functions.returnEmptyString(),
                                               sellingStatus: 'stock',
-                                              used: false,
+                                              refund: false,
+                                              hasProblem: false,
                                             );
                                             await GifticonsRecord.collection
                                                 .doc()

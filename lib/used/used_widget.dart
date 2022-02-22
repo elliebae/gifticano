@@ -56,7 +56,7 @@ class _UsedWidgetState extends State<UsedWidget> {
                       ),
                     ),
                     Text(
-                      '사용 완료된 기프티콘',
+                      '환불 요청된 기프티콘',
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Roboto',
                             color: Color(0xFF666666),
@@ -78,7 +78,7 @@ class _UsedWidgetState extends State<UsedWidget> {
                   stream: queryGifticonsRecord(
                     queryBuilder: (gifticonsRecord) => gifticonsRecord
                         .where('userId', isEqualTo: currentUserReference)
-                        .where('used', isEqualTo: true)
+                        .where('hasProblem', isEqualTo: true)
                         .where('refund', isEqualTo: false),
                   ),
                   builder: (context, snapshot) {
@@ -112,18 +112,26 @@ class _UsedWidgetState extends State<UsedWidget> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Image.network(
-                                listViewGifticonsRecord.imageURL,
+                              Container(
                                 width: MediaQuery.of(context).size.width,
                                 height:
                                     MediaQuery.of(context).size.height * 0.5,
-                                fit: BoxFit.contain,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFEEEEEE),
+                                ),
+                                child: Image.network(
+                                  listViewGifticonsRecord.imageURL,
+                                  width: MediaQuery.of(context).size.width,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.5,
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                               Padding(
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                                 child: Text(
-                                  '${dateTimeFormat('M/d h:mm a', listViewGifticonsRecord.uploadedAt)}에 등록된 기프티콘이 이미 사용완료된 것으로 확인되었습니다. 실수로 사용하셨다구요? 괜찮아요! 기프티카노가 환불처리 도와드릴게요.',
+                                  '${dateTimeFormat('M/d h:mm a', listViewGifticonsRecord.uploadedAt)}에 등록된 기프티콘이 이미 사용완료된 것으로 확인되었습니다.실수로 사용하셨다구요? 괜찮아요! 기프티카노가 환불처리 도와드릴게요.',
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
                               ),
@@ -140,14 +148,17 @@ class _UsedWidgetState extends State<UsedWidget> {
                                         return Padding(
                                           padding:
                                               MediaQuery.of(context).viewInsets,
-                                          child: RefundInformationWidget(
-                                            gfiticon: listViewGifticonsRecord,
+                                          child: Container(
+                                            height: 320,
+                                            child: RefundInformationWidget(
+                                              gfiticon: listViewGifticonsRecord,
+                                            ),
                                           ),
                                         );
                                       },
                                     );
                                   },
-                                  text: ' 환불처리 할게요!',
+                                  text: ' 환불 처리하기',
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 55,
@@ -158,6 +169,7 @@ class _UsedWidgetState extends State<UsedWidget> {
                                         .override(
                                           fontFamily: 'Roboto',
                                           color: Colors.white,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
@@ -184,6 +196,7 @@ class _UsedWidgetState extends State<UsedWidget> {
                                         fontFamily: 'Roboto',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryColor,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                   borderSide: BorderSide(
                                     color: Colors.transparent,

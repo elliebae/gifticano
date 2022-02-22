@@ -41,10 +41,10 @@ abstract class GifticonsRecord
   int get resellPrice;
 
   @nullable
-  bool get used;
+  bool get refund;
 
   @nullable
-  bool get refund;
+  bool get hasProblem;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -58,8 +58,8 @@ abstract class GifticonsRecord
     ..barcodeNumber = ''
     ..sellingStatus = ''
     ..resellPrice = 0
-    ..used = false
-    ..refund = false;
+    ..refund = false
+    ..hasProblem = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Gifticons');
@@ -92,8 +92,8 @@ Map<String, dynamic> createGifticonsRecordData({
   String barcodeNumber,
   String sellingStatus,
   int resellPrice,
-  bool used,
   bool refund,
+  bool hasProblem,
 }) =>
     serializers.toFirestore(
         GifticonsRecord.serializer,
@@ -107,5 +107,5 @@ Map<String, dynamic> createGifticonsRecordData({
           ..barcodeNumber = barcodeNumber
           ..sellingStatus = sellingStatus
           ..resellPrice = resellPrice
-          ..used = used
-          ..refund = refund));
+          ..refund = refund
+          ..hasProblem = hasProblem));

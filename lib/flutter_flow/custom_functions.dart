@@ -48,7 +48,7 @@ int pointToRefund(
   int presentPoint,
   int gifticonPrice,
 ) {
-  if (gifticonPrice - presentPoint > 0) {
+  if (presentPoint - gifticonPrice > 0) {
     return gifticonPrice;
   } else {
     return presentPoint;

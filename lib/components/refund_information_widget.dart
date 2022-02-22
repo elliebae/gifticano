@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -219,20 +220,46 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                 ],
               ),
             ),
-            AuthUserStreamWidget(
-              child: Text(
-                functions
-                    .moneyToSend(
-                        currentUserDocument?.totalPoint, widget.gfiticon.price)
-                    .toString(),
-                style: FlutterFlowTheme.of(context).bodyText1,
+            if ((functions.moneyToSend(
+                    currentUserDocument?.totalPoint, widget.gfiticon.price)) >
+                0)
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                child: AuthUserStreamWidget(
+                  child: Text(
+                    '아래 버튼을 눌러 ${functions.moneyToSend(currentUserDocument?.totalPoint, widget.gfiticon.price).toString()}원을 송금해주세요! 입금이 확인되면 포인트가 차감되고 환불 처리가 완료됩니다.',
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                ),
               ),
-            ),
+            if ((functions.moneyToSend(
+                    currentUserDocument?.totalPoint, widget.gfiticon.price)) ==
+                0)
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                child: AuthUserStreamWidget(
+                  child: Text(
+                    '아래 버튼을 누르면 포인트가 차감되고 환불 처리가 완료됩니다.',
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                ),
+              ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 8),
               child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
+                onPressed: () async {
+                  if ((widget.gfiticon.price) <=
+                      (currentUserDocument?.totalPoint)) {
+                    final gifticonsUpdateData = createGifticonsRecordData(
+                      refund: true,
+                    );
+                    await widget.gfiticon.reference.update(gifticonsUpdateData);
+                  }
+                  if ((widget.gfiticon.price) >
+                      (currentUserDocument?.totalPoint)) {
+                    await launchURL('https://toss.me/gifticano');
+                  }
+                  Navigator.pop(context);
                 },
                 text: '확인',
                 options: FFButtonOptions(
@@ -242,13 +269,14 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Roboto',
                         color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                   elevation: 2,
                   borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1,
                   ),
-                  borderRadius: 10,
+                  borderRadius: 50,
                 ),
               ),
             ),
