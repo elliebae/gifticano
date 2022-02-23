@@ -83,6 +83,20 @@ class _$GifticonsRecordSerializer
         ..add('resell_price')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
+    value = object.refund;
+    if (value != null) {
+      result
+        ..add('refund')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.hasProblem;
+    if (value != null) {
+      result
+        ..add('hasProblem')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -144,6 +158,14 @@ class _$GifticonsRecordSerializer
           result.resellPrice = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
+        case 'refund':
+          result.refund = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'hasProblem':
+          result.hasProblem = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -177,6 +199,10 @@ class _$GifticonsRecord extends GifticonsRecord {
   @override
   final int resellPrice;
   @override
+  final bool refund;
+  @override
+  final bool hasProblem;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$GifticonsRecord([void Function(GifticonsRecordBuilder) updates]) =>
@@ -192,6 +218,8 @@ class _$GifticonsRecord extends GifticonsRecord {
       this.barcodeNumber,
       this.sellingStatus,
       this.resellPrice,
+      this.refund,
+      this.hasProblem,
       this.reference})
       : super._();
 
@@ -216,6 +244,8 @@ class _$GifticonsRecord extends GifticonsRecord {
         barcodeNumber == other.barcodeNumber &&
         sellingStatus == other.sellingStatus &&
         resellPrice == other.resellPrice &&
+        refund == other.refund &&
+        hasProblem == other.hasProblem &&
         reference == other.reference;
   }
 
@@ -229,15 +259,19 @@ class _$GifticonsRecord extends GifticonsRecord {
                         $jc(
                             $jc(
                                 $jc(
-                                    $jc($jc(0, userId.hashCode),
-                                        status.hashCode),
-                                    price.hashCode),
-                                failReason.hashCode),
-                            uploadedAt.hashCode),
-                        imageURL.hashCode),
-                    barcodeNumber.hashCode),
-                sellingStatus.hashCode),
-            resellPrice.hashCode),
+                                    $jc(
+                                        $jc(
+                                            $jc($jc(0, userId.hashCode),
+                                                status.hashCode),
+                                            price.hashCode),
+                                        failReason.hashCode),
+                                    uploadedAt.hashCode),
+                                imageURL.hashCode),
+                            barcodeNumber.hashCode),
+                        sellingStatus.hashCode),
+                    resellPrice.hashCode),
+                refund.hashCode),
+            hasProblem.hashCode),
         reference.hashCode));
   }
 
@@ -253,6 +287,8 @@ class _$GifticonsRecord extends GifticonsRecord {
           ..add('barcodeNumber', barcodeNumber)
           ..add('sellingStatus', sellingStatus)
           ..add('resellPrice', resellPrice)
+          ..add('refund', refund)
+          ..add('hasProblem', hasProblem)
           ..add('reference', reference))
         .toString();
   }
@@ -300,6 +336,14 @@ class GifticonsRecordBuilder
   int get resellPrice => _$this._resellPrice;
   set resellPrice(int resellPrice) => _$this._resellPrice = resellPrice;
 
+  bool _refund;
+  bool get refund => _$this._refund;
+  set refund(bool refund) => _$this._refund = refund;
+
+  bool _hasProblem;
+  bool get hasProblem => _$this._hasProblem;
+  set hasProblem(bool hasProblem) => _$this._hasProblem = hasProblem;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -321,6 +365,8 @@ class GifticonsRecordBuilder
       _barcodeNumber = $v.barcodeNumber;
       _sellingStatus = $v.sellingStatus;
       _resellPrice = $v.resellPrice;
+      _refund = $v.refund;
+      _hasProblem = $v.hasProblem;
       _reference = $v.reference;
       _$v = null;
     }
@@ -351,6 +397,8 @@ class GifticonsRecordBuilder
             barcodeNumber: barcodeNumber,
             sellingStatus: sellingStatus,
             resellPrice: resellPrice,
+            refund: refund,
+            hasProblem: hasProblem,
             reference: reference);
     replace(_$result);
     return _$result;

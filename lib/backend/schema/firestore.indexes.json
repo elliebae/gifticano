@@ -1,6 +1,24 @@
 {
   "indexes": [
     {
+      "collectionGroup": "Gifticons",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "hasProblem",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "refund",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Gifticanos",
       "queryScope": "COLLECTION",
       "fields": [

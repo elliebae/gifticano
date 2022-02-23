@@ -63,8 +63,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                 padding: EdgeInsets.all(10.0),
                                 minimumSize: Size(135, 55), //최소 사이즈
                                 shape:
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
                               ),
                               //
                             ),
@@ -112,7 +111,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                 ),
                 Container(
                   width: 30,
-                  height: MediaQuery.of(context).size.height * 0.13,
+                  height: MediaQuery.of(context).size.height * 0.15,
                   decoration: BoxDecoration(
                     color: Color(0x00EEEEEE),
                   ),
@@ -293,7 +292,9 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                               imageURL: uploadedFileUrl,
                                               barcodeNumber:
                                                     functions.returnEmptyString(),
-                                              sellingStatus: 'stock'
+                                              sellingStatus: 'stock',
+                                              refund: false,
+                                              hasProblem: false,
                                             );
                                             await GifticonsRecord.collection
                                                 .doc()

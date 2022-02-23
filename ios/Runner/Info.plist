@@ -29,12 +29,24 @@
 			<string>com.flutterflow.gifticano</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>gifticano.page.link</string>
+				<string>gifticanoapp.page.link</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.808490654730-0cah8u7dv2sc6ok9m9604gskpsa0mco5</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FirebaseDynamicLinksCustomDomains</key>
+	<array>
+		<string>https://gifticanoapp.page.link</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -60,10 +72,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-    <key>FirebaseDynamicLinksCustomDomains</key>
-    <array>
-        <string>https://gifticano.page.link/main</string>
-        <string>https://gifticano.page.link/point</string>
-    </array>
 </dict>
 </plist>

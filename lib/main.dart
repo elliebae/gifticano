@@ -8,6 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:gifticano/history/history_widget.dart';
 import 'package:gifticano/point/point_widget.dart';
+import 'package:gifticano/used/used_widget.dart';
 import 'auth/firebase_user_provider.dart';
 import 'auth/auth_util.dart';
 
@@ -24,7 +25,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(MyApp());
+  runApp(MaterialApp(home:MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -59,7 +60,6 @@ class _MyAppState extends State<MyApp> {
           final Uri deepLink = dynamicLink?.link;
 
           print("deeplink found");
-          print(deepLink.path);
 
           if (deepLink != null) {
             _handleDynamicLink(deepLink);
@@ -80,9 +80,14 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _handleDynamicLink(Uri deepLink) {
-    switch (deepLink.path) {
-      case "/point":
-        Navigator.push(context, CupertinoPageRoute(builder: (context) => PointWidget()));
+    if (deepLink.toString() == "https://point") {
+      Navigator.push(context, CupertinoPageRoute(builder: (context) => PointWidget()));
+    }
+    if (deepLink.toString() == "https://history") {
+      Navigator.push(context, CupertinoPageRoute(builder: (context) => HistoryWidget()));
+    }
+    if (deepLink.toString() == "https://used") {
+      Navigator.push(context, CupertinoPageRoute(builder: (context) => UsedWidget()));
     }
   }
 

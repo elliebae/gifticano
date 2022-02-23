@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -131,6 +133,30 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                                   MediaQuery.of(context).size.height * 0.2,
                                   fit: BoxFit.fitWidth,
                                 ),
+                                // FFButtonWidget(
+                                //   onPressed: () {
+                                //     final data = ClipboardData(text: listViewGifticanosRecord.barcodeNumber);
+                                //     Clipboard.setData(data);
+                                //   },
+                                //   text: '바코드 복사',
+                                //   options: FFButtonOptions(
+                                //     width: 100,
+                                //     height: 30,
+                                //     color: Color(0xFFB3B3B3),
+                                //     textStyle: FlutterFlowTheme
+                                //         .subtitle2
+                                //         .override(
+                                //       fontFamily: 'Roboto',
+                                //       color: Colors.white,
+                                //       fontSize: 10,
+                                //     ),
+                                //     borderSide: BorderSide(
+                                //       color: Colors.transparent,
+                                //       width: 1,
+                                //     ),
+                                //     borderRadius: 12,
+                                //   ),
+                                // ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 20, 0, 20),
