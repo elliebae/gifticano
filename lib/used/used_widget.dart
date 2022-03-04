@@ -151,7 +151,7 @@ class _UsedWidgetState extends State<UsedWidget> {
                                           child: Container(
                                             height: 320,
                                             child: RefundInformationWidget(
-                                              gfiticon: listViewGifticonsRecord,
+                                              gifticon: listViewGifticonsRecord,
                                             ),
                                           ),
                                         );

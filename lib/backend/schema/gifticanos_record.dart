@@ -33,6 +33,9 @@ abstract class GifticanosRecord
   String get gifticonId;
 
   @nullable
+  String get version;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -42,7 +45,8 @@ abstract class GifticanosRecord
     ..barcodeImageUrl = ''
     ..fullImageURL = ''
     ..userId = ''
-    ..gifticonId = '';
+    ..gifticonId = ''
+    ..version = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('Gifticanos');
@@ -73,6 +77,7 @@ Map<String, dynamic> createGifticanosRecordData({
   DateTime usedAt,
   String userId,
   String gifticonId,
+  String version,
 }) =>
     serializers.toFirestore(
         GifticanosRecord.serializer,
@@ -83,4 +88,5 @@ Map<String, dynamic> createGifticanosRecordData({
           ..fullImageURL = fullImageURL
           ..usedAt = usedAt
           ..userId = userId
-          ..gifticonId = gifticonId));
+          ..gifticonId = gifticonId
+          ..version = version));

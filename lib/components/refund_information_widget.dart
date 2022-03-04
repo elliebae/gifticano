@@ -11,10 +11,10 @@ import 'package:google_fonts/google_fonts.dart';
 class RefundInformationWidget extends StatefulWidget {
   const RefundInformationWidget({
     Key key,
-    this.gfiticon,
+    this.gifticon,
   }) : super(key: key);
 
-  final GifticonsRecord gfiticon;
+  final GifticonsRecord gifticon;
 
   @override
   _RefundInformationWidgetState createState() =>
@@ -87,7 +87,7 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                   ),
                   Expanded(
                     child: Text(
-                      widget.gfiticon.price.toString(),
+                      widget.gifticon.price.toString(),
                       textAlign: TextAlign.end,
                       style: FlutterFlowTheme.of(context).subtitle2.override(
                             fontFamily: 'Lexend Deca',
@@ -164,7 +164,7 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                       child: Text(
                         functions
                             .pointToRefund(currentUserDocument?.totalPoint,
-                                widget.gfiticon.price)
+                                widget.gifticon.price)
                             .toString(),
                         textAlign: TextAlign.end,
                         style: FlutterFlowTheme.of(context).subtitle2.override(
@@ -205,7 +205,7 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                       child: Text(
                         functions
                             .moneyToSend(currentUserDocument?.totalPoint,
-                                widget.gfiticon.price)
+                                widget.gifticon.price)
                             .toString(),
                         textAlign: TextAlign.end,
                         style: FlutterFlowTheme.of(context).subtitle2.override(
@@ -221,19 +221,19 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
               ),
             ),
             if ((functions.moneyToSend(
-                    currentUserDocument?.totalPoint, widget.gfiticon.price)) >
+                    currentUserDocument?.totalPoint, widget.gifticon.price)) >
                 0)
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: AuthUserStreamWidget(
                   child: Text(
-                    '아래 버튼을 눌러 ${functions.moneyToSend(currentUserDocument?.totalPoint, widget.gfiticon.price).toString()}원을 송금해주세요! 입금이 확인되면 포인트가 차감되고 환불 처리가 완료됩니다.',
+                    '아래 버튼을 눌러 ${functions.moneyToSend(currentUserDocument?.totalPoint, widget.gifticon.price).toString()}원을 송금해주세요! 입금이 확인되면 포인트가 차감되고 환불 처리가 완료됩니다.',
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
                 ),
               ),
             if ((functions.moneyToSend(
-                    currentUserDocument?.totalPoint, widget.gfiticon.price)) ==
+                    currentUserDocument?.totalPoint, widget.gifticon.price)) ==
                 0)
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
@@ -248,14 +248,14 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 8),
               child: FFButtonWidget(
                 onPressed: () async {
-                  if ((widget.gfiticon.price) <=
+                  if ((widget.gifticon.price) <=
                       (currentUserDocument?.totalPoint)) {
                     final gifticonsUpdateData = createGifticonsRecordData(
                       refund: true,
                     );
-                    await widget.gfiticon.reference.update(gifticonsUpdateData);
+                    await widget.gifticon.reference.update(gifticonsUpdateData);
                   }
-                  if ((widget.gfiticon.price) >
+                  if ((widget.gifticon.price) >
                       (currentUserDocument?.totalPoint)) {
                     await launchURL('https://toss.me/gifticano');
                   }
