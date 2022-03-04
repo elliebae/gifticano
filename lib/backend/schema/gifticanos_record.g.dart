@@ -70,6 +70,13 @@ class _$GifticanosRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.version;
+    if (value != null) {
+      result
+        ..add('version')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -121,6 +128,10 @@ class _$GifticanosRecordSerializer
           result.gifticonId = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'version':
+          result.version = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -150,6 +161,8 @@ class _$GifticanosRecord extends GifticanosRecord {
   @override
   final String gifticonId;
   @override
+  final String version;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$GifticanosRecord(
@@ -164,6 +177,7 @@ class _$GifticanosRecord extends GifticanosRecord {
       this.usedAt,
       this.userId,
       this.gifticonId,
+      this.version,
       this.reference})
       : super._();
 
@@ -186,6 +200,7 @@ class _$GifticanosRecord extends GifticanosRecord {
         usedAt == other.usedAt &&
         userId == other.userId &&
         gifticonId == other.gifticonId &&
+        version == other.version &&
         reference == other.reference;
   }
 
@@ -196,12 +211,14 @@ class _$GifticanosRecord extends GifticanosRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, used.hashCode), validDate.hashCode),
-                            barcodeImageUrl.hashCode),
-                        fullImageURL.hashCode),
-                    usedAt.hashCode),
-                userId.hashCode),
-            gifticonId.hashCode),
+                        $jc(
+                            $jc($jc($jc(0, used.hashCode), validDate.hashCode),
+                                barcodeImageUrl.hashCode),
+                            fullImageURL.hashCode),
+                        usedAt.hashCode),
+                    userId.hashCode),
+                gifticonId.hashCode),
+            version.hashCode),
         reference.hashCode));
   }
 
@@ -215,6 +232,7 @@ class _$GifticanosRecord extends GifticanosRecord {
           ..add('usedAt', usedAt)
           ..add('userId', userId)
           ..add('gifticonId', gifticonId)
+          ..add('version', version)
           ..add('reference', reference))
         .toString();
   }
@@ -253,6 +271,10 @@ class GifticanosRecordBuilder
   String get gifticonId => _$this._gifticonId;
   set gifticonId(String gifticonId) => _$this._gifticonId = gifticonId;
 
+  String _version;
+  String get version => _$this._version;
+  set version(String version) => _$this._version = version;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -272,6 +294,7 @@ class GifticanosRecordBuilder
       _usedAt = $v.usedAt;
       _userId = $v.userId;
       _gifticonId = $v.gifticonId;
+      _version = $v.version;
       _reference = $v.reference;
       _$v = null;
     }
@@ -300,6 +323,7 @@ class GifticanosRecordBuilder
             usedAt: usedAt,
             userId: userId,
             gifticonId: gifticonId,
+            version: version,
             reference: reference);
     replace(_$result);
     return _$result;

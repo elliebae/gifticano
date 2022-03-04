@@ -214,18 +214,19 @@ class _UseCouponWidgetState extends State<UseCouponWidget> {
                                                 createGifticanosRecordData(
                                                   used: true,
                                                   usedAt: getCurrentTimestamp,
+                                                  version: '220304'
                                                 );
                                                 await listViewGifticanosRecord
                                                     .reference
                                                     .update(
                                                     gifticanosUpdateData);
                                                 ;
-                                                final usersUpdateData = {
-                                                  'availableGifticanoNum':
-                                                  FieldValue.increment(-1),
-                                                };
-                                                await currentUserReference
-                                                    .update(usersUpdateData);
+                                                // final usersUpdateData = {
+                                                //   'availableGifticanoNum':
+                                                //   FieldValue.increment(-1),
+                                                // };
+                                                // await currentUserReference
+                                                //     .update(usersUpdateData);
                                                 await Navigator.pushAndRemoveUntil(
                                                   context,
                                                   MaterialPageRoute(
