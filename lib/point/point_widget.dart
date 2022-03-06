@@ -356,8 +356,8 @@ class _PointWidgetState extends State<PointWidget> {
                                                   final usersUpdateData = {
                                                     'totalPoint':
                                                     FieldValue.increment(-4500),
-                                                    'availableGifticanoNum':
-                                                    FieldValue.increment(1),
+                                                    // 'availableGifticanoNum':
+                                                    // FieldValue.increment(1),
                                                   };
                                                   await currentUserReference
                                                       .update(usersUpdateData);
