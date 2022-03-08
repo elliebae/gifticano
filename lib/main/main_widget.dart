@@ -1,8 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/show_coupon_widget.dart';
+import '../customer_service/customer_service_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../history/history_widget.dart';
+import '../input_coupon/input_coupon_widget.dart';
 import '../landing/landing_widget.dart';
 import '../onboarding/onboarding_widget.dart';
 import '../point/point_widget.dart';
@@ -229,8 +232,13 @@ class _MainWidgetState extends State<MainWidget> {
                       children: [
                         InkWell(
                           onTap: () async {
-                            await launchURL(
-                                'http://pf.kakao.com/_yxaUSb/chat');
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    CustomerServiceWidget(),
+                              ),
+                            );
                           },
                           child: Text(
                             '문의하기',
@@ -458,7 +466,7 @@ class _MainWidgetState extends State<MainWidget> {
                             await Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => OnboardingWidget(),
+                                builder: (context) => InputCouponWidget(),
                               ),
                             );
                           }
@@ -564,32 +572,25 @@ class _MainWidgetState extends State<MainWidget> {
                               child: InkWell(
                                 //사용하기 버튼 action
                                 onTap: () async {
-                                  // Alert(
-                                  //   context: context,
-                                  //   title: "기프티카노 사용하기",
-                                  //   // desc: "Flutter is better with RFlutter Alert.",
-                                  //   // image: Image.asset("assets/success.png"),
-                                  //     buttons: [
-                                  //       DialogButton(
-                                  //         onPressed: () {
-                                  //           //logic 변경
-                                  //           Navigator.pop(context);
-                                  //         },
-                                  //         color: FlutterFlowTheme.primaryColor,
-                                  //         radius: BorderRadius.circular(12.0),
-                                  //         child: Text(
-                                  //           "사용 완료",
-                                  //           style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Roboto',
-                                  //         ),
-                                  //       ),
-                                  //       ),
-                                  //     ]
-                                  // ).show();
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UseCouponWidget(),
-                                    ),
+                                  //0개 이면 alertdialog
+                                  if (currentUserDocument?.availableGifticanoNum == 0) {
+                                    return;
+                                  }
+                                  print("이게 프린트 되면 안되는데");
+                                  await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      context: context,
+                                      builder: (context) {
+                                        return Padding(
+                                          padding:
+                                              MediaQuery.of(context).viewInsets,
+                                          child: Container(
+                                            height: 535,
+                                            child: ShowCouponWidget(),
+                                          ),
+                                        );
+                                      },
                                   );
                                 },
                                 child: Row(
