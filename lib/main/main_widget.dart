@@ -2,6 +2,7 @@ import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/show_coupon_widget.dart';
 import '../customer_service/customer_service_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../history/history_widget.dart';
@@ -480,29 +481,67 @@ class _MainWidgetState extends State<MainWidget> {
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Container(
-                                  width: 100,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.04,
-                                  decoration: BoxDecoration(
-                                    color: Color(0x00EEEEEE),
-                                  ),
-                                ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      '사용할 수 있는 기프티카노',
-                                      style: FlutterFlowTheme.of(context)
-                                          .subtitle1
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF333333),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            lineHeight: 1.5,
+                                    Container(
+                                      width: 50,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color: Color(0x00EEEEEE),
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Container(
+                                          width: 100,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.04,
+                                          decoration: BoxDecoration(
+                                            color: Color(0x00EEEEEE),
                                           ),
+                                        ),
+                                        Text(
+                                          '사용할 수 있는 기프티카노',
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle1
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                                lineHeight: 1.5,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      width: 50,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        color: Color(0x00EEEEEE),
+                                      ),
+                                      child: FlutterFlowIconButton(
+                                        borderColor: Colors.transparent,
+                                        borderRadius: 30,
+                                        buttonSize: 20,
+                                        fillColor: Color(0x00BEF4CE),
+                                        icon: Icon(
+                                          Icons.refresh_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                          size: 30,
+                                        ),
+                                        onPressed: () {
+                                          print('IconButton pressed ...');
+                                        },
+                                      ),
                                     ),
                                   ],
                                 ),
