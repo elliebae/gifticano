@@ -16,11 +16,11 @@ import '../../name/name_widget.dart';
 import '../../onboarding/onboarding_widget.dart';
 import '../../input_coupon/input_coupon_widget.dart';
 import '../../point/point_widget.dart';
-import '../../use_coupon/use_coupon_widget.dart';
 import '../../phone_number_login/phone_number_login_widget.dart';
 import '../../phone_number_verify_login/phone_number_verify_login_widget.dart';
 import '../../history/history_widget.dart';
 import '../../used/used_widget.dart';
+import '../../customer_service/customer_service_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -96,11 +96,11 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'Onboarding': (data) async => OnboardingWidget(),
   'InputCoupon': (data) async => InputCouponWidget(),
   'Point': (data) async => PointWidget(),
-  'UseCoupon': (data) async => UseCouponWidget(),
   'PhoneNumber_login': (data) async => PhoneNumberLoginWidget(),
   'PhoneNumberVerify_login': (data) async => PhoneNumberVerifyLoginWidget(),
   'History': (data) async => HistoryWidget(),
   'Used': (data) async => UsedWidget(),
+  'CustomerService': (data) async => CustomerServiceWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

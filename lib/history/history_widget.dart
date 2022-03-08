@@ -1,10 +1,13 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_expanded_image_view.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HistoryWidget extends StatefulWidget {
   const HistoryWidget({Key key}) : super(key: key);
@@ -71,7 +74,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                   stream: queryGifticonsRecord(
                     queryBuilder: (gifticonsRecord) => gifticonsRecord
                         .where('userId', isEqualTo: currentUserReference)
-                        .orderBy('uploadedAt'),
+                        .orderBy('uploadedAt', descending: true),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
@@ -95,96 +98,156 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       itemBuilder: (context, listViewIndex) {
                         final listViewGifticonsRecord =
                             listViewGifticonsRecordList[listViewIndex];
-                        return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(1, 0, 0, 0),
-                          child: Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.28,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.2,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFFEEEEEE),
-                                    ),
-                                    child: Image.network(
-                                      listViewGifticonsRecord.imageURL,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.28,
-                                      height:
-                                          MediaQuery.of(context).size.height *
+                        return Card(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          color: Colors.white,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.26,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.2,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFEEEEEE),
+                                  ),
+                                  child: InkWell(
+                                    onTap: () async {
+                                      await Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.fade,
+                                          child: FlutterFlowExpandedImageView(
+                                            image: Image.network(
+                                              listViewGifticonsRecord.imageURL,
+                                              fit: BoxFit.contain,
+                                            ),
+                                            allowRotation: false,
+                                            tag: listViewGifticonsRecord
+                                                .imageURL,
+                                            useHeroAnimation: true,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Hero(
+                                      tag: listViewGifticonsRecord.imageURL,
+                                      transitionOnUserGestures: true,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(0),
+                                        child: Image.network(
+                                          listViewGifticonsRecord.imageURL,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.26,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
                                               0.2,
-                                      fit: BoxFit.scaleDown,
+                                          fit: BoxFit.scaleDown,
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20, 0, 0, 0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 0, 0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        functions.printStatus(
+                                            listViewGifticonsRecord.status),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Roboto',
+                                              fontWeight: FontWeight.bold,
+                                              lineHeight: 1.5,
+                                            ),
+                                      ),
+                                      if ((listViewGifticonsRecord.status) ==
+                                          'pass')
                                         Text(
-                                          functions.printStatus(
-                                              listViewGifticonsRecord.status),
+                                          '바코드: ${listViewGifticonsRecord.barcodeNumber}',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyText2
                                               .override(
                                                 fontFamily: 'Roboto',
-                                                fontWeight: FontWeight.bold,
-                                                lineHeight: 1.5,
+                                                lineHeight: 1.3,
                                               ),
                                         ),
-                                        if ((listViewGifticonsRecord.status) ==
-                                            'fail')
-                                          Text(
-                                            '바코드: ${listViewGifticonsRecord.barcodeNumber}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  lineHeight: 1.5,
-                                                ),
-                                          ),
-                                        if ((listViewGifticonsRecord.status) ==
-                                            'fail')
-                                          Text(
-                                            '반려 사유:${listViewGifticonsRecord.failReason}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1
-                                                .override(
-                                                  fontFamily: 'Roboto',
-                                                  lineHeight: 1.5,
-                                                ),
-                                          ),
+                                      if ((listViewGifticonsRecord.status) ==
+                                          'fail')
                                         Text(
-                                          '등록일자: ${dateTimeFormat('M/d H:mm', listViewGifticonsRecord.uploadedAt)}',
+                                          '반려 사유:${listViewGifticonsRecord.failReason}',
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .bodyText2
                                               .override(
                                                 fontFamily: 'Roboto',
-                                                lineHeight: 1.5,
+                                                lineHeight: 1.3,
                                               ),
                                         ),
-                                      ],
-                                    ),
+                                      Text(
+                                        '등록일자: ${dateTimeFormat('M/d H:mm', listViewGifticonsRecord.uploadedAt)}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Roboto',
+                                              lineHeight: 1.3,
+                                            ),
+                                      ),
+                                      if ((listViewGifticonsRecord.status) ==
+                                          'waiting')
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 10, 0, 0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              await listViewGifticonsRecord
+                                                  .reference
+                                                  .delete();
+                                            },
+                                            text: '취소',
+                                            options: FFButtonOptions(
+                                              width: 67,
+                                              height: 35,
+                                              color: Color(0xFFFCEFEE),
+                                              textStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyText1
+                                                  .override(
+                                                    fontFamily: 'Roboto',
+                                                    color: Color(0xFFDD5257),
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1,
+                                              ),
+                                              borderRadius: 12,
+                                            ),
+                                          ),
+                                        ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         );

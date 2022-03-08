@@ -1,12 +1,13 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../components/show_coupon_widget.dart';
+import '../customer_service/customer_service_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../history/history_widget.dart';
+import '../input_coupon/input_coupon_widget.dart';
 import '../landing/landing_widget.dart';
-import '../onboarding/onboarding_widget.dart';
 import '../point/point_widget.dart';
-import '../use_coupon/use_coupon_widget.dart';
 import '../used/used_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -227,8 +228,13 @@ class _MainWidgetState extends State<MainWidget> {
                           children: [
                             InkWell(
                               onTap: () async {
-                                await launchURL(
-                                    'http://pf.kakao.com/_yxaUSb/chat');
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        CustomerServiceWidget(),
+                                  ),
+                                );
                               },
                               child: Text(
                                 '문의하기',
@@ -437,7 +443,7 @@ class _MainWidgetState extends State<MainWidget> {
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => OnboardingWidget(),
+                              builder: (context) => InputCouponWidget(),
                             ),
                           );
                         },
@@ -541,11 +547,20 @@ class _MainWidgetState extends State<MainWidget> {
                               ),
                               child: InkWell(
                                 onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UseCouponWidget(),
-                                    ),
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    context: context,
+                                    builder: (context) {
+                                      return Padding(
+                                        padding:
+                                            MediaQuery.of(context).viewInsets,
+                                        child: Container(
+                                          height: 535,
+                                          child: ShowCouponWidget(),
+                                        ),
+                                      );
+                                    },
                                   );
                                 },
                                 child: Row(

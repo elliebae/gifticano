@@ -132,7 +132,12 @@ class _UsedWidgetState extends State<UsedWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                                 child: Text(
                                   '${dateTimeFormat('M/d h:mm a', listViewGifticonsRecord.uploadedAt)}에 등록된 기프티콘이 이미 사용완료된 것으로 확인되었습니다.실수로 사용하셨다구요? 괜찮아요! 기프티카노가 환불처리 도와드릴게요.',
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        lineHeight: 1.5,
+                                      ),
                                 ),
                               ),
                               Padding(
