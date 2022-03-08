@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:rflutter_alert/rflutter_alert.dart';
+
 class MainWidget extends StatefulWidget {
   const MainWidget({Key key}) : super(key: key);
 
@@ -560,7 +562,29 @@ class _MainWidgetState extends State<MainWidget> {
                                 ),
                               ),
                               child: InkWell(
+                                //사용하기 버튼 action
                                 onTap: () async {
+                                  // Alert(
+                                  //   context: context,
+                                  //   title: "기프티카노 사용하기",
+                                  //   // desc: "Flutter is better with RFlutter Alert.",
+                                  //   // image: Image.asset("assets/success.png"),
+                                  //     buttons: [
+                                  //       DialogButton(
+                                  //         onPressed: () {
+                                  //           //logic 변경
+                                  //           Navigator.pop(context);
+                                  //         },
+                                  //         color: FlutterFlowTheme.primaryColor,
+                                  //         radius: BorderRadius.circular(12.0),
+                                  //         child: Text(
+                                  //           "사용 완료",
+                                  //           style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'Roboto',
+                                  //         ),
+                                  //       ),
+                                  //       ),
+                                  //     ]
+                                  // ).show();
                                   await Navigator.push(
                                     context,
                                     MaterialPageRoute(
