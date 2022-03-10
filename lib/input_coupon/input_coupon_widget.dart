@@ -47,35 +47,36 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                   alignment: AlignmentDirectional(-1, 0),
                   child: InkWell(
                     onTap: () async {
-                      await showDialog(
-                        context: context,
-                        builder: (alertDialogContext) {
-                          return AlertDialog(
-                            title: Text('등록을 취소할까요?'),
-                            content: Text('언제든 다시 등록할 수 있어요.'),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(alertDialogContext),
-                                child: Text('등록할래요'),
-                              ),
-                              TextButton(
-                                onPressed: () async {
-                                  Navigator.pop(alertDialogContext);
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MainWidget(),
-                                    ),
-                                  );
-                                  ;
-                                },
-                                child: Text('취소할게요'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
+                      var confirmDialogResponse = await showDialog<bool>(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('등록을 취소할까요?'),
+                                content: Text('언제든 다시 등록할 수 있어요.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(
+                                        alertDialogContext, false),
+                                    child: Text('등록할래요'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext, true),
+                                    child: Text('취소할게요'),
+                                  ),
+                                ],
+                              );
+                            },
+                          ) ??
+                          false;
+                      if (confirmDialogResponse) {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MainWidget(),
+                          ),
+                        );
+                      }
                     },
                     child: Image.asset(
                       'assets/images/back-icon.png',
@@ -208,47 +209,49 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                             ),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('기프티콘을 아메리카노로 바꿀까요?'),
-                                      content: Text('언제든 다시 등록할 수 있어요.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('아니요'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () async {
-                                            Navigator.pop(alertDialogContext);
+                                var confirmDialogResponse = await showDialog<
+                                        bool>(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('기프티콘을 아메리카노로 바꿀까요?'),
+                                          content: Text('언제든 다시 등록할 수 있어요.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext, false),
+                                              child: Text('아니요'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext, true),
+                                              child: Text('등록할게요'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    ) ??
+                                    false;
+                                if (confirmDialogResponse) {
+                                  final gifticonsCreateData =
+                                      createGifticonsRecordData(
+                                    userId: currentUserReference,
+                                    status: 'waiting',
+                                    price: 0,
+                                    failReason: '',
+                                    uploadedAt: getCurrentTimestamp,
+                                    imageURL: uploadedFileUrl,
+                                    barcodeNumber:
+                                        functions.returnEmptyString(),
+                                    sellingStatus: 'stock',
+                                    refund: false,
+                                    hasProblem: false,
+                                  );
+                                  await GifticonsRecord.collection
+                                      .doc()
+                                      .set(gifticonsCreateData);
+                                }
 
-                                            final gifticonsCreateData =
-                                                createGifticonsRecordData(
-                                              userId: currentUserReference,
-                                              status: 'waiting',
-                                              price: 0,
-                                              failReason: '',
-                                              uploadedAt: getCurrentTimestamp,
-                                              imageURL: uploadedFileUrl,
-                                              barcodeNumber:
-                                                  functions.returnEmptyString(),
-                                              sellingStatus: 'stock',
-                                              refund: false,
-                                              hasProblem: false,
-                                            );
-                                            await GifticonsRecord.collection
-                                                .doc()
-                                                .set(gifticonsCreateData);
-                                            ;
-                                          },
-                                          child: Text('등록할게요'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
                                 final usersUpdateData = {
                                   'checkingGifticonNum':
                                       FieldValue.increment(1),

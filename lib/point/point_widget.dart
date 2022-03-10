@@ -314,40 +314,43 @@ class _PointWidgetState extends State<PointWidget> {
                                         : null;
                                 return FFButtonWidget(
                                   onPressed: () async {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('포인트를 아메리카노로 바꿀까요?'),
-                                          content:
-                                              Text('한 잔에 4,500  포인트가 차감됩니다.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('아니오'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () async {
-                                                Navigator.pop(
-                                                    alertDialogContext);
-
-                                                final gifticanosUpdateData =
-                                                    createGifticanosRecordData(
-                                                  userId: currentUserUid,
+                                    var confirmDialogResponse =
+                                        await showDialog<bool>(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title:
+                                                      Text('포인트를 아메리카노로 바꿀까요?'),
+                                                  content: Text(
+                                                      '한 잔에 4,500  포인트가 차감됩니다.'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext,
+                                                              false),
+                                                      child: Text('아니오'),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext,
+                                                              true),
+                                                      child: Text('바꿀게요'),
+                                                    ),
+                                                  ],
                                                 );
-                                                await buttonGifticanosRecord
-                                                    .reference
-                                                    .update(
-                                                        gifticanosUpdateData);
-                                                ;
                                               },
-                                              child: Text('바꿀게요'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
+                                            ) ??
+                                            false;
+                                    if (confirmDialogResponse) {
+                                      final gifticanosUpdateData =
+                                          createGifticanosRecordData(
+                                        userId: currentUserUid,
+                                      );
+                                      await buttonGifticanosRecord.reference
+                                          .update(gifticanosUpdateData);
+                                    }
                                     if ((currentUserDocument?.totalPoint) >=
                                         4500) {
                                       final usersUpdateData = {
@@ -361,6 +364,7 @@ class _PointWidgetState extends State<PointWidget> {
                                     } else {
                                       return;
                                     }
+
                                     final pointHistoryCreateData =
                                         createPointHistoryRecordData(
                                       userId: currentUserReference,

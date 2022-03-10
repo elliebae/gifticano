@@ -96,19 +96,29 @@ class _ShowCouponWidgetState extends State<ShowCouponWidget> {
             ),
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 150,
+              height: 180,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                child: Image.network(
-                  'https://picsum.photos/seed/993/600',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.contain,
-                ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 10),
+                    child: Image.network(
+                      'https://picsum.photos/seed/993/600',
+                      width: double.infinity,
+                      height: 100,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  Text(
+                    '유효 기간 : dummy data',
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                ],
               ),
             ),
             Column(
