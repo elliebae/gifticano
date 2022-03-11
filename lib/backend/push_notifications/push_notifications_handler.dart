@@ -21,6 +21,8 @@ import '../../phone_number_verify_login/phone_number_verify_login_widget.dart';
 import '../../history/history_widget.dart';
 import '../../used/used_widget.dart';
 import '../../customer_service/customer_service_widget.dart';
+import '../../before_upload_agreement/before_upload_agreement_widget.dart';
+import '../../after_upload_agreement/after_upload_agreement_widget.dart';
 
 class PushNotificationsHandler extends StatefulWidget {
   const PushNotificationsHandler(
@@ -101,6 +103,10 @@ final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'History': (data) async => HistoryWidget(),
   'Used': (data) async => UsedWidget(),
   'CustomerService': (data) async => CustomerServiceWidget(),
+  'BeforeUploadAgreement': (data) async => BeforeUploadAgreementWidget(),
+  'AfterUploadAgreement': (data) async => AfterUploadAgreementWidget(
+        gifticonImageUrl: getParameter(data, 'gifticonImageUrl'),
+      ),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

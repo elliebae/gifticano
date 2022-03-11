@@ -23,6 +23,8 @@ class FFAppState {
   bool agreeUse = false;
 
   String uploadedCouponURL;
+
+  bool neverSeeAgain = false;
 }
 
 LatLng _latLngFromString(String val) {

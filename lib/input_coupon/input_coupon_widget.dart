@@ -1,3 +1,4 @@
+import '../after_upload_agreement/after_upload_agreement_widget.dart';
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../backend/firebase_storage/storage.dart';
@@ -7,7 +8,6 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../history/history_widget.dart';
 import '../main/main_widget.dart';
-import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -209,79 +209,79 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                             ),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                var confirmDialogResponse = await showDialog<
-                                        bool>(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('기프티콘을 아메리카노로 바꿀까요?'),
-                                          content: Text('언제든 다시 등록할 수 있어요.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext, false),
-                                              child: Text('아니요'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext, true),
-                                              child: Text('등록할게요'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    ) ??
-                                    false;
-                                if (confirmDialogResponse) {
+                                if (FFAppState().neverSeeAgain) {
+                                  var confirmDialogResponse = await showDialog<
+                                          bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('기프티콘을 아메리카노로 바꿀까요?'),
+                                            content: Text('언제든 다시 등록할 수 있어요.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('아니요'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child: Text('바꿀게요'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+
                                   final gifticonsCreateData =
                                       createGifticonsRecordData(
                                     userId: currentUserReference,
                                     status: 'waiting',
-                                    price: 0,
-                                    failReason: '',
                                     uploadedAt: getCurrentTimestamp,
                                     imageURL: uploadedFileUrl,
-                                    barcodeNumber:
-                                        functions.returnEmptyString(),
                                     sellingStatus: 'stock',
                                     refund: false,
                                     hasProblem: false,
+                                    version: '220310',
                                   );
                                   await GifticonsRecord.collection
                                       .doc()
                                       .set(gifticonsCreateData);
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('기프티콘이 등록되었습니다.'),
+                                        content: Text(
+                                            '검수를 마친 후 알림톡을 보내드릴게요. 검수에 통과하면 동록하신 기프티콘을 자동으로 아메리카노로 바꿔드려요.'),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: Text('메인화면으로 갈래요'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MainWidget(),
+                                    ),
+                                  );
+                                } else {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          AfterUploadAgreementWidget(
+                                        gifticonImageUrl: uploadedFileUrl,
+                                      ),
+                                    ),
+                                  );
                                 }
-
-                                final usersUpdateData = {
-                                  'checkingGifticonNum':
-                                      FieldValue.increment(1),
-                                };
-                                await currentUserReference
-                                    .update(usersUpdateData);
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('기프티콘이 등록되었습니다.'),
-                                      content: Text(
-                                          '검수를 마친 후 문자를 보내드릴게요. 검수에 통과하면 자동으로 등록하신 기프티콘을 아메리카노로 바꿔드려요.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('메인 화면으로 갈래요'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => MainWidget(),
-                                  ),
-                                  (r) => false,
-                                );
                               },
                               text: '기프티콘 등록하기',
                               options: FFButtonOptions(

@@ -1,4 +1,4 @@
-import '../components/exchange_agreement_widget.dart';
+import '../before_upload_agreement/before_upload_agreement_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -195,18 +195,14 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
               child: FFButtonWidget(
                 onPressed: () async {
-                  await showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    builder: (context) {
-                      return Padding(
-                        padding: MediaQuery.of(context).viewInsets,
-                        child: Container(
-                          height: 477,
-                          child: ExchangeAgreementWidget(),
-                        ),
-                      );
-                    },
+                  await Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.bottomToTop,
+                      duration: Duration(milliseconds: 300),
+                      reverseDuration: Duration(milliseconds: 300),
+                      child: BeforeUploadAgreementWidget(),
+                    ),
                   );
                 },
                 text: '기프티콘 등록하기',
