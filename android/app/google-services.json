@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "808490654730",
+    "firebase_url": "https://gifticano-74f3e-default-rtdb.firebaseio.com",
+    "project_id": "gifticano-74f3e",
+    "storage_bucket": "gifticano-74f3e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808490654730:android:5eec461e65a571925393f3",
+        "android_client_info": {
+          "package_name": "com.flutterflow.gifticano"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808490654730-96dtoh116658l1kupntb8aldt3q9g2pa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterflow.gifticano",
+            "certificate_hash": "9d730c5fd667f7fcb62879d9fd5ca611567f9a41"
+          }
+        },
+        {
+          "client_id": "808490654730-crvpj46d13prea41ph0p06kq8ccasnc0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterflow.gifticano",
+            "certificate_hash": "5c39af02a597156194da68192109400e0d4c85d2"
+          }
+        },
+        {
+          "client_id": "808490654730-e9nk3pg3u2pjmpqdd3i1okgmapaarr4t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterflow.gifticano",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "808490654730-29n3bapd2f5t0cbu7d07b0gugq280ub5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoms_t22hskl9hZ8Owfl-TxCWClD6DABM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808490654730-29n3bapd2f5t0cbu7d07b0gugq280ub5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "808490654730-0cah8u7dv2sc6ok9m9604gskpsa0mco5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flutterflow.gifticano"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
