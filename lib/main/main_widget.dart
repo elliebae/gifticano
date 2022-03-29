@@ -114,20 +114,10 @@ class _MainWidgetState extends State<MainWidget> {
                                         size: 30,
                                       ),
                                     ),
-                                    InkWell(
-                                      onTap: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => PointWidget(),
-                                          ),
-                                        );
-                                      },
-                                      child: Text(
-                                        '포인트',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                      ),
+                                    Text(
+                                      '포인트',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1,
                                     ),
                                   ],
                                 ),
@@ -154,21 +144,10 @@ class _MainWidgetState extends State<MainWidget> {
                                         size: 30,
                                       ),
                                     ),
-                                    InkWell(
-                                      onTap: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                HistoryWidget(),
-                                          ),
-                                        );
-                                      },
-                                      child: Text(
-                                        '등록내역',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                      ),
+                                    Text(
+                                      '등록내역',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1,
                                     ),
                                   ],
                                 ),
@@ -195,20 +174,10 @@ class _MainWidgetState extends State<MainWidget> {
                                         size: 30,
                                       ),
                                     ),
-                                    InkWell(
-                                      onTap: () async {
-                                        await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => PointWidget(),
-                                          ),
-                                        );
-                                      },
-                                      child: Text(
-                                        '환불요청',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                      ),
+                                    Text(
+                                      '환불요청',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1,
                                     ),
                                   ],
                                 ),

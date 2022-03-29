@@ -96,7 +96,7 @@ class _ShowCouponWidgetState extends State<ShowCouponWidget> {
             ),
             Container(
               width: MediaQuery.of(context).size.width,
-              height: 180,
+              height: 210,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
@@ -117,6 +117,50 @@ class _ShowCouponWidgetState extends State<ShowCouponWidget> {
                   Text(
                     '유효 기간 : dummy data',
                     style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              '클립보드에 복사되었어요!',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText2
+                                  .override(
+                                    fontFamily: 'Roboto',
+                                    color: FlutterFlowTheme.of(context)
+                                        .tertiaryColor,
+                                  ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondaryColor,
+                          ),
+                        );
+                      },
+                      text: '바코드 복사',
+                      icon: Icon(
+                        Icons.file_copy_rounded,
+                        size: 16,
+                      ),
+                      options: FFButtonOptions(
+                        width: 130,
+                        height: 25,
+                        color: Color(0xFFF2F3F2),
+                        textStyle:
+                            FlutterFlowTheme.of(context).bodyText2.override(
+                                  fontFamily: 'Roboto',
+                                  color: Color(0xFF666666),
+                                ),
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1,
+                        ),
+                        borderRadius: 10,
+                      ),
+                    ),
                   ),
                 ],
               ),

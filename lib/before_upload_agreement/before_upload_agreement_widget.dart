@@ -30,6 +30,7 @@ class _BeforeUploadAgreementWidgetState
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Column(
                 mainAxisSize: MainAxisSize.max,
@@ -76,24 +77,11 @@ class _BeforeUploadAgreementWidgetState
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            '기프티콘 등록 전에',
+                            '기프티콘 등록 전에 꼭 읽어주세요!',
                             style:
                                 FlutterFlowTheme.of(context).subtitle1.override(
                                       fontFamily: 'Roboto',
-                                      fontWeight: FontWeight.bold,
-                                      lineHeight: 1.5,
-                                    ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            '꼭 읽어주세요!',
-                            style:
-                                FlutterFlowTheme.of(context).subtitle1.override(
-                                      fontFamily: 'Roboto',
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                       lineHeight: 1.5,
                                     ),
@@ -111,6 +99,7 @@ class _BeforeUploadAgreementWidgetState
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 45),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
@@ -146,6 +135,7 @@ class _BeforeUploadAgreementWidgetState
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
@@ -157,7 +147,7 @@ class _BeforeUploadAgreementWidgetState
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
                         child: Text(
                           '유효 기간이 짧거나 누락된 기프티콘',
                           style:
@@ -170,7 +160,7 @@ class _BeforeUploadAgreementWidgetState
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
                         child: Text(
                           '사용 가능한 매장이 정해진 기프티콘',
                           style:
@@ -183,7 +173,7 @@ class _BeforeUploadAgreementWidgetState
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
                         child: Text(
                           '본인 인증이 필요한 기프티콘',
                           style:
