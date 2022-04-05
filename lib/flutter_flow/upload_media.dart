@@ -1,13 +1,11 @@
 import 'dart:typed_data';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mime_type/mime_type.dart';
 
 import '../auth/auth_util.dart';
-import 'flutter_flow_util.dart';
 
 const allowedFormats = {'image/png', 'image/jpeg', 'video/mp4', 'image/gif'};
 
@@ -35,23 +33,23 @@ Future<SelectedMedia> selectMediaWithSourceBottomSheet({
 }) async {
   final createUploadMediaListTile =
       (String label, MediaSource mediaSource) => ListTile(
-            title: Text(
-              label,
-              textAlign: TextAlign.center,
-              style: GoogleFonts.getFont(
-                pickerFontFamily,
-                color: textColor,
-                fontWeight: FontWeight.w600,
-                fontSize: 20,
-              ),
-            ),
-            tileColor: backgroundColor,
-            dense: false,
-            onTap: () => Navigator.pop(
-              context,
-              mediaSource,
-            ),
-          );
+    title: Text(
+      label,
+      textAlign: TextAlign.center,
+      style: GoogleFonts.getFont(
+        pickerFontFamily,
+        color: textColor,
+        fontWeight: FontWeight.w600,
+        fontSize: 20,
+      ),
+    ),
+    tileColor: backgroundColor,
+    dense: false,
+    onTap: () => Navigator.pop(
+      context,
+      mediaSource,
+    ),
+  );
   final mediaSource = await showModalBottomSheet<MediaSource>(
       context: context,
       backgroundColor: backgroundColor,
@@ -129,7 +127,7 @@ Future<SelectedMedia> selectMedia({
   final pickedMediaFuture = isVideo
       ? picker.pickVideo(source: source)
       : picker.pickImage(
-          maxWidth: maxWidth, maxHeight: maxHeight, source: source);
+      maxWidth: maxWidth, maxHeight: maxHeight, source: source);
   final pickedMedia = await pickedMediaFuture;
   final mediaBytes = await pickedMedia?.readAsBytes();
   if (mediaBytes == null) {
@@ -149,25 +147,6 @@ bool validateFileFormat(String filePath, BuildContext context) {
       content: Text('Invalid file format: ${mime(filePath)}'),
     ));
   return false;
-}
-
-Future<SelectedMedia> selectFile({
-  List<String> allowedExtensions = const ['pdf'],
-}) async {
-  final pickedFiles = await FilePicker.platform.pickFiles(
-    type: FileType.custom,
-    allowedExtensions: allowedExtensions,
-  );
-  if (pickedFiles.files.isEmpty) {
-    return null;
-  }
-
-  final file = pickedFiles.files.first;
-  if (file?.bytes == null) {
-    return null;
-  }
-  final path = storagePath(currentUserUid, file.name, false);
-  return SelectedMedia(path, file.bytes);
 }
 
 String storagePath(String uid, String filePath, bool isVideo) {

@@ -49,12 +49,12 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                 children: [
                   Text(
                     '환불 처리',
-                    style: FlutterFlowTheme.of(context).subtitle1.override(
-                          fontFamily: 'Roboto',
-                          color: Color(0xFF090F13),
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    style: FlutterFlowTheme.subtitle1.override(
+                      fontFamily: 'Roboto',
+                      color: Color(0xFF090F13),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
@@ -76,12 +76,12 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                       child: Text(
                         '기프티콘 금액',
                         textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Color(0xFF57636C),
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
-                            ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Roboto',
+                          color: Color(0xFF57636C),
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ),
                   ),
@@ -89,12 +89,12 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                     child: Text(
                       widget.gifticon.price.toString(),
                       textAlign: TextAlign.end,
-                      style: FlutterFlowTheme.of(context).subtitle2.override(
-                            fontFamily: 'Lexend Deca',
-                            color: Color(0xFF262D34),
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                          ),
+                      style: FlutterFlowTheme.subtitle2.override(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF262D34),
+                        fontSize: 16,
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
                   ),
                 ],
@@ -112,12 +112,12 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                       child: Text(
                         '현재 포인트',
                         textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Color(0xFF57636C),
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
-                            ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Roboto',
+                          color: Color(0xFF57636C),
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ),
                   ),
@@ -126,12 +126,12 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                       child: Text(
                         currentUserDocument?.totalPoint.toString(),
                         textAlign: TextAlign.end,
-                        style: FlutterFlowTheme.of(context).subtitle2.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Color(0xFF262D34),
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                            ),
+                        style: FlutterFlowTheme.subtitle2.override(
+                          fontFamily: 'Roboto',
+                          color: Color(0xFF262D34),
+                          fontSize: 16,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ),
                   ),
@@ -150,12 +150,12 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                       child: Text(
                         '차감될 포인트',
                         textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Color(0xFF57636C),
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
-                            ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Roboto',
+                          color: Color(0xFF57636C),
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ),
                   ),
@@ -164,15 +164,15 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                       child: Text(
                         functions
                             .pointToRefund(currentUserDocument?.totalPoint,
-                                widget.gifticon.price)
+                            widget.gifticon.price)
                             .toString(),
                         textAlign: TextAlign.end,
-                        style: FlutterFlowTheme.of(context).subtitle2.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Color(0xFF262D34),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style: FlutterFlowTheme.subtitle2.override(
+                          fontFamily: 'Roboto',
+                          color: Color(0xFF262D34),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -191,12 +191,12 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                       child: Text(
                         '송금할 금액',
                         textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Color(0xFF57636C),
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
-                            ),
+                        style: FlutterFlowTheme.bodyText1.override(
+                          fontFamily: 'Roboto',
+                          color: Color(0xFF57636C),
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ),
                   ),
@@ -205,15 +205,15 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                       child: Text(
                         functions
                             .moneyToSend(currentUserDocument?.totalPoint,
-                                widget.gifticon.price)
+                            widget.gifticon.price)
                             .toString(),
                         textAlign: TextAlign.end,
-                        style: FlutterFlowTheme.of(context).subtitle2.override(
-                              fontFamily: 'Lexend Deca',
-                              color: Color(0xFF262D34),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style: FlutterFlowTheme.subtitle2.override(
+                          fontFamily: 'Roboto',
+                          color: Color(0xFF262D34),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -221,26 +221,26 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
               ),
             ),
             if ((functions.moneyToSend(
-                    currentUserDocument?.totalPoint, widget.gifticon.price)) >
+                currentUserDocument?.totalPoint, widget.gifticon.price)) >
                 0)
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: AuthUserStreamWidget(
                   child: Text(
                     '아래 버튼을 눌러 ${functions.moneyToSend(currentUserDocument?.totalPoint, widget.gifticon.price).toString()}원을 송금해주세요! 입금이 확인되면 포인트가 차감되고 환불 처리가 완료됩니다.',
-                    style: FlutterFlowTheme.of(context).bodyText1,
+                    style: FlutterFlowTheme.bodyText1,
                   ),
                 ),
               ),
             if ((functions.moneyToSend(
-                    currentUserDocument?.totalPoint, widget.gifticon.price)) ==
+                currentUserDocument?.totalPoint, widget.gifticon.price)) ==
                 0)
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                 child: AuthUserStreamWidget(
                   child: Text(
                     '아래 버튼을 누르면 포인트가 차감되고 환불 처리가 완료됩니다.',
-                    style: FlutterFlowTheme.of(context).bodyText1,
+                    style: FlutterFlowTheme.bodyText1,
                   ),
                 ),
               ),
@@ -250,13 +250,13 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                 onPressed: () async {
                   if ((widget.gifticon.price) <=
                       (currentUserDocument?.totalPoint)) {
+                    print("포인트 차감");
                     final gifticonsUpdateData = createGifticonsRecordData(
                       refund: true,
                     );
                     await widget.gifticon.reference.update(gifticonsUpdateData);
-                  }
-                  if ((widget.gifticon.price) >
-                      (currentUserDocument?.totalPoint)) {
+                    print("updated");
+                  } else {
                     await launchURL('https://toss.me/gifticano');
                   }
                   Navigator.pop(context);
@@ -265,12 +265,12 @@ class _RefundInformationWidgetState extends State<RefundInformationWidget> {
                 options: FFButtonOptions(
                   width: 300,
                   height: 40,
-                  color: FlutterFlowTheme.of(context).primaryColor,
-                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Roboto',
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  color: FlutterFlowTheme.primaryColor,
+                  textStyle: FlutterFlowTheme.subtitle2.override(
+                    fontFamily: 'Roboto',
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                   elevation: 2,
                   borderSide: BorderSide(
                     color: Colors.transparent,

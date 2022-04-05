@@ -8,6 +8,7 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import '../history/history_widget.dart';
 import '../main/main_widget.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -38,68 +39,84 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  width: 50,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    color: Color(0x00EEEEEE),
-                  ),
-                  alignment: AlignmentDirectional(-1, 0),
-                  child: InkWell(
-                    onTap: () async {
-                      var confirmDialogResponse = await showDialog<bool>(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('등록을 취소할까요?'),
-                                content: Text('언제든 다시 등록할 수 있어요.'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () => Navigator.pop(
-                                        alertDialogContext, false),
-                                    child: Text('등록할래요'),
-                                  ),
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext, true),
-                                    child: Text('취소할게요'),
-                                  ),
-                                ],
-                              );
-                            },
-                          ) ??
-                          false;
-                      if (confirmDialogResponse) {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MainWidget(),
-                          ),
-                        );
-                      }
-                    },
-                    child: Image.asset(
-                      'assets/images/back-icon.png',
-                      height: 30,
-                      fit: BoxFit.fitHeight,
-                    ),
+                InkWell(
+                  onTap: () async {
+                    Navigator.pop(context);
+                    // await showDialog(
+                    //   context: context,
+                    //   builder: (alertDialogContext) {
+                    //     return AlertDialog(
+                    //       title: Text('등록을 취소할까요?'),
+                    //       content: Text('언제든 다시 등록할 수 있어요.'),
+                    //       //예쁘게
+                    //       shape: RoundedRectangleBorder(
+                    //           borderRadius: BorderRadius.all(Radius.circular(20))
+                    //       ),
+                    //       //
+                    //       actions: [
+                    //         TextButton(
+                    //           onPressed: () =>
+                    //               Navigator.pop(alertDialogContext),
+                    //           child: Text('등록할래요'),
+                    //           //예쁘게
+                    //           style: TextButton.styleFrom(
+                    //             primary: Color(0xFF666666), //글자
+                    //             backgroundColor: Color(0xFFF2F3F2),
+                    //             padding: EdgeInsets.all(10.0),
+                    //             minimumSize: Size(135, 55), //최소 사이즈
+                    //             shape:
+                    //             StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                    //           ),
+                    //           //
+                    //         ),
+                    //         TextButton(
+                    //           onPressed: () async {
+                    //             Navigator.pop(alertDialogContext);
+                    //             await Navigator.push(
+                    //               context,
+                    //               MaterialPageRoute(
+                    //                 builder: (context) => MainWidget(),
+                    //               ),
+                    //             );
+                    //             ;
+                    //           },
+                    //           child: Text('취소할게요'),
+                    //           //예쁘게
+                    //           style: TextButton.styleFrom(
+                    //             primary: Colors.white, //글자
+                    //             backgroundColor: Color(0xFFE15241),
+                    //             padding: EdgeInsets.all(10.0),
+                    //             minimumSize: Size(135, 55), //최소 사이즈
+                    //             shape:
+                    //             StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     );
+                    //   },
+                    // );
+                  },
+                  child: Image.asset(
+                    'assets/images/back-icon.png',
+                    width: 30,
+                    height: 30,
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Text(
                   '기프티콘 등록',
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Roboto',
-                        color: Color(0xFF666666),
-                        fontWeight: FontWeight.w600,
-                      ),
+                  style: FlutterFlowTheme.bodyText1.override(
+                    fontFamily: 'Roboto',
+                    color: Color(0xFF666666),
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 Container(
-                  width: 50,
+                  width: 30,
                   height: MediaQuery.of(context).size.height * 0.15,
                   decoration: BoxDecoration(
                     color: Color(0x00EEEEEE),
                   ),
-                  alignment: AlignmentDirectional(1, 0),
                 ),
               ],
             ),
@@ -136,11 +153,8 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                               if (selectedMedia != null &&
                                   validateFileFormat(
                                       selectedMedia.storagePath, context)) {
-                                showUploadMessage(
-                                  context,
-                                  'Uploading file...',
-                                  showLoading: true,
-                                );
+                                showUploadMessage(context, '사진 업로드 하는 중...',
+                                    showLoading: true);
                                 final downloadUrl = await uploadData(
                                     selectedMedia.storagePath,
                                     selectedMedia.bytes);
@@ -148,15 +162,10 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                     .hideCurrentSnackBar();
                                 if (downloadUrl != null) {
                                   setState(() => uploadedFileUrl = downloadUrl);
-                                  showUploadMessage(
-                                    context,
-                                    'Success!',
-                                  );
+                                  showUploadMessage(context, '성공적으로 업로드 되었습니다!');
                                 } else {
                                   showUploadMessage(
-                                    context,
-                                    'Failed to upload media',
-                                  );
+                                      context, '업로드에 실패했습니다');
                                   return;
                                 }
                               }
@@ -165,9 +174,11 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                               width: MediaQuery.of(context).size.width * 0.7,
                               height: MediaQuery.of(context).size.height * 0.54,
                               decoration: BoxDecoration(
+                                border: Border.all(width: 5, color: Color(0xFFC4C4C4)),
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
                                 color: Color(0x00EEEEEE),
                                 image: DecorationImage(
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.fitWidth,
                                   image: Image.asset(
                                     'assets/images/add-photo.png',
                                   ).image,
@@ -180,7 +191,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                   width: MediaQuery.of(context).size.width,
                                   height:
                                       MediaQuery.of(context).size.height * 1,
-                                  fit: BoxFit.fill,
+                                  fit: BoxFit.scaleDown,
                                 ),
                               ),
                             ),
@@ -196,7 +207,7 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                 Text(
                                   '변경하려면 사진을 터치해주세요.',
                                   textAlign: TextAlign.center,
-                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                  style: FlutterFlowTheme.bodyText1,
                                 ),
                               ],
                             ),
@@ -209,67 +220,152 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                             ),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                if (FFAppState().neverSeeAgain) {
-                                  var confirmDialogResponse = await showDialog<
-                                          bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('기프티콘을 아메리카노로 바꿀까요?'),
-                                            content: Text('언제든 다시 등록할 수 있어요.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: Text('아니요'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: Text('바꿀게요'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-
-                                  final gifticonsCreateData =
-                                      createGifticonsRecordData(
-                                    userId: currentUserReference,
-                                    status: 'waiting',
-                                    uploadedAt: getCurrentTimestamp,
-                                    imageURL: uploadedFileUrl,
-                                    sellingStatus: 'stock',
-                                    refund: false,
-                                    hasProblem: false,
-                                    version: '220310',
-                                  );
-                                  await GifticonsRecord.collection
-                                      .doc()
-                                      .set(gifticonsCreateData);
+                                if (uploadedFileUrl.isEmpty) {
                                   await showDialog(
                                     context: context,
                                     builder: (alertDialogContext) {
                                       return AlertDialog(
-                                        title: Text('기프티콘이 등록되었습니다.'),
-                                        content: Text(
-                                            '검수를 마친 후 알림톡을 보내드릴게요. 검수에 통과하면 동록하신 기프티콘을 자동으로 아메리카노로 바꿔드려요.'),
+                                        title: Text('이미지가 업로드 되지 않았습니다.'),
+                                        titleTextStyle: TextStyle(fontSize: 18, color: Color(0xFF333333)),
+                                        content: Text('기프티콘 이미지를 등록해주세요.'),
+                                        contentTextStyle: TextStyle(fontSize: 16, color: Color(0xFF666666)),
+                                        //예쁘게
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(20))
+                                        ),
+                                        //
                                         actions: [
                                           TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('메인화면으로 갈래요'),
+                                            onPressed: () => Navigator.pop(alertDialogContext),
+                                            child: Text('닫기'),
+                                            //예쁘게
+                                            style: TextButton.styleFrom(
+                                              primary: Color(0xFF666666), //글자
+                                              backgroundColor: Color(0xFFF2F3F2),
+                                              padding: EdgeInsets.all(10.0),
+                                              minimumSize: Size(135, 55), //최소 사이즈
+                                              shape:
+                                              StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                            ),
+                                            //
+                                          )
+                                        ]
+                                      );
+                                    }
+                                  );
+                                  return;
+                                }
+                                if (FFAppState().neverSeeAgain) {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (alertDialogContext) {
+                                      return AlertDialog(
+                                        title: Text('기프티콘을 아메리카노로 바꿀까요?'),
+                                        content: Text('언제든 다시 등록할 수 있어요.'),
+                                        //예쁘게
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(20))
+                                        ),
+                                        //
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () =>
+                                                Navigator.pop(alertDialogContext),
+                                            child: Text('아니요'),
+                                            //예쁘게
+                                            style: TextButton.styleFrom(
+                                              primary: Color(0xFF666666), //글자
+                                              backgroundColor: Color(0xFFF2F3F2),
+                                              padding: EdgeInsets.all(10.0),
+                                              minimumSize: Size(135, 55), //최소 사이즈
+                                              shape:
+                                              StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                            ),
+                                            //
+                                          ),
+                                          TextButton(
+                                            onPressed: () async {
+                                              Navigator.pop(alertDialogContext);
+                                              final gifticonsCreateData =
+                                              createGifticonsRecordData(
+                                                userId: currentUserReference,
+                                                status: 'waiting',
+                                                price: 0,
+                                                failReason: '',
+                                                uploadedAt: getCurrentTimestamp,
+                                                imageURL: uploadedFileUrl,
+                                                barcodeNumber:
+                                                functions.returnEmptyString(),
+                                                sellingStatus: 'stock',
+                                                refund: false,
+                                                hasProblem: false,
+                                                version: '220310',
+                                              );
+                                              await GifticonsRecord.collection
+                                                  .doc()
+                                                  .set(gifticonsCreateData);
+
+                                              final usersUpdateData = {
+                                                'checkingGifticonNum':
+                                                FieldValue.increment(1),
+                                              };
+                                              await currentUserReference
+                                                  .update(usersUpdateData);
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text('기프티콘이 등록되었습니다.'),
+                                                    content: Text(
+                                                        '검수를 마친 후 알림톡을 보내드릴게요. 검수에 통과하면 등록하신 기프티콘을 자동으로 아메리카노로 바꿔드려요.'),
+                                                    //예쁘게
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.all(Radius.circular(20))
+                                                    ),
+                                                    //
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(alertDialogContext),
+                                                        child: Text('메인 화면으로 갈래요'),
+                                                        //예쁘게
+                                                        style: TextButton.styleFrom(
+                                                          primary: Color(0xFFFFFFFF), //글자
+                                                          backgroundColor: Color(0xFF3D8566),
+                                                          padding: EdgeInsets.all(10.0),
+                                                          minimumSize: Size(135, 55), //최소 사이즈
+                                                          shape:
+                                                          StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                                        ),
+                                                        //
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                              await Navigator.pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) => MainWidget(),
+                                                ),
+                                                    (r) => false,
+                                              );
+                                            },
+                                            child: Text('등록할게요'),
+                                            //예쁘게
+                                            style: TextButton.styleFrom(
+                                              primary: Color(0xFFFFFFFF), //글자
+                                              backgroundColor: Color(0xFF3D8566),
+                                              padding: EdgeInsets.all(10.0),
+                                              minimumSize: Size(135, 55), //최소 사이즈
+                                              shape:
+                                              StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                            ),
+                                            //
                                           ),
                                         ],
                                       );
                                     },
-                                  );
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MainWidget(),
-                                    ),
                                   );
                                 } else {
                                   await Navigator.push(
@@ -277,8 +373,8 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                     MaterialPageRoute(
                                       builder: (context) =>
                                           AfterUploadAgreementWidget(
-                                        gifticonImageUrl: uploadedFileUrl,
-                                      ),
+                                            gifticonImageUrl: uploadedFileUrl,
+                                          ),
                                     ),
                                   );
                                 }
@@ -288,13 +384,11 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                                 width: double.infinity,
                                 height: 55,
                                 color: Color(0xFF333333),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                textStyle: FlutterFlowTheme.subtitle2.override(
+                                  fontFamily: 'Roboto',
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
                                 borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1,
@@ -307,32 +401,52 @@ class _InputCouponWidgetState extends State<InputCouponWidget> {
                       ),
                     ),
                   ),
-                  InkWell(
-                    onTap: () async {
-                      await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HistoryWidget(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: Color(0x00EEEEEE),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
-                        child: Text(
-                          '등록한  기프티콘이  기억이 안난다면? >',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context).bodyText1,
-                        ),
-                      ),
-                    ),
+                  // Padding(
+                  //   padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  //   child: InkWell(
+                  //     onTap: () async {
+                  //       await Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //           builder: (context) => HistoryWidget(),
+                  //         ),
+                  //       );
+                  //     },
+                  //     child: Text(
+                  //       '등록한 기프티콘이 기억이 안난다면? >',
+                  //       style: FlutterFlowTheme.bodyText1.override(
+                  //         fontFamily: 'Roboto',
+                  //         lineHeight: 1.5,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+        InkWell(
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HistoryWidget(),
                   ),
-                ],
-              ),
+                );
+              },
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: Color(0x00EEEEEE),
+            ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+              child: Text(
+                '등록한 기프티콘이 기억이 안 난다면? >',
+                textAlign: TextAlign.center,
+                style: FlutterFlowTheme.bodyText1,
+              )
+            )
+          )
+        ),
+              ],
+            ),
             ),
           ],
         ),

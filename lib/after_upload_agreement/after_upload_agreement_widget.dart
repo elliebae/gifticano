@@ -1,3 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
+
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -81,7 +83,7 @@ class _AfterUploadAgreementWidgetState
                           Text(
                             '기프티콘이 검수를 통과하면',
                             style:
-                                FlutterFlowTheme.of(context).subtitle1.override(
+                                FlutterFlowTheme.subtitle1.override(
                                       fontFamily: 'Roboto',
                                       fontWeight: FontWeight.bold,
                                       lineHeight: 1.5,
@@ -116,7 +118,7 @@ class _AfterUploadAgreementWidgetState
                           Text(
                             '스타벅스 아메리카노를 드려요',
                             style:
-                                FlutterFlowTheme.of(context).subtitle2.override(
+                                FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Roboto',
                                       color: Color(0xFF666666),
                                       fontWeight: FontWeight.bold,
@@ -124,9 +126,9 @@ class _AfterUploadAgreementWidgetState
                                     ),
                           ),
                           Text(
-                            '내가 마시고 싶을 때 언제든지 꺼내 쓸 수 있어요',
+                            '차액 결제, 사이렌 오더를 이용할 수 있어요.',
                             style:
-                                FlutterFlowTheme.of(context).bodyText2.override(
+                                FlutterFlowTheme.bodyText2.override(
                                       fontFamily: 'Roboto',
                                       color: Color(0xFF999999),
                                       fontWeight: FontWeight.bold,
@@ -163,23 +165,25 @@ class _AfterUploadAgreementWidgetState
                           Text(
                             '거스름돈은 포인트로 적립해드려요',
                             style:
-                                FlutterFlowTheme.of(context).subtitle2.override(
+                                FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Roboto',
                                       color: Color(0xFF666666),
                                       fontWeight: FontWeight.bold,
                                       lineHeight: 1.5,
                                     ),
                           ),
-                          Text(
-                            '4500 포인트를 모아 기프티카노로 교환해보세요.',
-                            style:
-                                FlutterFlowTheme.of(context).bodyText2.override(
-                                      fontFamily: 'Roboto',
-                                      color: Color(0xFF999999),
-                                      fontWeight: FontWeight.bold,
-                                      lineHeight: 1.5,
-                                    ),
-                          ),
+                          FittedBox(
+                            child: Text(
+                              '4500 포인트를 모아 기프티카노로 교환해보세요.',
+                              style:
+                              FlutterFlowTheme.bodyText2.override(
+                                fontFamily: 'Roboto',
+                                color: Color(0xFF999999),
+                                fontWeight: FontWeight.bold,
+                                lineHeight: 1.5,
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ],
@@ -210,7 +214,7 @@ class _AfterUploadAgreementWidgetState
                           Text(
                             '등록한 기프티콘은 환불할 수 없어요',
                             style:
-                                FlutterFlowTheme.of(context).subtitle2.override(
+                                FlutterFlowTheme.subtitle2.override(
                                       fontFamily: 'Roboto',
                                       color: Color(0xFF666666),
                                       fontWeight: FontWeight.bold,
@@ -220,7 +224,7 @@ class _AfterUploadAgreementWidgetState
                           Text(
                             '검수 통과 전 취소는 ‘등록내역’에서 할 수 있어요.',
                             style:
-                                FlutterFlowTheme.of(context).bodyText2.override(
+                                FlutterFlowTheme.bodyText2.override(
                                       fontFamily: 'Roboto',
                                       color: Color(0xFF999999),
                                       fontWeight: FontWeight.bold,
@@ -249,7 +253,7 @@ class _AfterUploadAgreementWidgetState
                           value: FFAppState().neverSeeAgain,
                           onIcon: Icon(
                             Icons.check_circle,
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.primaryColor,
                             size: 25,
                           ),
                           offIcon: Icon(
@@ -261,7 +265,7 @@ class _AfterUploadAgreementWidgetState
                         Text(
                           '다시 보지 않기',
                           style:
-                              FlutterFlowTheme.of(context).subtitle2.override(
+                              FlutterFlowTheme.subtitle2.override(
                                     fontFamily: 'Roboto',
                                     color: Color(0xFF999999),
                                     fontWeight: FontWeight.w500,
@@ -296,17 +300,17 @@ class _AfterUploadAgreementWidgetState
                               width: 130,
                               height: 55,
                               color: Color(0xFFF2F3F2),
-                              textStyle: FlutterFlowTheme.of(context)
+                              textStyle: FlutterFlowTheme
                                   .subtitle2
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: Color(0xFF666666),
                                     fontWeight: FontWeight.bold,
                                   ),
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1,
-                              ),
+                              // borderSide: BorderSide(
+                              //   color: Colors.transparent,
+                              //   width: 1,
+                              // ),
                               borderRadius: 15,
                             ),
                           ),
@@ -319,34 +323,12 @@ class _AfterUploadAgreementWidgetState
                           ),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('기프티콘을 아메리카노로 바꿀까요?'),
-                                            content: Text('언제든 다시 등록할 수 있어요.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: Text('아니요'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: Text('등록할게요'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-
                               final gifticonsCreateData =
-                                  createGifticonsRecordData(
+                              createGifticonsRecordData(
                                 userId: currentUserReference,
                                 status: 'waiting',
+                                price: 0,
+                                failReason: '',
                                 uploadedAt: getCurrentTimestamp,
                                 imageURL: widget.gifticonImageUrl,
                                 sellingStatus: 'stock',
@@ -357,22 +339,51 @@ class _AfterUploadAgreementWidgetState
                               await GifticonsRecord.collection
                                   .doc()
                                   .set(gifticonsCreateData);
+
+                              final usersUpdateData = {
+                                'checkingGifticonNum':
+                                FieldValue.increment(1),
+                              };
+                              await currentUserReference
+                                  .update(usersUpdateData);
                               await showDialog(
                                 context: context,
                                 builder: (alertDialogContext) {
                                   return AlertDialog(
                                     title: Text('기프티콘이 등록되었습니다.'),
                                     content: Text(
-                                        '검수가 완료되면 알림톡을 보내드릴게요. 검수에 통과하면 등록하신 기프티콘은 자동으로 아메리카노로 바꿔드립니다.'),
+                                        '검수를 마친 후 알림톡을 보내드릴게요. 검수에 통과하면 등록하신 기프티콘을 자동으로 아메리카노로 바꿔드려요.'),
+                                    //예쁘게
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(20))
+                                    ),
+                                    //
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
                                             Navigator.pop(alertDialogContext),
-                                        child: Text('메인화면으로 갈래요'),
+                                        child: Text('메인 화면으로 갈래요'),
+                                        //예쁘게
+                                        style: TextButton.styleFrom(
+                                          primary: Color(0xFF666666), //글자
+                                          backgroundColor: Color(0xFFF2F3F2),
+                                          padding: EdgeInsets.all(10.0),
+                                          minimumSize: Size(135, 55), //최소 사이즈
+                                          shape:
+                                          StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                        ),
+                                        //
                                       ),
                                     ],
                                   );
                                 },
+                              );
+                              await Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainWidget(),
+                                ),
+                                    (r) => false,
                               );
                             },
                             text: '등록할게요',
@@ -380,7 +391,7 @@ class _AfterUploadAgreementWidgetState
                               width: 130,
                               height: 55,
                               color: Color(0xFFE15241),
-                              textStyle: FlutterFlowTheme.of(context)
+                              textStyle: FlutterFlowTheme
                                   .subtitle2
                                   .override(
                                     fontFamily: 'Roboto',

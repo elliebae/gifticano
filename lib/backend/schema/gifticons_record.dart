@@ -78,10 +78,10 @@ abstract class GifticonsRecord
 
   GifticonsRecord._();
   factory GifticonsRecord([void Function(GifticonsRecordBuilder) updates]) =
-      _$GifticonsRecord;
+  _$GifticonsRecord;
 
   static GifticonsRecord getDocumentFromData(
-          Map<String, dynamic> data, DocumentReference reference) =>
+      Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
           {...mapFromFirestore(data), kDocumentReferenceField: reference});
 }

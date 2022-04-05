@@ -28,13 +28,12 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      body: Form(
-        key: formKey,
-        autovalidateMode: AutovalidateMode.disabled,
-        child: Padding(
+    return Form(
+      key: formKey,
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Colors.white,
+        body: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -91,13 +90,11 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
                                 child: Text(
                                   '전화번호를 입력해주세요.',
-                                  style: FlutterFlowTheme.of(context)
-                                      .subtitle1
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.bold,
-                                        lineHeight: 1.5,
-                                      ),
+                                  style: FlutterFlowTheme.subtitle1.override(
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.bold,
+                                    lineHeight: 1.5,
+                                  ),
                                 ),
                               ),
                             ],
@@ -121,7 +118,12 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                                     controller: textController,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: '전화번호',
+                                      hintText: '전화번호 (예시: 01012345678)',
+                                      hintStyle:
+                                          FlutterFlowTheme.subtitle2.override(
+                                        fontFamily: 'Roboto',
+                                        color: Color(0xFF999999),
+                                      ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0xFF999999),
@@ -155,16 +157,14 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                                             )
                                           : null,
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .subtitle2
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          color: Color(0xFF999999),
-                                        ),
+                                    style: FlutterFlowTheme.subtitle2.override(
+                                      fontFamily: 'Roboto',
+                                      color: Color(0xFF999999),
+                                    ),
                                     keyboardType: TextInputType.phone,
                                     validator: (val) {
                                       if (val.isEmpty) {
-                                        return 'Field is required';
+                                        return '필수 입력란입니다';
                                       }
 
                                       return null;
@@ -179,19 +179,23 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        if (textController.text.isEmpty ||
-                            !textController.text.startsWith('+')) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                  'Phone Number is required and has to start with +.'),
-                            ),
-                          );
+                        if (!formKey.currentState.validate()) {
                           return;
                         }
+                        // if (textController.text.isEmpty ||
+                        //     !textController.text.startsWith('+')) {
+                        //   ScaffoldMessenger.of(context).showSnackBar(
+                        //     SnackBar(
+                        //       content: Text(
+                        //           '+로 시작하는 형태로 입력해주세요. (예시: +82 10 1234 5678)'),
+                        //     ),
+                        //   );
+                        //   return;
+                        // }
+                        var newPhoneNumber = '+82' + textController.text.substring(1);
                         await beginPhoneAuth(
                           context: context,
-                          phoneNumber: textController.text,
+                          phoneNumber: newPhoneNumber,
                           onCodeSent: () async {
                             await Navigator.pushAndRemoveUntil(
                               context,
@@ -207,14 +211,13 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 55,
-                        color: FlutterFlowTheme.of(context).secondaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Roboto',
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                        color: FlutterFlowTheme.secondaryColor,
+                        textStyle: FlutterFlowTheme.subtitle2.override(
+                          fontFamily: 'Roboto',
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1,

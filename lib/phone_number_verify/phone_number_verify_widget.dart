@@ -34,13 +34,12 @@ class _PhoneNumberVerifyWidgetState extends State<PhoneNumberVerifyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: Colors.white,
-      body: Form(
-        key: formKey,
-        autovalidateMode: AutovalidateMode.disabled,
-        child: Padding(
+    return Form(
+      key: formKey,
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Colors.white,
+        body: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -97,13 +96,11 @@ class _PhoneNumberVerifyWidgetState extends State<PhoneNumberVerifyWidget> {
                                     EdgeInsetsDirectional.fromSTEB(0, 0, 0, 19),
                                 child: Text(
                                   '문자로 전송된\n인증번호를 입력해주세요.',
-                                  style: FlutterFlowTheme.of(context)
-                                      .subtitle1
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.bold,
-                                        lineHeight: 1.5,
-                                      ),
+                                  style: FlutterFlowTheme.subtitle1.override(
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.bold,
+                                    lineHeight: 1.5,
+                                  ),
                                 ),
                               ),
                             ],
@@ -128,6 +125,13 @@ class _PhoneNumberVerifyWidgetState extends State<PhoneNumberVerifyWidget> {
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       hintText: '6자리',
+                                      hintStyle:
+                                          FlutterFlowTheme.title3.override(
+                                        fontFamily: 'Noto Sans',
+                                        color: Color(0xFF999999),
+                                        fontSize: 36,
+                                        fontWeight: FontWeight.normal,
+                                      ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0xFF999999),
@@ -161,18 +165,16 @@ class _PhoneNumberVerifyWidgetState extends State<PhoneNumberVerifyWidget> {
                                             )
                                           : null,
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .title3
-                                        .override(
-                                          fontFamily: 'Noto Sans',
-                                          color: Color(0xFF999999),
-                                          fontSize: 36,
-                                          fontWeight: FontWeight.normal,
-                                        ),
+                                    style: FlutterFlowTheme.title3.override(
+                                      fontFamily: 'Noto Sans',
+                                      color: Color(0xFF999999),
+                                      fontSize: 36,
+                                      fontWeight: FontWeight.normal,
+                                    ),
                                     keyboardType: TextInputType.phone,
                                     validator: (val) {
                                       if (val.isEmpty) {
-                                        return 'Field is required';
+                                        return '필수 입력란입니다';
                                       }
 
                                       return null;
@@ -187,10 +189,13 @@ class _PhoneNumberVerifyWidgetState extends State<PhoneNumberVerifyWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        if (!formKey.currentState.validate()) {
+                          return;
+                        }
                         if (textController.text.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text('Enter SMS verification code.'),
+                              content: Text('SMS 인증코드를 입력해주세요.'),
                             ),
                           );
                           return;
@@ -202,7 +207,6 @@ class _PhoneNumberVerifyWidgetState extends State<PhoneNumberVerifyWidget> {
                         if (phoneVerifiedUser == null) {
                           return;
                         }
-
                         await Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
@@ -215,14 +219,13 @@ class _PhoneNumberVerifyWidgetState extends State<PhoneNumberVerifyWidget> {
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 55,
-                        color: FlutterFlowTheme.of(context).secondaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Roboto',
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                        color: FlutterFlowTheme.secondaryColor,
+                        textStyle: FlutterFlowTheme.subtitle2.override(
+                          fontFamily: 'Roboto',
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1,

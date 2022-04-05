@@ -14,9 +14,9 @@ String returnEmptyString() {
 }
 
 bool isGreaterThanInput(
-  int totalPoint,
-  int threshold,
-) {
+    int totalPoint,
+    int threshold,
+    ) {
   if (totalPoint >= threshold) {
     return true;
   }
@@ -45,9 +45,9 @@ String printStatus(String status) {
 }
 
 int pointToRefund(
-  int presentPoint,
-  int gifticonPrice,
-) {
+    int presentPoint,
+    int gifticonPrice,
+    ) {
   if (presentPoint - gifticonPrice > 0) {
     return gifticonPrice;
   } else {
@@ -56,9 +56,9 @@ int pointToRefund(
 }
 
 int moneyToSend(
-  int presentPoint,
-  int gifticonPrice,
-) {
+    int presentPoint,
+    int gifticonPrice,
+    ) {
   // Add your function code here!
   if (gifticonPrice <= presentPoint) {
     return 0;

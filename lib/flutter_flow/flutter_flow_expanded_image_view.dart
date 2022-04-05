@@ -30,7 +30,7 @@ class FlutterFlowExpandedImageView extends StatelessWidget {
                 maxScale: 3.0,
                 enableRotation: allowRotation,
                 heroAttributes:
-                    useHeroAnimation ? PhotoViewHeroAttributes(tag: tag) : null,
+                useHeroAnimation ? PhotoViewHeroAttributes(tag: tag) : null,
                 onScaleEnd: (context, details, value) {
                   if (value.scale < 0.3) {
                     Navigator.pop(context);

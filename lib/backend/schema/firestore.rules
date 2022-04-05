@@ -2,10 +2,10 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /Users/{document} {
-      allow create: if request.auth.uid == document;
+      allow create: if true;
       allow read: if true;
-      allow write: if request.auth.uid == document;
-      allow delete: if false;
+      allow write: if true;
+      allow delete: if true;
     }
 
     match /Gifticons/{document} {
@@ -19,14 +19,14 @@ service cloud.firestore {
       allow create: if true;
       allow read: if true;
       allow write: if true;
-      allow delete: if false;
+      allow delete: if true;
     }
 
     match /PointHistory/{document} {
       allow create: if true;
       allow read: if true;
       allow write: if true;
-      allow delete: if false;
+      allow delete: if true;
     }
   }
 }

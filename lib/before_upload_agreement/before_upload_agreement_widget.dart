@@ -30,7 +30,6 @@ class _BeforeUploadAgreementWidgetState
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Column(
                 mainAxisSize: MainAxisSize.max,
@@ -70,50 +69,57 @@ class _BeforeUploadAgreementWidgetState
                       ],
                     ),
                   ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            '기프티콘 등록 전에 꼭 읽어주세요!',
-                            style:
-                                FlutterFlowTheme.of(context).subtitle1.override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      lineHeight: 1.5,
-                                    ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                    child:Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              '기프티콘 등록 전에 꼭 읽어주세요!',
+                              style:
+                              FlutterFlowTheme.subtitle1.override(
+                                fontSize: 24,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.bold,
+                                lineHeight: 1.5,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 45),
-                    child: Column(
+                  Column(
                       mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                           child: Image.asset(
                             'assets/images/o_sign.png',
-                            width: 70,
-                            height: 70,
+                            width: MediaQuery.of(context).size.height*0.086,
+                            height: MediaQuery.of(context).size.height*0.086,
                             fit: BoxFit.cover,
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height*0.036,
+                          decoration: BoxDecoration(
+                            color: Color(0x00EEEEEE),
                           ),
                         ),
                         Text(
                           '사용한 적 없는',
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Roboto',
                                     color: Color(0xFF666666),
                                     fontWeight: FontWeight.bold,
@@ -123,7 +129,7 @@ class _BeforeUploadAgreementWidgetState
                         Text(
                           '4500원 이상의 기프티콘을 올려주세요',
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Roboto',
                                     color: Color(0xFF666666),
                                     fontWeight: FontWeight.bold,
@@ -132,65 +138,74 @@ class _BeforeUploadAgreementWidgetState
                         ),
                       ],
                     ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height*0.055
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                         child: Image.asset(
                           'assets/images/x_sign.png',
-                          width: 70,
-                          height: 70,
+                          width: MediaQuery.of(context).size.height*0.086,
+                          height: MediaQuery.of(context).size.height*0.086,
                           fit: BoxFit.cover,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
-                        child: Text(
-                          '유효 기간이 짧거나 누락된 기프티콘',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFF666666),
-                                    fontWeight: FontWeight.bold,
-                                    lineHeight: 1.5,
-                                  ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
-                        child: Text(
-                          '사용 가능한 매장이 정해진 기프티콘',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFF666666),
-                                    fontWeight: FontWeight.bold,
-                                    lineHeight: 1.5,
-                                  ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
-                        child: Text(
-                          '본인 인증이 필요한 기프티콘',
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFF666666),
-                                    fontWeight: FontWeight.bold,
-                                    lineHeight: 1.5,
-                                  ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height*0.036,
+                        decoration: BoxDecoration(
+                          color: Color(0x00EEEEEE),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                         child: Text(
+                          '유효 기간이 짧거나 누락된 기프티콘',
+                          style:
+                              FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Roboto',
+                                    color: Color(0xFF666666),
+                                    fontWeight: FontWeight.bold,
+                                    lineHeight: 1.5,
+                                  ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 18),
+                        child: Text(
+                          '사용 가능한 매장이 정해진 기프티콘',
+                          style:
+                              FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Roboto',
+                                    color: Color(0xFF666666),
+                                    fontWeight: FontWeight.bold,
+                                    lineHeight: 1.5,
+                                  ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 18),
+                        child: Text(
+                          '본인 인증이 필요한 기프티콘',
+                          style:
+                              FlutterFlowTheme.bodyText1.override(
+                                    fontFamily: 'Roboto',
+                                    color: Color(0xFF666666),
+                                    fontWeight: FontWeight.bold,
+                                    lineHeight: 1.5,
+                                  ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 18),
+                        child: Text(
                           '재판매가 불가능한 기프티콘',
                           style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
+                              FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Roboto',
                                     color: Color(0xFF666666),
                                     fontWeight: FontWeight.bold,
@@ -222,7 +237,7 @@ class _BeforeUploadAgreementWidgetState
                         height: 55,
                         color: Color(0xFF333333),
                         textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
+                            FlutterFlowTheme.subtitle2.override(
                                   fontFamily: 'Roboto',
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,

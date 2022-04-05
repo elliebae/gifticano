@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 
 import '../backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -35,25 +34,6 @@ Future signOut() {
   FirebaseAuth.instance.signOut();
 }
 
-Future deleteUser(BuildContext context) async {
-  try {
-    if (currentUser?.user == null) {
-      print('Error: delete user attempted with no logged in user!');
-      return;
-    }
-    await currentUser?.user?.delete();
-  } on FirebaseAuthException catch (e) {
-    if (e.code == 'requires-recent-login') {
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text(
-                'Too long since most recent sign in. Sign in again before deleting your account.')),
-      );
-    }
-  }
-}
-
 Future resetPassword({String email, BuildContext context}) async {
   try {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
@@ -65,7 +45,7 @@ Future resetPassword({String email, BuildContext context}) async {
     return null;
   }
   ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(content: Text('Password reset email sent')),
+    const SnackBar(content: Text('Password reset email sent!')),
   );
 }
 
@@ -136,9 +116,9 @@ Future beginPhoneAuth({
       //   MaterialPageRoute(builder: (_) => DestinationPage()),
       // );
     },
-    verificationFailed: (e) {
+    verificationFailed: (exception) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Error: ${e.message}'),
+        content: Text('Error with phone verification: ${exception.message}'),
       ));
     },
     codeSent: (verificationId, _) {

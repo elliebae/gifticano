@@ -3,6 +3,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:gifticano/customer_service/faq.dart';
+
 class CustomerServiceWidget extends StatefulWidget {
   const CustomerServiceWidget({Key key}) : super(key: key);
 
@@ -68,15 +70,15 @@ class _CustomerServiceWidgetState extends State<CustomerServiceWidget> {
                         children: [
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 35),
+                            EdgeInsetsDirectional.fromSTEB(0, 0, 0, 35),
                             child: Text(
                               '무엇을 도와드릴까요?',
-                              style: FlutterFlowTheme.of(context)
+                              style: FlutterFlowTheme
                                   .subtitle1
                                   .override(
-                                    fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ],
@@ -98,7 +100,7 @@ class _CustomerServiceWidgetState extends State<CustomerServiceWidget> {
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 5),
                                 child: Image.asset(
                                   'assets/images/chat.png',
                                   width: 52,
@@ -108,26 +110,66 @@ class _CustomerServiceWidgetState extends State<CustomerServiceWidget> {
                               ),
                               Text(
                                 '채팅으로 상담하기',
-                                style: FlutterFlowTheme.of(context)
+                                style: FlutterFlowTheme
                                     .subtitle2
                                     .override(
-                                      fontFamily: 'Roboto',
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [],
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                          child: SingleChildScrollView(
+                            child: Container(
+                                padding: EdgeInsets.all(0),
+                                child: ExpansionPanelList(
+                                  animationDuration: Duration(milliseconds: 800),
+                                  elevation: 0,
+                                  children: list.map<ExpansionPanel>((Faq faq) {
+                                    return ExpansionPanel(
+                                        headerBuilder: (BuildContext context, bool isExpanded) {
+                                          return ListTile(
+                                            title: Text(
+                                              faq.header,
+                                              style: FlutterFlowTheme.bodyText2.override(
+                                                fontFamily: 'Roboto',
+                                                fontWeight: FontWeight.bold,
+                                                color: Color(0xFF666666),
+                                                lineHeight: 1.5,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        body: Container(
+                                          padding: EdgeInsets.fromLTRB(15, 0, 15, 10),
+                                          child: Text(
+                                            faq.body,
+                                            style: FlutterFlowTheme.bodyText2.override(
+                                              fontFamily: 'Roboto',
+                                              fontWeight: FontWeight.bold,
+                                              lineHeight: 1.5,
+                                            ),
+                                          ),
+                                        ),
+                                        isExpanded: faq.expanded,
+                                        canTapOnHeader: true);
+                                  }).toList(),
+                                  expansionCallback: (int index, bool isExpanded) {
+                                    setState(() {
+                                      list[index].expanded = !isExpanded;
+                                    });
+                                  },
+                                )
+                            ),
                           ),
                         ),
                       ),
+
                     ],
                   ),
                 ),

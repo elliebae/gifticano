@@ -1,18 +1,24 @@
+import 'package:gifticano/after_upload_agreement/after_upload_agreement_widget.dart';
+import 'package:gifticano/before_upload_agreement/before_upload_agreement_widget.dart';
+
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/show_coupon_widget.dart';
 import '../customer_service/customer_service_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../history/history_widget.dart';
 import '../input_coupon/input_coupon_widget.dart';
 import '../landing/landing_widget.dart';
+import '../onboarding/onboarding_widget.dart';
 import '../point/point_widget.dart';
+import '../use_coupon/use_coupon_widget.dart';
 import '../used/used_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../flutter_flow/flutter_flow_icon_button.dart';
 
 class MainWidget extends StatefulWidget {
   const MainWidget({Key key}) : super(key: key);
@@ -23,6 +29,11 @@ class MainWidget extends StatefulWidget {
 
 class _MainWidgetState extends State<MainWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +53,7 @@ class _MainWidgetState extends State<MainWidget> {
               width: 50,
               height: 50,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: FlutterFlowTheme.primaryColor,
               ),
             ),
           );
@@ -52,307 +63,320 @@ class _MainWidgetState extends State<MainWidget> {
             ? mainGifticonsRecordList.first
             : null;
         return Scaffold(
-          key: scaffoldKey,
-          backgroundColor: Colors.white,
-          drawer: Drawer(
-            elevation: 16,
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(40, 90, 40, 0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 60),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              AuthUserStreamWidget(
-                                child: Text(
-                                  currentUserDisplayName,
-                                  style: FlutterFlowTheme.of(context)
-                                      .subtitle1
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        fontSize: 36,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              InkWell(
-                                onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => PointWidget(),
-                                    ),
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 10),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.coins,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
-                                        size: 30,
-                                      ),
-                                    ),
-                                    Text(
-                                      '포인트',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => HistoryWidget(),
-                                    ),
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 10),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.history,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
-                                        size: 30,
-                                      ),
-                                    ),
-                                    Text(
-                                      '등록내역',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => UsedWidget(),
-                                    ),
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 10),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.tasks,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryColor,
-                                        size: 30,
-                                      ),
-                                    ),
-                                    Text(
-                                      '환불요청',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        CustomerServiceWidget(),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                '문의하기',
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle1
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 22,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
+      key: scaffoldKey,
+      backgroundColor: Colors.white,
+      drawer: Drawer(
+        elevation: 16,
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(40, 90, 40, 0),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 60),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 15),
+                      child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
-                            child: InkWell(
-                              onTap: () async {
-                                await launchURL(
-                                    'https://sites.google.com/view/gifticano-agreement-personal/');
-                              },
-                              child: Text(
-                                '개인정보 처리방침',
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle1
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 22,
-                                    ),
+                          AuthUserStreamWidget(
+                            child: Text(
+                              currentUserDisplayName,
+                              style: FlutterFlowTheme
+                                  .subtitle1
+                                  .override(
+                                fontFamily: 'Roboto',
+                                fontSize: 36,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                await launchURL(
-                                    'https://sites.google.com/view/gitfticano-agreement-use/');
-                              },
-                              child: Text(
-                                '이용약관',
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle1
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 22,
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '버전',
-                              style: FlutterFlowTheme.of(context)
-                                  .subtitle1
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 22,
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: () async {
+                              final result = await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PointWidget(),
+                                ),
+                              );
+                              print('blah');
+                              print(result);
+                              if (result) {
+                                print("navigator pop");
+                                setState(() {Navigator.pop(context);});
+                                print("set state");
+                              }
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 10),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.coins,
+                                    color: FlutterFlowTheme
+                                        .secondaryColor,
+                                    size: 30,
                                   ),
-                            ),
-                            Text(
-                              '1.0.0',
-                              style: FlutterFlowTheme.of(context)
-                                  .subtitle1
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFF666666),
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.normal,
+                                ),
+                                InkWell(
+                                  child: Text(
+                                    '포인트',
+                                    style: FlutterFlowTheme
+                                        .bodyText1,
                                   ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                await signOut();
-                                await Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LandingWidget(),
+                          ),
+                          InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HistoryWidget(),
+                                ),
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 10),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.history,
+                                    color: FlutterFlowTheme
+                                        .secondaryColor,
+                                    size: 30,
                                   ),
-                                  (r) => false,
-                                );
-                              },
-                              child: Text(
-                                '로그아웃',
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle1
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 22,
-                                    ),
-                              ),
+                                ),
+                                InkWell(
+                                  child: Text(
+                                    '등록내역',
+                                    style: FlutterFlowTheme
+                                        .bodyText1,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                          InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => UsedWidget(),
+                                ),
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 0, 10),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.tasks,
+                                    color: FlutterFlowTheme
+                                        .secondaryColor,
+                                    size: 30,
+                                  ),
+                                ),
+                                InkWell(
+                                  child: Text(
+                                    '환불요청',
+                                    style: FlutterFlowTheme
+                                        .bodyText1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                await launchURL(
-                                    'https://a3889xroicn.typeform.com/to/sXy5DXFm');
-                              },
-                              child: Text(
-                                '회원탈퇴',
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle1
-                                    .override(
-                                      fontFamily: 'Roboto',
-                                      fontSize: 22,
-                                    ),
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    CustomerServiceWidget(),
                               ),
+                            );
+                          },
+                          child: Text(
+                            '문의하기',
+                            style: FlutterFlowTheme
+                                .subtitle1
+                                .override(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
                             ),
-                          ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding:
+                        EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
+                        child: InkWell(
+                          onTap: () async {
+                            await launchURL(
+                                'https://sites.google.com/view/gifticano-agreement-personal/');
+                          },
+                          child: Text(
+                            '개인정보 처리방침',
+                            style: FlutterFlowTheme
+                                .subtitle1
+                                .override(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        InkWell(
+                          onTap: () async {
+                            await launchURL(
+                                'https://sites.google.com/view/gitfticano-agreement-use/');
+                          },
+                          child: Text(
+                            '이용약관',
+                            style: FlutterFlowTheme
+                                .subtitle1
+                                .override(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '버전',
+                          style: FlutterFlowTheme
+                              .subtitle1
+                              .override(
+                            fontFamily: 'Roboto',
+                            fontSize: 22,
+                          ),
+                        ),
+                        Text(
+                          '1.0.0',
+                          style: FlutterFlowTheme
+                              .subtitle1
+                              .override(
+                            fontFamily: 'Roboto',
+                            color: Color(0xFF666666),
+                            fontSize: 22,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        InkWell(
+                          onTap: () async {
+                            await signOut();
+                            await Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LandingWidget(),
+                              ),
+                                  (r) => false,
+                            );
+                          },
+                          child: Text(
+                            '로그아웃',
+                            style: FlutterFlowTheme
+                                .subtitle1
+                                .override(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 30),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        InkWell(
+                          onTap: () async {
+                            await launchURL(
+                                'https://a3889xroicn.typeform.com/to/sXy5DXFm');
+                          },
+                          child: Text(
+                            '회원탈퇴',
+                            style: FlutterFlowTheme
+                                .subtitle1
+                                .override(
+                              fontFamily: 'Roboto',
+                              fontSize: 22,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            ),
+            ],
           ),
+        ),
+      ),
           body: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 43),
             child: Column(
@@ -383,39 +407,59 @@ class _MainWidgetState extends State<MainWidget> {
                         child: Text(
                           '기프티카노',
                           style:
-                              FlutterFlowTheme.of(context).subtitle1.override(
-                                    fontFamily: 'gmarket sans',
-                                    fontWeight: FontWeight.bold,
-                                    useGoogleFonts: false,
-                                  ),
+                          FlutterFlowTheme.subtitle1.override(
+                            fontFamily: 'gmarket sans',
+                            fontWeight: FontWeight.bold,
+                            useGoogleFonts: false,
+                          ),
                         ),
                       ),
                       InkWell(
                         onTap: () async {
-                          if (!(mainGifticonsRecord != null)) {
+                          if ((mainGifticonsRecord != null)) {
                             await showDialog(
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
                                   title: Text('잠깐! 기프티콘을 등록하기 전에...'),
                                   content: Text('사용 완료된 기프티콘에 대한 환불 처리를 해주세요.'),
+                                  //예쁘게
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(20))
+                                  ),
+                                  //
                                   actions: [
                                     TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
+                                      onPressed: () async {
+                                  Navigator.pop(alertDialogContext);
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => UsedWidget()));
+
+                                },
+
                                       child: Text('확인하러 가기'),
+                                      //예쁘게
+                                      style: TextButton.styleFrom(
+                                        primary: Color(0xFFFFFFFF), //글자
+                                        backgroundColor: Color(0xFF3D8566),
+                                        padding: EdgeInsets.all(10.0),
+                                        minimumSize: Size(135, 55), //최소 사이즈
+                                        shape:
+                                        StadiumBorder(), // : 각진버튼, CircleBorder : 동그라미버튼, StadiumBorder : 모서리가 둥근버튼,
+                                      ),
+                                      //
                                     ),
                                   ],
                                 );
                               },
                             );
+                          } else {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BeforeUploadAgreementWidget(),
+                              ),
+                            );
                           }
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => InputCouponWidget(),
-                            ),
-                          );
                         },
                         child: Image.asset(
                           'assets/images/add-icon.png',
@@ -450,10 +494,36 @@ class _MainWidgetState extends State<MainWidget> {
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
+                                // Container(
+                                //   width: 100,
+                                //   height:
+                                //   MediaQuery.of(context).size.height * 0.04,
+                                //   decoration: BoxDecoration(
+                                //     color: Color(0x00EEEEEE),
+                                //   ),
+                                // ),
+                                // Row(
+                                //   mainAxisSize: MainAxisSize.max,
+                                //   mainAxisAlignment: MainAxisAlignment.center,
+                                //   children: [
+                                //     Text(
+                                //       '사용할 수 있는 기프티카노',
+                                //       style: FlutterFlowTheme
+                                //           .subtitle1
+                                //           .override(
+                                //         fontFamily: 'Roboto',
+                                //         color: Color(0xFF333333),
+                                //         fontSize: 20,
+                                //         fontWeight: FontWeight.bold,
+                                //         lineHeight: 1.5,
+                                //       ),
+                                //     ),
+                                //   ],
+                                // ),
+                                // Generated code for this Row Widget...
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
@@ -469,24 +539,19 @@ class _MainWidgetState extends State<MainWidget> {
                                       children: [
                                         Container(
                                           width: 100,
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.04,
+                                          height: MediaQuery.of(context).size.height * 0.04,
                                           decoration: BoxDecoration(
                                             color: Color(0x00EEEEEE),
                                           ),
                                         ),
                                         Text(
                                           '사용할 수 있는 기프티카노',
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                lineHeight: 1.5,
-                                              ),
+                                          style: FlutterFlowTheme.subtitle1.override(
+                                            fontFamily: 'Roboto',
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            lineHeight: 1.5,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -503,12 +568,12 @@ class _MainWidgetState extends State<MainWidget> {
                                         fillColor: Color(0x00BEF4CE),
                                         icon: Icon(
                                           Icons.refresh_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryColor,
+                                          color: FlutterFlowTheme.primaryColor,
                                           size: 30,
                                         ),
                                         onPressed: () {
-                                          print('IconButton pressed ...');
+                                          setState(() {
+                                          });
                                         },
                                       ),
                                     ),
@@ -521,14 +586,14 @@ class _MainWidgetState extends State<MainWidget> {
                                     AuthUserStreamWidget(
                                       child: Text(
                                         '${currentUserDocument?.availableGifticanoNum.toString()}잔',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: FlutterFlowTheme
                                             .subtitle1
                                             .override(
-                                              fontFamily: 'Roboto',
-                                              fontSize: 36,
-                                              fontWeight: FontWeight.bold,
-                                              lineHeight: 1.5,
-                                            ),
+                                          fontFamily: 'Roboto',
+                                          fontSize: 36,
+                                          fontWeight: FontWeight.bold,
+                                          lineHeight: 1.5,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -554,22 +619,29 @@ class _MainWidgetState extends State<MainWidget> {
                                 ),
                               ),
                               child: InkWell(
+                                //사용하기 버튼 action
                                 onTap: () async {
+                                  //0개 이면 alertdialog
+                                  if (currentUserDocument?.availableGifticanoNum == 0) {
+                                    return;
+                                  }
                                   await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    context: context,
-                                    builder: (context) {
-                                      return Padding(
-                                        padding:
-                                            MediaQuery.of(context).viewInsets,
-                                        child: Container(
-                                          height: 535,
-                                          child: ShowCouponWidget(),
-                                        ),
-                                      );
-                                    },
-                                  );
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      context: context,
+                                      builder: (context) {
+                                        return Padding(
+                                          padding:
+                                              MediaQuery.of(context).viewInsets,
+                                          child: Container(
+                                            height: 595,
+                                            child:ShowCouponWidget(),
+                                          ),
+                                        );
+                                      },
+                                  ).whenComplete((){setState((){});});
+                                  print('he.ll.o');
+
                                 },
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -577,14 +649,14 @@ class _MainWidgetState extends State<MainWidget> {
                                   children: [
                                     Text(
                                       '사용하기',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: FlutterFlowTheme
                                           .subtitle2
                                           .override(
-                                            fontFamily: 'Roboto',
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                        fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme
+                                            .primaryColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -622,7 +694,7 @@ class _MainWidgetState extends State<MainWidget> {
                                 Container(
                                   width: 100,
                                   height:
-                                      MediaQuery.of(context).size.height * 0.04,
+                                  MediaQuery.of(context).size.height * 0.04,
                                   decoration: BoxDecoration(
                                     color: Color(0x00EEEEEE),
                                   ),
@@ -633,15 +705,15 @@ class _MainWidgetState extends State<MainWidget> {
                                   children: [
                                     Text(
                                       '검수 중인 기프티콘',
-                                      style: FlutterFlowTheme.of(context)
+                                      style: FlutterFlowTheme
                                           .subtitle1
                                           .override(
-                                            fontFamily: 'Roboto',
-                                            color: Color(0xFF333333),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            lineHeight: 1.5,
-                                          ),
+                                        fontFamily: 'Roboto',
+                                        color: Color(0xFF333333),
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        lineHeight: 1.5,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -652,14 +724,14 @@ class _MainWidgetState extends State<MainWidget> {
                                     AuthUserStreamWidget(
                                       child: Text(
                                         '${currentUserDocument?.checkingGifticonNum.toString()}장',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: FlutterFlowTheme
                                             .subtitle1
                                             .override(
-                                              fontFamily: 'Roboto',
-                                              fontSize: 36,
-                                              fontWeight: FontWeight.bold,
-                                              lineHeight: 1.5,
-                                            ),
+                                          fontFamily: 'Roboto',
+                                          fontSize: 36,
+                                          fontWeight: FontWeight.bold,
+                                          lineHeight: 1.5,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -697,7 +769,7 @@ class _MainWidgetState extends State<MainWidget> {
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.getFont(
                                         'Roboto',
-                                        color: FlutterFlowTheme.of(context)
+                                        color: FlutterFlowTheme
                                             .secondaryColor,
                                         fontWeight: FontWeight.normal,
                                         fontSize: 12,

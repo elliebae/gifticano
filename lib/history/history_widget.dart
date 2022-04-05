@@ -26,6 +26,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
       backgroundColor: Colors.white,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
+        //여기 이게 맞는지 모르겠다
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
           child: Column(
@@ -52,12 +53,12 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       ),
                     ),
                     Text(
-                      '히스토리',
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Roboto',
-                            color: Color(0xFF666666),
-                            fontWeight: FontWeight.w600,
-                          ),
+                      '등록 내역',
+                      style: FlutterFlowTheme.bodyText1.override(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF666666),
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     Container(
                       width: 30,
@@ -84,7 +85,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                           width: 50,
                           height: 50,
                           child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: FlutterFlowTheme.primaryColor,
                           ),
                         ),
                       );
@@ -97,7 +98,7 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                       itemCount: listViewGifticonsRecordList.length,
                       itemBuilder: (context, listViewIndex) {
                         final listViewGifticonsRecord =
-                            listViewGifticonsRecordList[listViewIndex];
+                        listViewGifticonsRecordList[listViewIndex];
                         return Card(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
                           color: Colors.white,
@@ -107,16 +108,16 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                           ),
                           child: Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                            EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.26,
+                                  MediaQuery.of(context).size.width * 0.26,
                                   height:
-                                      MediaQuery.of(context).size.height * 0.2,
+                                  MediaQuery.of(context).size.height * 0.2,
                                   decoration: BoxDecoration(
                                     color: Color(0xFFEEEEEE),
                                   ),
@@ -147,12 +148,12 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                         child: Image.network(
                                           listViewGifticonsRecord.imageURL,
                                           width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
+                                              .size
+                                              .width *
                                               0.26,
                                           height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
+                                              .size
+                                              .height *
                                               0.2,
                                           fit: BoxFit.scaleDown,
                                         ),
@@ -167,56 +168,56 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         functions.printStatus(
                                             listViewGifticonsRecord.status),
-                                        style: FlutterFlowTheme.of(context)
+                                        style: FlutterFlowTheme
                                             .bodyText1
                                             .override(
-                                              fontFamily: 'Roboto',
-                                              fontWeight: FontWeight.bold,
-                                              lineHeight: 1.5,
-                                            ),
+                                          fontFamily: 'Roboto',
+                                          fontWeight: FontWeight.bold,
+                                          lineHeight: 1.5,
+                                        ),
                                       ),
                                       if ((listViewGifticonsRecord.status) ==
                                           'pass')
                                         Text(
                                           '바코드: ${listViewGifticonsRecord.barcodeNumber}',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: FlutterFlowTheme
                                               .bodyText2
                                               .override(
-                                                fontFamily: 'Roboto',
-                                                lineHeight: 1.3,
-                                              ),
+                                            fontFamily: 'Roboto',
+                                            lineHeight: 1.3,
+                                          ),
                                         ),
                                       if ((listViewGifticonsRecord.status) ==
                                           'fail')
                                         Text(
                                           '반려 사유:${listViewGifticonsRecord.failReason}',
-                                          style: FlutterFlowTheme.of(context)
+                                          style: FlutterFlowTheme
                                               .bodyText2
                                               .override(
-                                                fontFamily: 'Roboto',
-                                                lineHeight: 1.3,
-                                              ),
+                                            fontFamily: 'Roboto',
+                                            lineHeight: 1.3,
+                                          ),
                                         ),
                                       Text(
                                         '등록일자: ${dateTimeFormat('M/d H:mm', listViewGifticonsRecord.uploadedAt)}',
-                                        style: FlutterFlowTheme.of(context)
+                                        style: FlutterFlowTheme
                                             .bodyText2
                                             .override(
-                                              fontFamily: 'Roboto',
-                                              lineHeight: 1.3,
-                                            ),
+                                          fontFamily: 'Roboto',
+                                          lineHeight: 1.3,
+                                        ),
                                       ),
                                       if ((listViewGifticonsRecord.status) ==
                                           'waiting')
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 10, 0, 0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 10, 0, 0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
                                               await listViewGifticonsRecord
@@ -228,14 +229,13 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                                               width: 67,
                                               height: 35,
                                               color: Color(0xFFFCEFEE),
-                                              textStyle: FlutterFlowTheme.of(
-                                                      context)
+                                              textStyle: FlutterFlowTheme
                                                   .bodyText1
                                                   .override(
-                                                    fontFamily: 'Roboto',
-                                                    color: Color(0xFFDD5257),
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                                fontFamily: 'Roboto',
+                                                color: Color(0xFFDD5257),
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                               borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1,

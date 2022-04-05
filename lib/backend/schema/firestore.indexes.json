@@ -19,6 +19,24 @@
       ]
     },
     {
+      "collectionGroup": "Gifticanos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "used",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "validDate",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Gifticons",
       "queryScope": "COLLECTION",
       "fields": [
@@ -28,7 +46,19 @@
         },
         {
           "fieldPath": "uploadedAt",
-          "order": "DESCENDING"
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "fcm_tokens",
+      "fieldPath": "fcm_token",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
         }
       ]
     }

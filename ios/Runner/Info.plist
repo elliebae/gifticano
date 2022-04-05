@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Gifticano</string>
+	<string>기프티카노</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -16,35 +16,41 @@
 	<string>Gifticano</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-
 	<key>CFBundleShortVersionString</key>
-	<string>$(FLUTTER_BUILD_NAME)</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.googleusercontent.apps.808490654730-0cah8u7dv2sc6ok9m9604gskpsa0mco5</string>
-                
-            </array>
-        </dict>
-    </array>
-
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.flutterflow.gifticano</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.808490654730-0cah8u7dv2sc6ok9m9604gskpsa0mco5</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.flutterflow.gifticano</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>gifticanoapp.page.link</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-
 	<key>NSCameraUsageDescription</key>
 	<string>In order to take a picture or video, this app requires permission to access the camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>In order to upload media, this app requires permission to access the photo library.</string>
-
-
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -62,8 +68,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>FirebaseDynamicLinksCustomDomains</key>
+    <array>
+        <string>https://gifticanoapp.page.link/app</string>
+        <string>https://gifticanoapp.page.link/used</string>
+        <string>https://gifticanoapp.page.link/history</string>
+        <string>https://gifticanoapp.page.link/point</string>
+    </array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-
 </dict>
 </plist>
